@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Cardboard Dungeon Devlog #3</h2>
+                <div class="date">March 2016</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>Its been a little while since my last devlog and, in truth, things have slowed a little. This is partially because I&#8217;ve begun investigating Unity at last with a vague goal of producing a fully fledged VR game.</p>
+<p>This isn&#8217;t a reflection on A-Frame. I&#8217;m still excited by the potential of web-based VR experiences. I&#8217;m just eager to experiment with full VR headsets and room scale VR.</p>
+<p>That said, I have made progress on Cardboard Dungeon. Lets get into the detail.<!--more--></p>
+<p><strong>Inventory</strong></p>
+<p>This has been the core focus of my work since the last devlog. Having experimented with the inventory room a little more, it really wasn&#8217;t working as well as I initially thought.</p>
+<p>Its just not terribly convenient being shrunk and having to look around a room in order to interact with your inventory. More than that, the scaling sensation makes you feel pretty sick (a limitation of phone-based headsets due to latency?).</p>
+<p>I&#8217;ve scrapped that code and instead implemented a simple expandable inventory with 4 possible slots for items.</p>
+<p>The way this works is that you look at the square at your feet to expand the inventory. The squares around the outside are inventory slots. The centre square can be used to close the inventory &#8211; it will probably also be home to the compass in the next iteration.</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/cardboard_loop.gif" alt="Cardboard Dungeon Inventory Loop" width="648" height="359" class="aligncenter size-full wp-post-4317 wp-image-4328" /></p>
+<p>Items can now be picked up and are placed in a free inventory slot. Opening the inventory and gazing at an item will assign it to your hand or, if you already have it equipped, remove it from your hand.</p>
+<p>The position of items in the player&#8217;s hands are pre-programmed so it will always replace whatever you currently have equipped if that position is needed.</p>
+<p><strong>Graphics</strong></p>
+<p>The old graphics were just some placeholders. They looked okay but I feel that cartoony graphics work better in VR as its easier to overlook lower resolutions and the fact that they don&#8217;t match reality.</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-04-at-12.14.55-e1484831246234.jpg" alt="" width="700" height="391" class="aligncenter size-full wp-post-4317 wp-image-4324" /></p>
+<p>I paid for a few textures from <a href="https://3docean.net">3D Ocean</a>. I think that they offer a much more coherent aesthetic. They&#8217;re not perfect but they&#8217;re suitable for the purposes of this experimental game.</p>
+<p><strong>What&#8217;s next?</strong></p>
+<p>If you want to play the current iteration, you can do so <a href="https://chrismwaite.github.io/cardboard-dungeon/">here</a>.</p>
+<p>I&#8217;ve reduced the scope of what I&#8217;m trying to achieve for this series of diaries. I want to wrap up this mini-project so that I can progress with my Unity experiments some more.</p>
+<p>I feel that the following items will take this game/experience to a satisfactory conclusion:</p>
+<ol>
+<li>I want to drive the item positions from the JSON data. This means it will be easy to place items in rooms not yet rendered.</li>
+<li>I want you to be able to interact with at least something in the dungeon (based on the item in your hand).</li>
+<li>Finally I want to create a new, larger, dungeon layout &#8211; which is really just taking the time to describe one with JSON since that system is already in place for the existing dungeon.
+</li>
+</ol>
+<p>So the ambitions aren&#8217;t too lofty. I expect to be wrapped up in devlog #4. See you next time.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

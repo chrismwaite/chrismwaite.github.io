@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Merlot Update #17 – Level 1</h2>
+                <div class="date">June 2013</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+                    <p>
+                        Following on from
+                        <a
+                            href="https://www.chriswaite.dev/devlog/merlot-update-16-rebooting-the-project/"
+                            >the last update</a
+                        >, I&#8217;ve now successfully modified merlot to use
+                        relative positioning. This means that the game is now
+                        playable on the iPhone 5 (and future devices should
+                        involve less effort).
+                    </p>
+                    <p>
+                        With that change complete, my focus shifted to the
+                        implementation of my first test level. The objectives
+                        for this level were to focus on basic tile placement,
+                        making sure that the code I had in place from before was
+                        solid. The following has been completed as a result.
+                    </p>
+                    <p>
+                        + The core tile placement mechanic working nicely<br />
+                        + The village tileset tweaked<br />
+                        + The main GUI in a reasonable state with the timer and
+                        inventory icon implemented in their basic forms
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/06/Screen-Shot-2013-06-24-at-20.54.52.png"
+                            alt="merlot level 1 screenshot"
+                            width="320"
+                            height="569"
+                            class="aligncenter size-full wp-post-3575 wp-image-3581"
+                            srcset="
+                                https://cms.bytesizeadventures.com/wp-content/uploads/2013/06/Screen-Shot-2013-06-24-at-20.54.52.png         320w,
+                                https://cms.bytesizeadventures.com/wp-content/uploads/2013/06/Screen-Shot-2013-06-24-at-20.54.52-168x300.png 168w
+                            "
+                            sizes="(max-width: 320px) 100vw, 320px"
+                        />
+                    </p>
+                    <p>
+                        This now completes level 1 which focusses purely on
+                        laying a path to an exit. There&#8217;s not much to
+                        expand on here since the majority of the functionality
+                        was in place. I&#8217;ve just implemented a little more
+                        of the GUI and fixed some of the tileset niggles (new
+                        trees and removal of the grass gradient).
+                    </p>
+                    <p>
+                        My goal for level 2 is to introduce the inventory by
+                        giving you some basic items at the start of the level
+                        and allowing to select them to help you solve the level.
+                        This is fairly hefty because it means an overhaul of the
+                        inventory system &#8211; we&#8217;ll cover this in a bit
+                        more detail next time.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

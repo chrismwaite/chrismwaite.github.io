@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Devlog – 6th January 2014</h2>
+                <div class="date">January 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>And we&#8217;re off.</p>
+<p>My first devlog of 2014. I&#8217;m breaking these into week long blocks. They&#8217;re designed to be short, discussing what has been achieved each week. Hopefully they will help to keep me on track.</p>
+<p>This week I focussed on Sprite Kit migration. This is likely to be my focus for the month since there&#8217;s a fair amount of code to port. So far I&#8217;ve done the main menu and data persistence class. As expected, the data persistence class required almost no work, being pure objective-c, other than changing the property declarations slightly and removing some &#8220;retain&#8221; calls from my code. When using cocos2d, I hadn&#8217;t being using ARC so all of that was necessary.</p>
+<p>The main menu required its texture atlas and sprite declarations switching. Honestly, thanks to cocos and sprite kit both being Objective-C and sharing familiar concepts, this wasn&#8217;t too bad.</p>
+<p>Next up is going to be adding the texture atlases for iPad and iPad Retina, to ensure I&#8217;m universal from the start, and converting the character and level selection classes.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

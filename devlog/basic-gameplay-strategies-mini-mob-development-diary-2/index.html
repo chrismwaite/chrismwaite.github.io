@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Basic gameplay strategies – Mini Mob                                 Development Diary #2</h2>
+                <div class="date">January 2013</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>As predicted, porting the <a href="https://www.ludumdare.com/compo/ludum-dare-25/?action=preview&amp;uid=17895">prototype from MOAI</a> to Cocos2d was relatively simple. There were some considerations to be made owing to the procedural nature of Lua vs the object oriented nature of Objective-C. All in all though the port went without a hitch. That means I&#8217;m now at a point where my Ludum Dare prototype runs on the iPhone.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/Screen-Shot-2013-01-12-at-12.02.32.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/Screen-Shot-2013-01-12-at-12.02.32.png" alt="Mini Mob iPhone" width="594" height="456" class="aligncenter size-full wp-post-3381 wp-image-3398" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/Screen-Shot-2013-01-12-at-12.02.32.png 594w, https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/Screen-Shot-2013-01-12-at-12.02.32-300x230.png 300w" sizes="(max-width: 594px) 100vw, 594px" /></a></p>
+<p>The most immediate thing you&#8217;ll notice is that the visual style has lost most of its impact. That&#8217;s to be expected when moving from the desktop resolution it was designed for to a mobile format. This will all be modified and corrected in the coming months of design and development.</p>
+<p>A little aside: I&#8217;ve been considering the orientation that I should use for the game. Asking on Twitter, opinions seem to be mixed. A few people raised the point that there are common orientations for certain genres. I think with Mini Mob I&#8217;m going to leave it as landscape for now with a mind to switching to portrait (or adding portrait as an option) if it makes more sense.</p>
+<p>As I mentioned previously, I have lots of ideas for expanding Mini Mob but, in order to keep the development under control, I first want to focus on its core gameplay deficiencies. The prototype has a number of issues around the lack of strategic depth and I think these need to be corrected first.</p>
+<p>Step one therefore is to play the game some more, read the comments from Ludum Dare 25, and write down the issues that are preventing meaningful strategies. Thats what I&#8217;ve done below.<!--more--></p>
+<ol>
+<li>Taking a zone of a higher defence value offers no benefit over lower value zones.</li>
+<li>Fight resolution is random.</li>
+<li>Police AI is dumb and can result in many sequential invalid turns.</li>
+<li>Redistributing units offers no real benefit owing to the point about random fight resolution.</li>
+</ol>
+<p>Lets look at each one in detail and come up with some ideas as to how they can be solved?</p>
+<p><strong>Taking a zone of a higher value offers no benefit over lower value zones</strong></p>
+<p>In the current game, taking a zone increases the new recruit rate (the number of gangsters awarded at each 15 second interval). To calculate this rate a simple division (by 5) is performed on the zone defence value.</p>
+<p>For example, a zone with a defence value of 25, when taken, will increase your new recruit rate by 5. A zone with a defence value of 100 will increase your new recruit rate by 20.</p>
+<p>You can see the immediate issue. Why bother saving for a zone with a defence value of 100, there is no inherent benefit over taking 4 zones with a defence value of 25 (despite the added risk).</p>
+<p>The solution to this, I think, is to make the value exponential. So I think something like&#8230;</p>
+<p>([zone defence value] / 5) * ([zone defence value] / 25)</p>
+<p>If we use this algorithm on the possible zone values heres what we get.</p>
+<p>25 = (25 / 5) * (25 / 25) = 5<br />
+50 = (50 / 5) * (50 / 25) = 20<br />
+75 = (75 / 5) * (75 / 25) = 45<br />
+100 = (100 / 5) * (100 / 25) = 80</p>
+<p>This immediately gives the player an advantage if they save gangsters and take zones with higher defence values. Taking 4 zones at a defence value of 25 each will result in an increase of 20 to our new recruit rate. Taking a single zone with a defence value of 100 will increase the new recruit rate by 80.</p>
+<p>Those numbers will likely need to be tweaked but you get the general idea.</p>
+<p><strong>Fight resolution is random</strong></p>
+<p>When you take a zone occupied by &#8220;the fuzz&#8221;, a fight is triggered. This is currently resolved in the most simplistic way you can imagine; the flip of a coin! This severely limits the strategies that can be employed during gameplay and means that there is no benefit to the pattern in which you occupy zones.</p>
+<p>There are lots of possible solutions to this. For now we&#8217;re going to implement something fairly simple and we&#8217;ll add complexity as development progresses.</p>
+<p>The simplest way I can think of to increase the elements of strategy that can be employed is to take into consideration the adjacent zones. To do this we&#8217;ll simply utilise the occupier of each adjacent zone to push the coin flip (or dice roll) in favour of player with the most adjacent zones occupied.</p>
+<p>Lets look at some examples&#8230;</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/1.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/1.png" alt="strategy1" width="228" height="221" class="aligncenter size-full wp-post-3381 wp-image-3399" /></a></p>
+<p>You attack a zone that is occupied by the police. Adjacent zones are neutral. P (police) = 1, M (mob) = 1; You have a 1 in 2 chance of winning.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/2.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/2.png" alt="strategy2" width="229" height="221" class="aligncenter size-full wp-post-3381 wp-image-3400" /></a></p>
+<p>You attack a zone that is occupied by the police. 1 adjacent zone is occupied by the police, the others are neutral. P (police) = 2, M (mob) = 1; You have a 1 in 3 chance of winning.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/3.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/3.png" alt="strategy3" width="228" height="221" class="aligncenter size-full wp-post-3381 wp-image-3401" /></a></p>
+<p>You attack a zone that is occupied by the police. 1 adjacent zone is occupied by you, the others are neutral. P (police) = 1, M (mob) = 2; You have a 2 in 3 chance of winning.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/4.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/4.png" alt="strategy4" width="229" height="221" class="aligncenter size-full wp-post-3381 wp-image-3402" /></a></p>
+<p>You attack a zone that is occupied by the police. All 4 adjacent zones are occupied by the police. P (police) = 5, M (mob) = 1; You have a 1 in 6 chance of winning.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/5.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2013/01/5.png" alt="strategy5" width="228" height="221" class="aligncenter size-full wp-post-3381 wp-image-3403" /></a></p>
+<p>You attack a zone that is occupied by the police. All 4 adjacent zones are occupied by you. P (police) = 1, M (mob) = 5; You have a 5 in 6 chance of winning.</p>
+<p>This immediately adds a new strategic layer involving picking off adjacent police zones in order to attack. You can also use this strategy inversely to bolster your defences.</p>
+<p><strong>Police AI is dumb and can result in many sequential invalid turns</strong></p>
+<p>The AI in the game is incredibly basic in its current state. The AI rolls a 25 sided dice (there are 25 zones in the city) once per second. This determines the zone it will try to place police on. One of three things can happen&#8230;</p>
+<p>1) If its neutral and it has enough police, it will take the square.<br />
+2) If its mob controlled and it has enough police, it will initiate a fight.<br />
+3) Nothing &#8211; Because the zone belonged to itself or it didn&#8217;t have enough police to perform one of the above actions.</p>
+<p>We can improve this considerably in a few ways.</p>
+<p>Firstly, we can use the number of police we have to narrow down our zones. This will reduce the chances of us performing no action (No action is still possible if the AI has less than 25 police at its disposal).</p>
+<p>Secondly, we can eliminate squares occupied by the AI from the zones it can choose from.</p>
+<p>Thirdly, and only because we&#8217;re adding depth to the strategy, we can utilise the adjacent zones to make a more informed decision about what to try and take.</p>
+<p>These three things should make the AI much more competitive.</p>
+<p><strong>Redistributing units offers no real benefit owing to the point about random fight resolution</strong></p>
+<p>You can tap a zone that you control to recall the gangsters that occupy that zone. This returns them to your pot of gangsters but reduces your new recruit rate. Previously there was no real benefit to doing this.</p>
+<p>Since introducing a strategic element to fights, above, there is now a very good reason to redistribute; in order to surround a zone you want to attack and increase your odds.</p>
+<p>Does this make the ability too powerful? We&#8217;ll almost certainly need to add it to the AI&#8217;s capability. I&#8217;m going to need to test it in order to find out.</p>
+<p>We&#8217;ll be revisiting strategy later in development. These four items above are intended to solve some of the most immediate issues in the simplest way. The next step for me is to go away and code the algorithms and systems to support these new strategies</p>
+<p>See you next time.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

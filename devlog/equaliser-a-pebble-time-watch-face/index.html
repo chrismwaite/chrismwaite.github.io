@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Equaliser – A Pebble Time Watch Face</h2>
+                <div class="date">June 2015</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>I&#8217;m not quite ready to put aside £300+ for an <a href="https://www.apple.com/uk/watch/">Apple Watch</a>. I&#8217;m not yet convinced that a smart watch has a place in my life. That&#8217;s why I jumped on the Pebble bandwagon with their recent Kickstarter campaign for the <a href="https://getpebble.com/pebble_time">Pebble Time</a>. £100 seemed like an achievable amount of money to see if a smart watch was for me.</p>
+<p>Fastforward to a few days ago and my Pebble Time arrived in the post. It looks a little nicer in person than it appears in the marketing material. I&#8217;m still getting used to it and don&#8217;t yet know if its for me but I have taken the SDK for a spin :)<!--more--></p>
+<p>The <a href="https://developer.getpebble.com/sdk/">SDK</a> is fairly straightforward. Installation is taken care of by Homebrew (at least on Mac). I&#8217;m using Sublime Text for writing the code (wriiten in C). Usefull command-line commands are:-</p>
+<p>pebble build &#8211; to build the binary<br />
+pebble install &#8211; to test the binary on the default emulator (Basalt)<br />
+pebble screenshot &#8211; to take a screenshot through the emulator</p>
+<p>(Adding the &#8211;phone switch to these and specifying the IP performs the commands via the physical watch rather than the emulator).</p>
+<p>Its fairly simple stuff, fathomable within an afternoon or so.</p>
+<p>What I&#8217;ve ended up creating is a new Watch Face for the Pebble. My goal was, first and foremost, to create something that looks good.</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2015/06/pebble-screenshot_2015-06-30_16-00-07.png" alt="pebble-screenshot_2015-06-30_16-00-07" width="144" height="168" class="aligncenter size-full wp-post-4220 wp-image-4233" /></p>
+<p>Equaliser works like this:</p>
+<p>&#8211; Rows are hours. They fill up from the bottom to the top. Each full row is an hour past midnight. So two full bars is 2am.<br />
+&#8211; Columns are minutes. These fill up from left to right. Once 60 columns are filled, an hour is complete, and a new row starts.<br />
+&#8211; Seconds are represented by the vertical line that sweeps across the display.</p>
+<p>Whilst the Watch Face is intended as something fun, I have worked on readbility with the following:</p>
+<p>&#8211; The black vertical bars are 15 minute increments. The thicker black vertical bar is half past the hour.<br />
+&#8211; The midday row is highlighted orange.<br />
+&#8211; Orange graduations are visible on the left every two hours.</p>
+<p>Equaliser also has the following:</p>
+<p>&#8211; Support for both 12 and 24 hour time formats<br />
+&#8211; The ability to suppress the second hand<br />
+&#8211; Date (day name, day number, month name)<br />
+&#8211; Battery percentage<br />
+&#8211; Bluetooth connection indicator (with vibrate on disconnect/connect)<br />
+&#8211; Support for the original Pebble</p>
+<p>I&#8217;ve also made the <a href="https://github.com/chrismwaite/equaliser">source code available here</a>.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

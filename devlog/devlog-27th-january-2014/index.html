@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Devlog – 27th January 2014</h2>
+                <div class="date">January 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>This week was interesting.</p>
+<p>I finished porting to Sprite Kit. Unfortunately I had severe performance issues in scene transitions, interrupted actions, and, most importantly, tile placement. I&#8217;m talking about a difference of a tenth of a second placing a tile in cocos vs 2 seconds in Sprite Kit!</p>
+<p>I had a bit of a stab at correcting it but couldn&#8217;t find an obvious culprit. In fact it seemed to be many issues at play. Was it ARC causing the issue?</p>
+<p>I decided to run a little, non-scientific, test. I converted my cocos2d 2.0 version to ARC to see what the difference was. Alas, no difference to the original game. It wasn&#8217;t slow and performed just the same.</p>
+<p>So, who&#8217;s to blame? Well, I&#8217;d hazard a guess that its me :)</p>
+<p>Some part of the way I&#8217;m coding the game is not playing well with Sprite Kit. Obviously when you write a game on a framework, you&#8217;re constantly running it, testing, adding more code. Issues are solved as you go. The thing is, I don&#8217;t have the appetite for, what could be, a huge rewrite.</p>
+<p>Then I noticed that cocos2d 3.x has been released. A semantic tidy-up of the library code with some underlying changes, and a bunch of new features (that I most likely won&#8217;t use). Did I dare try it?</p>
+<p>Yes, I did. I ported to cocos2d 3.x. It took a little time and involved replacing some elements, renaming methods, replacing the audio library etc. But it worked.</p>
+<p>Its just as fast as the cocos2d 2.x version and I&#8217;m now using ARC which should limit memory issues.</p>
+<p>The final piece of the puzzle was to ensure that it was universal from the start. That&#8217;s also nearly done. At least at a superficial level.</p>
+<p>It wasn&#8217;t quite as I intended but I have a new starting point running on slightly more future-proof code along with a universal build and the benefit of ARC.</p>
+<p>If I were to start a new game project I&#8217;d most likely still opt for Sprite Kit. For this project though, cocos2d will remain the underlying framework.</p>
+<p>So, what&#8217;s next?</p>
+<p>I want to get a little more of the game working on the iPad (without any layout reworking). After that I intend to review a level. I&#8217;ll list everything that is missing or needs improvement. The intention is to create a vertical slice that is as polished as possible. A yardstick for the final game.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

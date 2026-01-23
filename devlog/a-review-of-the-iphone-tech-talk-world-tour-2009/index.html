@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">A review of the iPhone Tech Talk World Tour                                 2009</h2>
+                <div class="date">November 2009</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2009/11/IMG_0128.JPG"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2009/11/IMG_0128-1024x768.jpg" alt="IPhone Tech Talk 2009" title="IPhone Tech Talk 2009" width="400" height="300" class="aligncenter size-large wp-post-615 wp-image-631" /></a></p>
+<p>On Wednesday 11th November 2009 I attended the iPhone Tech Talk World Tour. Hosted by Apple in London&#8217;s Congress Centre, this is my review of the event.<br />
+<!--more--><br />
+<a href="https://cms.bytesizeadventures.com/wp-content/uploads/2009/11/IMG_0129.JPG"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2009/11/IMG_0129-300x225.jpg" alt="iPhone Tech Talk T-Shirt" title="iPhone Tech Talk T-Shirt" width="200" height="150" class="alignleft size-medium wp-post-615 wp-image-632" /></a>I arrived at the Congress Centre at about 7.50am and there was already a queue of around 15 people. Doors were opened at around 8.10am and we began filing in to register for the event. In order to gain access to the event we needed our invite and some proof of identity and in return we were given a name tag and an iPhone Tech Talk T-Shirt (Pictured left).</p>
+<p>After registration we were lead into a room with lots of coffee, tea, and pastries and given the opportunity to mingle. Several cups of coffee later and the now 300 ish strong crowd of developers were lead into the main auditorium for the kickoff talk.</p>
+<p>The kickoff talk was presented by John Geleynse (Director of Technology Evangelism) and lasted for just over 1 hour. These were the key points&#8230;</p>
+<p>15 months since the App store first launched, 50 million iPhones worldwide, 2 Billion App downloads, 100k Apps, 125k developers in the dev program.</p>
+<p>You should strive to ensure that your Apps have the following qualities: Delightful, Innovative, Designed, Integrated, Optimised, Connected, and Localised.</p>
+<p>A general observation made was that the majority of successful Apps use the latest technologies, go the extra mile, and keep things fresh.</p>
+<p>In addition, In App purchases were plugged a fair bit as a way of extended the life of your App. This first hour was very much a &#8220;feel good&#8221; session celebrating what the App store has accomplished.</p>
+<p>After the kickoff talk, there were a number of sessions to choose from covering a range of topics, all aimed at a technical audience. Of the 15 sessions on offer, I attended the following 5&#8230;</p>
+<p>Audio Development Tips for iPhone<br />
+Adding In App Purchases to your App<br />
+Mastering OpenGL ES for iPhone &#8211; Part 1<br />
+Testing and Debugging your iPhone Application<br />
+Maximizing iPhone App Performance</p>
+<p><b>Audio Development Tips for iPhone</b> &#8211; hosted by Allan Schaffer (Graphics &#038; Media Evangelist)</p>
+<p>This was a really good session, very much pitched at the beginner getting started with Audio and the best practices you should follow. There were a number of points raised but perhaps the core focus was on the AVAudioSession categories. You have 6 categories to choose from when initialising your audio session and generally its clear cut what these should be used for, bar 2. Ambient and Solo Ambient share lots of similarities but the key difference is that Solo Ambient should only be selected if you want to use the Hardware codec (that is, the iPod will no longer be able to make use of it).</p>
+<p>Another good point was that you shouldn&#8217;t ask the user if they want sound when they start your App. You should try to determine what they want based on the current state of their iPhone. E.g. If the mute switch is on then they probably don&#8217;t want sound, likewise if they are playing music then they probably don&#8217;t want sound.</p>
+<p><b>Adding In App Purchases to your App</b> &#8211; hosted by Mark Malone (Apple Internet Technologies Evangelist)</p>
+<p>For me, this was by far the most disappointing session. In fact its the only session that I was disappointed with. Perhaps I was expecting too much from it but it basically took us through the steps of implementing In App purchases and highlighted some of the pitfalls. I spoke to others in the session who got a lot from it so i&#8217;m sure its just a matter of how relevant it is for you.</p>
+<p><b>Mastering OpenGL ES for iPhone &#8211; Part 1</b> &#8211; hosted by Allan Schaffer (Graphics &#038; Media Evangelist)</p>
+<p>Like the Audio session in the morning, this was hosted by Allan Schaffer too. I have to say, the guy is a really great speaker showing heaps of enthusiasm for the various topics he covers. Anyway, this session was not for the feint of heart but Allan did a great job of pitching it at an intermediate level. As a beginner I was able to get a fair bit from it actually, including some good pointers on where to start.</p>
+<p>A large portion of this session was discussing the differences between OpenGL ES 1.1 and 2.0 and how to handle these on the various devices. Allan spent some time talking about how OpenGL ES fits into the iPhone SDK architecture and also touched on the various performance pitfalls to look out for.</p>
+<p>For the beginners out there, here&#8217;s the list of resources recommended by Allan&#8230;</p>
+<p>OpenGL ES programming guide for iPhone (iPhone Dev center)<br />
+OpenGL ES 2.0 programming guide (book)<br />
+OpenGL Shading language (book)<br />
+OpenGL programming guide (book)<br />
+OpenGL SuperBible (book)<br />
+Xcode OpenGL ES template (built into Xcode)</p>
+<p><b>Testing and Debugging your iPhone Application</b> &#8211; hosted by Michael Jurewitz (Developer Tool Evangelist)</p>
+<p>This session was recommended by  John Geleynse in the mornings Kickoff talk. There was a lot of content crammed into this hour long session but it was all very high quality and extremely useful. Michael covered how to setup Unit testing (both Logic tests and Application tests). Both of these test types are actually fairly easy to setup, with Xcode containing various templates to make your life easy.</p>
+<p>The key takeaway from this session though was Static Analysis. This is a new tool that has made its way into Xcode 3.2 as part of Snow Leopard (so don&#8217;t go looking for it if you haven&#8217;t yet upgraded). It essentially checks your code for potential bugs without actually running it. Its kind of like an early warning system. Its very clever and a really powerful tool. The rest of this session took a look at using Instruments to look for issues in your code (Memory leaks and Object allocation).</p>
+<p><b>Maximizing iPhone App Performance</b> &#8211; hosted by Michael Jurewitz (Developer Tool Evangelist)</p>
+<p>This very much followed on from the previous session but took a deeper look into performance issues and Michael even did a live demonstration, improving the performance of a particularly laggy application that had a scrollable list of movies. Michael gave us various tips about avoiding transparent UI elements and ensuring our images were in the PNG format. This performance session along with the previous Testing session were the two most useful and gave me a lot of practical advice that I can put to use immediately.</p>
+<p>I feel its also worth mentioning the quality of the event hosting. The lunch was excellent and various snacks, coffee, and tea were readily available throughout the event. We even had wine and cheese at the end of the day after all of the sessions had ended. The congress centre isn&#8217;t the most spacious of venues but I think the staffs management of the space was exemplary.</p>
+<p>I think overall the event was a winner. The content was high quality and I took a lot of information away that i&#8217;m convinced will improve the quality of my future games and applications.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

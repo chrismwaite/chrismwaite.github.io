@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Board Game Design – The Concept</h2>
+                <div class="date">October 2020</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+                    <p>
+                        In this post we&#8217;ll take a look at the initial
+                        concept for my board game.
+                    </p>
+                    <p>
+                        Much like any game design, the initial concept evolves
+                        at a rapid pace. The worker placement mechanic that
+                        <a
+                            href="https://www.chriswaite.dev/devlog/how-to-design-a-board-game/"
+                            title="How to design a board game"
+                            >I had in mind</a
+                        >
+                        for this game hasn&#8217;t really come to fruition. As I
+                        played with some rough prototypes, the worker placement
+                        element was getting in the way of the more interesting
+                        aspects of the game. Placing this on the back burner has
+                        allowed me to focus on what makes the game interesting
+                        and I have found that the game has more naturally fallen
+                        into place.
+                    </p>
+                    <p>
+                        Let&#8217;s talk a bit about the game in its current
+                        form:
+                    </p>
+                    <p><strong>The Front Line</strong></p>
+                    <p>
+                        <img
+                            width="209"
+                            height="401"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_209,h_401/f_auto,q_auto/v1640107343/front1_45775ef19/front1_45775ef19.png?_i=AA"
+                            alt="The front setup"
+                            class="aligncenter size-full wp-post-4553 wp-image-4577"
+                            data-public-id="front1_45775ef19.png"
+                            data-format="png"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107343"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/images/f_auto,q_auto/v1640107343/front1_45775ef19/front1_45775ef19.png?_i=AA             209w,
+                                https://res.cloudinary.com/dmq7gxinn/images/w_156,h_300/f_auto,q_auto/v1640107343/front1_45775ef19/front1_45775ef19.png?_i=AA 156w
+                            "
+                            sizes="(max-width: 209px) 100vw, 209px"
+                        />
+                    </p>
+                    <p>
+                        The central concept of the game is the &#8220;Front
+                        Line&#8221;; 4 cards that are placed horizontally in a
+                        line between the 2 players (represented by the filled
+                        grey cards above). Let&#8217;s also imagine a 4 x 2 grid
+                        on each side of the front line representing the possible
+                        spaces where a front line card can reside. Your goal is
+                        to move the front line such that one of the cards
+                        reaches the back row of your opponents side. This is
+                        illustrated in the animation below which demonstrates
+                        one possible way to secure a win.
+                    </p>
+                    <p>
+                        <img
+                            width="209"
+                            height="401"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_209,h_401/f_auto,q_auto/v1640107348/the_front_win_457554b0b/the_front_win_457554b0b.gif?_i=AA"
+                            alt="The front win"
+                            class="aligncenter size-full wp-post-4553 wp-image-4575"
+                            data-public-id="the_front_win_457554b0b.gif"
+                            data-format="gif"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107348"
+                        />
+                    </p>
+                    <p>
+                        Movement of the front line is restricted such that a
+                        card can only be moved if the space that it is moving to
+                        keeps a continuous line with the other 3 front line
+                        cards. This is determined by having cards either
+                        adjacent or diagonal to it. Having a gap, such as the
+                        one below, is an illegal move.
+                    </p>
+                    <p>
+                        <img
+                            width="209"
+                            height="401"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_209,h_401/f_auto,q_auto/v1640107358/front_error_457218ae5/front_error_457218ae5.png?_i=AA"
+                            alt="The front illegal move"
+                            class="aligncenter size-full wp-post-4553 wp-image-4572"
+                            data-public-id="front_error_457218ae5.png"
+                            data-format="png"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107358"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/images/f_auto,q_auto/v1640107358/front_error_457218ae5/front_error_457218ae5.png?_i=AA             209w,
+                                https://res.cloudinary.com/dmq7gxinn/images/w_156,h_300/f_auto,q_auto/v1640107358/front_error_457218ae5/front_error_457218ae5.png?_i=AA 156w
+                            "
+                            sizes="(max-width: 209px) 100vw, 209px"
+                        />
+                    </p>
+                    <p>
+                        Some possible &#8220;win&#8221; conditions may look like
+                        this:
+                    </p>
+                    <p>
+                        <img
+                            width="500"
+                            height="260"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_500,h_260/f_auto,q_auto/v1640107345/win_conditions_457674bbe/win_conditions_457674bbe.png?_i=AA"
+                            alt="The front possible win conditions"
+                            class="aligncenter size-full wp-post-4553 wp-image-4576"
+                            data-public-id="win_conditions_457674bbe.png"
+                            data-format="png"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107345"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/images/f_auto,q_auto/v1640107345/win_conditions_457674bbe/win_conditions_457674bbe.png?_i=AA             500w,
+                                https://res.cloudinary.com/dmq7gxinn/images/w_300,h_156/f_auto,q_auto/v1640107345/win_conditions_457674bbe/win_conditions_457674bbe.png?_i=AA 300w
+                            "
+                            sizes="(max-width: 500px) 100vw, 500px"
+                        />
+                    </p>
+                    <p>
+                        I&#8217;m still exploring possible ideas for the front
+                        line but the above describes the core concept as it
+                        exists right now.
+                    </p>
+                    <p><strong>How do you move the Front Line?</strong></p>
+                    <p>
+                        <img
+                            width="209"
+                            height="401"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_209,h_401/f_auto,q_auto/v1640107353/playing_cards_4574079d9/playing_cards_4574079d9.png?_i=AA"
+                            alt="Playing cards"
+                            class="aligncenter size-full wp-post-4553 wp-image-4574"
+                            data-public-id="playing_cards_4574079d9.png"
+                            data-format="png"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107353"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/images/f_auto,q_auto/v1640107353/playing_cards_4574079d9/playing_cards_4574079d9.png?_i=AA             209w,
+                                https://res.cloudinary.com/dmq7gxinn/images/w_156,h_300/f_auto,q_auto/v1640107353/playing_cards_4574079d9/playing_cards_4574079d9.png?_i=AA 156w
+                            "
+                            sizes="(max-width: 209px) 100vw, 209px"
+                        />
+                    </p>
+                    <p>
+                        Cards are played one at a time, with each player taking
+                        a turn, directly in front of any card in the front line
+                        (depending on which side of the table you are playing
+                        on). Once a set of conditions have been met, this
+                        triggers a battle for that front line card. The
+                        resolution of this battle determines who, if anyone,
+                        gets to activate the card and move it.
+                    </p>
+                    <p>
+                        To understand this, we need to look at the card types in
+                        more detail:
+                    </p>
+                    <p><strong>Front Line cards</strong></p>
+                    <p>
+                        <img
+                            width="100"
+                            height="162"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_100,h_162/f_auto,q_auto/v1640107360/front_card_4571b8b7c/front_card_4571b8b7c.png?_i=AA"
+                            alt="Front line card"
+                            class="aligncenter size-full wp-post-4553 wp-image-4571"
+                            data-public-id="front_card_4571b8b7c.png"
+                            data-format="png"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107360"
+                        />
+                    </p>
+                    <p>
+                        Front line cards have a number assigned to them (The
+                        large number at the top of the card above). When enough
+                        cards have been assigned to the front line card (the
+                        total number of cards, on both sides, assigned to this
+                        front line card must equal the number), then a battle is
+                        triggered.
+                    </p>
+                    <p>
+                        Front line cards also have a power (The text on the card
+                        above). This power is triggered by the winner of a
+                        battle once it has been resolved.
+                    </p>
+                    <p>
+                        Finally, each front line card generates a resource
+                        (Listed at the bottom of the card). Playing a card to
+                        this front line card will generate that resource. 1
+                        resource will be generated per card that you have
+                        assigned to this front line card.
+                    </p>
+                    <p>
+                        Playing a card to gain a resource (represented purely by
+                        the number of cards you have assigned to that
+                        &#8220;front&#8221; card) is how I&#8217;ve diluted the
+                        worker placement aspect of the game. By playing cards to
+                        the front line, you have a dynamic representation of how
+                        much money, steel, oil, and food (current WIP resources)
+                        that you have at any one time. Currently these are used
+                        to pay for the more powerful cards that may come into
+                        play.
+                    </p>
+                    <p><strong>Player cards</strong></p>
+                    <p>
+                        <img
+                            width="100"
+                            height="161"
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/images/w_100,h_161/f_auto,q_auto/v1640107355/player_card_45735fbf0/player_card_45735fbf0.png?_i=AA"
+                            alt="Player card"
+                            class="aligncenter size-full wp-post-4553 wp-image-4573"
+                            data-public-id="player_card_45735fbf0.png"
+                            data-format="png"
+                            data-transformations="f_auto,q_auto"
+                            data-version="1640107355"
+                        />
+                    </p>
+                    <p>
+                        Player cards may have an attack and/or defence value
+                        assigned to them (represented by the 2A = 2 Attack, and
+                        1D = 1 Defence in the card above). These are used during
+                        battle resolution (described below). Not all cards have
+                        attack or defence values but the card still counts
+                        towards the sum needed to trigger a battle.
+                    </p>
+                    <p>
+                        Player cards may have an ability (the text in the card
+                        above). This activates as soon as the card is played.
+                    </p>
+                    <p>
+                        Player cards may also have a cost associated with them
+                        (the 3 food in the card above). This means you would
+                        need at least 3 cards assigned to a front card that
+                        provides the food resource in order the play this card.
+                        The card can be played to any front card provided you
+                        have met these requirements.
+                    </p>
+                    <p><strong>Battle resolution</strong></p>
+                    <p>
+                        Battles are triggered when the total number of cards
+                        played onto a front card equals the front cards target
+                        value. At this point, the players take it in turn to do
+                        the following:
+                    </p>
+                    <ol>
+                        <li>
+                            Figure out your attack value by summing your attack
+                            values across all of your cards assigned to this
+                            front card.
+                        </li>
+                        <li>
+                            Sum your opponents defence values across all of
+                            their cards.
+                        </li>
+                        <li>
+                            Subtract your opponents defence value from your
+                            attack value to get a final attack value.
+                        </li>
+                    </ol>
+                    <p>Then the following happens:</p>
+                    <ol>
+                        <li>Compare final attack values</li>
+                        <li>
+                            The player with the highest <em>positive</em> value
+                            wins the battle.
+                        </li>
+                        <li>
+                            The winning player activates the card ability
+                            (unless its a tie).
+                        </li>
+                        <li>
+                            All cards played on both sides are discarded (unless
+                            its a tie)
+                        </li>
+                        <li>
+                            The winning player moves the front card (if they can
+                            do so legally, otherwise it is left where it is)
+                        </li>
+                        <li>
+                            In the case of a tie: both players take their cards
+                            back after they have selected a single card each to
+                            discard and the front card is not moved (nor is the
+                            ability activated)
+                        </li>
+                    </ol>
+                    <p>
+                        Only positive values can win a battle as a negative
+                        final value means that the attack was fully blocked by
+                        the opponents defence value.
+                    </p>
+                    <p><strong>Next steps</strong></p>
+                    <p>
+                        There is a lot of room for adding additional
+                        complexity/depth to the game. A few of the ideas I have:
+                    </p>
+                    <ul>
+                        <li>
+                            Headquarters &#8211; offering permanent or
+                            single-shot abilities depending on which HQ you
+                            choose
+                        </li>
+                        <li>
+                            Limitations applied to the front line cards &#8211;
+                            such as only cards of type x can be played here
+                        </li>
+                        <li>
+                            Historical battles &#8211; Front line cards could be
+                            provided as sets of 4, or more, cards that
+                            abstractly represent actual battles in history (with
+                            appropriate changes to their powers, numbers, and
+                            restrictions).
+                        </li>
+                        <li>
+                            Buildings &#8211; Either placed or static (or both).
+                            These would occupy spaces on either side of the
+                            table and offer bonus&#8217;s to your cards within
+                            that column. These could simulate defensive
+                            structures and the like. They would also help to add
+                            more depth to the historical battles just mentioned.
+                        </li>
+                    </ul>
+                    <p>
+                        All of these ideas are to be explored later on once the
+                        core gameplay feels right. The next step is to
+                        brainstorm the possible abilities of both the player
+                        cards and the front line cards. I&#8217;ll be trying to
+                        answer questions like: Which abilities would be fun?
+                        Which unbalance the game? Can I create a very
+                        overpowered/under-powered card and what effect does that
+                        have.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Weekly Update #9 – A change of tack</h2>
+                <div class="date">March 2012</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>I missed my weekly update last week because I didn&#8217;t have much to talk about. Sometimes that&#8217;s just how development goes. A feature, or series of features, can end up taking longer than anticipated. In order to keep these posts semi-intereting, I&#8217;m going to stick to this approach. If I don&#8217;t have anything of significance to report, I&#8217;ll skip a week. I&#8217;m still aiming to post weekly though.</p>
+<p>Completed this week&#8230;</p>
+<p>+ NPC (non-player character) placement in the level editor</p>
+<p>So, what caused the issue last week? Well, its my level editor. I&#8217;m 100% convinced that building a level editor for this game is the right approach. I also know that I want it to be visually appealing (or at least tidy), easy to use, and also fun to create levels in. The last one may surprise you but if I&#8217;m going to spend hours and hours building levels with this tool, the process needs to be enjoyable. As a result, building the level editor is extremely important.<!--more--></p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Screen-Shot-2012-03-18-at-13.24.25.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Screen-Shot-2012-03-18-at-13.24.25.png" alt="" title="Level editor with npcs" width="650" height="355" class="aligncenter size-full wp-post-2977 wp-image-2980" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Screen-Shot-2012-03-18-at-13.24.25.png 650w, https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Screen-Shot-2012-03-18-at-13.24.25-300x163.png 300w" sizes="(max-width: 650px) 100vw, 650px" /></a></p>
+<p>You may recall that last week I added NPC&#8217;s to my engine, along with a data structure to support them. Much of my time in the last few weeks has been spent thinking through the interface for authoring this in the level editor. I have finally managed to program the functionality for NPC placement but it has been painfully slow. Each time I add a feature I need to design the appearance, program the functionality to display it on screen, add the models for saving to a database, extend my xml generation script (for producing the level data that&#8217;s served to the game), and extend my level parsing to allow the loading of levels within the editor. I&#8217;m sure you get the point, its a lot of work for very little immediate benefit.</p>
+<p>Compounding this work is the fact that some of these concepts are experimental (until I know how well they work in the game). I also have lots of outstanding features that are not yet in my engine. As a result, I&#8217;m going to change tack slightly this week. Rather than iterating the level editor along with the game, I&#8217;m going to park the level editor (for a few weeks) and focus on creating a handful of levels in the game. I&#8217;ll still be writing the data structure to support them but I can compose them directly in a local plist.</p>
+<p>This will allow me to shift my focus back to game features. I need to see how well the game plays across a number of levels. I can also test some of the concepts I have in mind for quest structure, story, character persistence, and level progression.</p>
+<p>So that&#8217;s my new goal. A 5 level mini-story to demo the features of the game. I can come back to the level editor once the concepts are more entrenched in the game engine (and proven to work).</p>
+<p>I am interested in how other developers handle the creation of a level editor at the same time as a game. Do you create the level editor first, iterate throughout game development, or leave it to the end? If you have any insights, I&#8217;d love to hear them in the comments.</p>
+<p>I&#8217;ll leave you with another tile piece. More to come soon.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/wall.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/wall.png" alt="" title="wall" width="64" height="86" class="aligncenter size-full wp-post-2977 wp-image-2981" /></a></p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

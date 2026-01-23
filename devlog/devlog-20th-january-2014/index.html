@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Devlog – 20th January 2014</h2>
+                <div class="date">January 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>This week&#8230; still more porting!</p>
+<p>I successfully migrated the level select screen. The layout is far from perfect but is just about looking okay across all devices. No especially big issues here.</p>
+<p>The big piece of work this week was migrating the core game class and its dependencies. This has involved significant change. Most of the work revolved around removing retain and release calls on properties (including in the dealloc method), replacing cocos2d texture and label calls with the Sprite Kit equivalents, replacing the actions with Sprite Kits&#8217; implementation, and a number of syntactic differences.</p>
+<p>The game is now loading and running but I still have some major issues. Specific cocos2d classes, such as the progress bar, will need to be replaced with custom code. I also have some node and texture positioning issues, some touches not working, etc.</p>
+<p>There&#8217;s a non-trivial amount of work remaining and I feel a tinge of regret undertaking it. That being said I&#8217;m over the worst of it and, if I can see it through, I&#8217;ll no longer have a cocos2d library dependency (making maintainability and the support of future devices much easier). I&#8217;ll also have a universal game with support for retina iPads. Thats a pretty big win.</p>
+<p>My target is to get the game fully ported for the end of January. Then its on to the fun stuff &#8211; game design :)</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

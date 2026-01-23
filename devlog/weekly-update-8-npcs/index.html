@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Weekly Update #8 – NPC's</h2>
+                <div class="date">March 2012</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>First up, here&#8217;s a list of what&#8217;s been done this week.</p>
+<p>+ Added NPC&#8217;s to the game engine &#038; a data structure to support them<br />
++ Added basic NPC interaction<br />
++ Added NPC rewards<br />
+&#8211; Slight overhaul of the player movement logic</p>
+<p>As you can see, this week my primary focus has been on NPC&#8217;s. Whilst I&#8217;m moving on to other sub-systems next week, you&#8217;ll be hearing/seeing more about NPC&#8217;s in the future. For now, I just wanted to share some of the basics with you.<!--more--></p>
+<p>My current NPC interaction is very basic. As you progress through a level/puzzle you will see NPC&#8217;s who can be approached (providing you can create a path to them). Successfully occupying the same tile as an NPC tile will result in one of three conditions (or a combination thereof). The first is the initialisation/progression of a quest fragment (more on that in a future post), the second is a conversation, and the third is a reward.</p>
+<p>Currently a conversation is one sided with a simple text dialogue giving you some information or progressing the story &#8211; the story is very much told through the levels themselves so this is used as an accompaniment to that.</p>
+<p>Rewards generally take the form of a number of tiles. Sometimes these are core tiles, sometimes special tiles. I&#8217;ll share more about the reward system in a future post :)</p>
+<p>Unfortunately there&#8217;s not much to see visually on the NPC front. Its all rather ugly because I&#8217;ve spent all of my time ensuring its functional and no time on the aesthetics (NPC appearance, text appearance, reward popups etc). As a result, this weeks image is a photograph of a board game that has been a huge source of inspiration for my current game.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/photo-6.jpg"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/photo-6.jpg" alt="" title="Carcassonne" width="600" height="450" class="aligncenter size-full wp-post-2972 wp-image-2974" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/photo-6.jpg 600w, https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/photo-6-300x225.jpg 300w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<p>Next week I&#8217;m switching back to the level editor to focus on the authoring side of my NPC system. I&#8217;m also hoping to create the graphics for two more of the core tile types.</p>
+<p>See you next time.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Devlog – 10th March 2014</h2>
+                <div class="date">March 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>Things are slowly starting to come together but I still don&#8217;t have a full end-to-end experience.</p>
+<p>This week I&#8217;ve focussed on the character progression. The current setup is that upon completing a level you receive 10 experience points (configurable per tile type) for each tile you successfully placed and used to reach the exit. This system rewards you for more complex path laying and exploration.</p>
+<p>Your character levels up on the new level completion screen. Upon levelling you&#8217;ll be a given a choice of 3 rewards. I&#8217;m thinking these will include things like random widgets (such as x teleport or dynamite widgets), money (to spend in in-game shops), and permanent upgrades to your character.</p>
+<p>A note on the permanent upgrades; I&#8217;m purposely trying to avoid the overwhelming number of stats you see in most RPG&#8217;s. XP (experience points) is a fairly good, and well understood metric for managing character progression so I plan on distilling most of it into this.</p>
+<p>Other things I&#8217;m thinking about are permanent modifications to the game UI (e.g. you start off only being able to see the next tile in the queue and can then unlock additional windows) and upgrades to game mechanics (such as an increase in the timer that controls when your character sets off).</p>
+<p>I&#8217;m still undecided but I don&#8217;t want to overwhelm the player with lots of stats to worry about.</p>
+<p>Anyway, the basic structure is now in place and you can level up your character &#8211; you just don&#8217;t receive any rewards for it yet :)</p>
+<p>The other thing I achieved, as part of the level complete screen, was to overhaul the UI slightly. I just wasn&#8217;t happy with the horrible wood texture. What I&#8217;m looking for is a simple presentation that isn&#8217;t cluttered and presents the data in a way that is easy to understand. I can&#8217;t stand cluttered screens on mobile games. Here&#8217;s the current level complete screen so that you get an idea of what I&#8217;m trying to achieve.</p>
+<p>(What you can&#8217;t see is that the experience points counts down as the bar below it fills up. Also, the &#8220;level up&#8221; text and white squares are placeholders for the reward system.)</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2014/03/level_complete.png" alt="level complete screen" width="320" height="568" class="aligncenter size-full wp-post-3875 wp-image-3879" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2014/03/level_complete.png 320w, https://cms.bytesizeadventures.com/wp-content/uploads/2014/03/level_complete-169x300.png 169w" sizes="(max-width: 320px) 100vw, 320px" /></p>
+<p>As I mentioned, I&#8217;m looking for a full end-to-end experience. For that, I need to be able to select a map, play the level, progress my character, and return to the map screen with the next level selected. That&#8217;s then a repeatable loop and forms the basis of the game.</p>
+<p>So my next focus is on linking the level completion screen to the map screen such that it auto-advances to the next level ready to play.</p>
+<p>This also involves revamping the map screen to use the new graphics and interactions. It would also be nice to introduce the early stages of the reward system I mentioned above.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

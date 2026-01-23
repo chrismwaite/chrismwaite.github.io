@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Devlog – 13th January 2014</h2>
+                <div class="date">January 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>This week, more porting to Sprite Kit.</p>
+<p>I created texture atlas&#8217;s for the main menu for all device targets (iPad, iPad retina, iPhone, iPhone 5). This was satisfying as its the first time I&#8217;ve had any portion of the game running on an iPad. I expect a reasonable amount of work to optimise layouts for the iPad but at least the structure is there.</p>
+<p>The character selection screen is also complete and, as above, running across all devices. This screen also has some layout inconsistencies to fix on the iPad. Additionally the font sizes are currently incorrect.</p>
+<p>I&#8217;m purposely leaving some of these layout issues because the screen designs are purely placeholder at the moment &#8211; I just want to prove that they will work across multiple devices.</p>
+<p>This screen was much more work than I had anticipated, requiring rewriting of the actions and especially the fonts. I use <a href="https://71squared.com/en/glyphdesigner">Glyph Designer</a> to produce bitmap fonts for inclusion in my projects (this, I believe, avoids the messy copyright issues &#8211; you still need a license but you aren&#8217;t distributing the font file, which many licenses forbid).</p>
+<p>Unfortunately SpriteKit doesn&#8217;t support bitmap fonts natively! Thankfully Glyph Designer provides a static library, wrapping the SKLabelNode, to add this functionality. The downside is that the font usage does require a bit of a rewrite which is slowing me down.</p>
+<p>Furthermore, SpriteKit doesn&#8217;t support multiline labels. I can probably get around this with some creative code (detecting widths and using multiple labels for example). Still, its additional work that I wasn&#8217;t expecting.</p>
+<p>More positively, as I was rewriting code anyway, I tidied up a niggling bug that has been present since the cocos2d version. So that was a win :)</p>
+<p>So I&#8217;m hitting more snags than anticipated but nothing thats setting off alarm bells, yet. I think the core game class is going to be a lot of work to migrate but I think I can plough through it.</p>
+<p>Next week I move on to the level select screen.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

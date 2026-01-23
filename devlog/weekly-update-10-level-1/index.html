@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Weekly Update #10 – Level 1</h2>
+                <div class="date">March 2012</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+                    <p>
+                        We&#8217;ve reached a bit of a milestone this week
+                        &#8211; the tenth post in this series of weekly updates.
+                        That means I&#8217;m at roughly the 2.5 month mark. Of
+                        course I&#8217;ve spent considerably more time than that
+                        prototyping and working on pre-production elements.
+                        Still, I guess it means I&#8217;m about 25% of the way
+                        through the project.
+                    </p>
+                    <p>
+                        Since
+                        <a
+                            href="https://www.chriswaite.dev/devlog/weekly-update-9-a-change-of-tack/"
+                            >changing tack</a
+                        >
+                        slightly last week, here what&#8217;s been accomplished.
+                    </p>
+                    <p>
+                        + Implemented the inventory selection logic (explained
+                        below)<br />
+                        + Implemented walls and explosives<br />
+                        + Made good progress with level 1 of the demo<br />
+                        <!--more--><br />
+                        This week I&#8217;ve been building the first level of
+                        the game. Actually, It may not end up being the first
+                        level of the final game but it&#8217;s certainly the
+                        first level of my 5 level gameplay slice. If you missed
+                        <a
+                            href="https://www.chriswaite.dev/devlog/weekly-update-9-a-change-of-tack/"
+                            >last weeks post</a
+                        >, I&#8217;ve essentially decided to build a short 5
+                        level demo of the game (in order to test gameplay
+                        mechanics and hopefully show off some gameplay).
+                    </p>
+                    <p>
+                        <a
+                            href="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Capture.jpg"
+                            ><img
+                                decoding="async"
+                                loading="lazy"
+                                src="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Capture.jpg"
+                                alt=""
+                                title="Level 1 WIP"
+                                width="376"
+                                height="722"
+                                class="aligncenter size-full wp-post-2989 wp-image-3001"
+                                srcset="
+                                    https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Capture.jpg         376w,
+                                    https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/Capture-156x300.jpg 156w
+                                "
+                                sizes="(max-width: 376px) 100vw, 376px"
+                        /></a>
+                    </p>
+                    <p>
+                        Side-lining the level editor is already paying
+                        dividends. It&#8217;s forced me to implement a few new
+                        tile types &#8211; the wall and the explosives.
+                    </p>
+                    <p>
+                        The wall is primarily there to limit player choice (when
+                        trying to create a path), forcing them to think a little
+                        deeper about the solution. Currently nothing can destroy
+                        a wall tile, although I may experiment with this a
+                        little.
+                    </p>
+                    <p>
+                        <a
+                            href="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/wall1.png"
+                            ><img
+                                decoding="async"
+                                loading="lazy"
+                                src="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/wall1.png"
+                                alt=""
+                                title="Wall Tile"
+                                width="64"
+                                height="86"
+                                class="aligncenter size-full wp-post-2989 wp-image-3002"
+                        /></a>
+                    </p>
+                    <p>
+                        The explosive tile is a key component to the game since
+                        it mitigates some of the elements of luck within the
+                        gameplay. The tile queue serves up a new random tile
+                        each turn which can be placed anywhere in the level. In
+                        order to avoid a situation where you fill the grid with
+                        useless tiles, you&#8217;ll have access to explosives.
+                        These special tiles allow you to destroy any tiles on
+                        the grid that you have placed. Of course they&#8217;re a
+                        bit of a commodity so you&#8217;ll want to use them
+                        sparingly.
+                    </p>
+                    <p>
+                        <a
+                            href="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/bomb.png"
+                            ><img
+                                decoding="async"
+                                loading="lazy"
+                                src="https://cms.bytesizeadventures.com/wp-content/uploads/2012/03/bomb.png"
+                                alt=""
+                                title="Explosive Tile"
+                                width="64"
+                                height="85"
+                                class="aligncenter size-full wp-post-2989 wp-image-3000"
+                        /></a>
+                    </p>
+                    <p>
+                        I&#8217;ve also focussed a little more on the player
+                        inventory. Primarily I&#8217;ve been trying to get the
+                        controls right. I don&#8217;t want to fill the interface
+                        with hundreds of buttons so I&#8217;m trying to create
+                        the right flow for the RPG elements.
+                    </p>
+                    <p>
+                        Tapping a space in the level places the current tile
+                        from the queue. Tapping the inventory allows you to
+                        select a tile from your inventory (The game
+                        doesn&#8217;t have traditional loot such as swords and
+                        armour. Tiles are the games valuable items). You tap a
+                        tile in your inventory to select it which then closes
+                        the inventory. Your next tap will place this tile in a
+                        space in the level. Subsequent taps will revert to using
+                        tiles from the queue. I can think of a couple of
+                        scenarios that still need thought&#8230;
+                    </p>
+                    <ol>
+                        <li>
+                            You need to be able to cancel your selection
+                            (I&#8217;m currently thinking a tap on the next tile
+                            in the queue).
+                        </li>
+                        <li>
+                            The player will need to be reminded of which tile
+                            they have selected from the inventory. The simplest
+                            way I can think to achieve this is to temporarily
+                            replace the next tile in the queue.
+                        </li>
+                        <li>
+                            The player will have to constantly open and close
+                            the inventory if they want to place lots of the same
+                            tile from their own stash.
+                        </li>
+                    </ol>
+                    <p>
+                        The next step is to complete the first level. I still
+                        need a few more things to achieve this&#8230;
+                    </p>
+                    <ul>
+                        <li>
+                            I need to work on the character models (I have a
+                            plan for this)
+                        </li>
+                        <li>I need to get the NPC speech graphics in place</li>
+                        <li>I need to implement end tile logic</li>
+                        <li>I need to implement player persistence</li>
+                        <li>
+                            I need to implement the experience point mechanics
+                        </li>
+                    </ul>
+                    <p>
+                        Then it&#8217;s on to level 2 which involves a whole new
+                        tileset (I&#8217;m planning a good amount of location
+                        variety in the final game so that things don&#8217;t get
+                        stale visually). I&#8217;ll also be implementing the
+                        quest logic.
+                    </p>
+                    <p>
+                        Level 3 will see a new sub-location concept (which I
+                        still need to experiment with).
+                    </p>
+                    <p>
+                        Levels 4 &amp; 5 are reserved for experimenting with
+                        quest mechanics and new tiles.
+                    </p>
+                    <p>
+                        Remember this is a mini-slice of the game so that I can
+                        test concepts and present some kind of demo. The final
+                        game will have many, many more levels and tricks up its
+                        sleeve ;)
+                    </p>
+                    <p><strong>Stuff I liked this week</strong></p>
+                    <p>
+                        I thought I&#8217;d add a new section to these blog
+                        posts to share any interesting stuff I find. Here you
+                        go&#8230;
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="https://space.angrybirds.com/launch/"
+                                >https://space.angrybirds.com/launch/</a
+                            >
+                            &#8211; The Angry Birds Space website. Pretty nifty.
+                        </li>
+                        <li>
+                            <div
+                                class="embed-responsive embed-responsive-16by9"
+                            >
+                                <iframe
+                                    loading="lazy"
+                                    width="560"
+                                    height="315"
+                                    src="https://www.youtube.com/embed/OLqk4aqpXlQ?feature=oembed"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                ></iframe>
+                            </div>
+                            <p>
+                                &#8211; The Portal 2 postmortem from this years
+                                GDC.
+                            </p>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.sauropodstudio.com/dev-diary-number-five-redesigning-the-bricktron-character/"
+                                >https://www.sauropodstudio.com/dev-diary-number-five-redesigning-the-bricktron-character/</a
+                            >
+                            &#8211; Really enjoying the Castle Story dev
+                            diaries.
+                        </li>
+                        <li>
+                            <a href="https://www.design3.com/industry-insight"
+                                >https://www.design3.com/industry-insight</a
+                            >
+                            &#8211; Loads of great game development interviews.
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.indiegamemag.com/dont-get-me-started-on-the-penguins-tiy-talks-upcoming-space-epic-starbound/"
+                                >https://www.indiegamemag.com/dont-get-me-started-on-the-penguins-tiy-talks-upcoming-space-epic-starbound/</a
+                            >
+                            &#8211; Starbound is looking great.
+                        </li>
+                    </ul>
+                    <p>Until next time.</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

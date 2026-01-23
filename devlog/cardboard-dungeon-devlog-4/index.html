@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Cardboard Dungeon Devlog #4</h2>
+                <div class="date">March 2016</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>This will be the final devlog for this project. Whilst the final product is not really a game, it is a fun &#8220;experience&#8221; that has given me a taste of virtual reality development. A-Frame has been really fun to use and it can only get better. I think that web-based VR experiences absolutely have a place and I&#8217;d imagine we&#8217;ll see more google cardboard icons (to launch VR mode) on websites in the future.</p>
+<p>I&#8217;ve implemented quite a lot of stuff for this final devlog.<!--more--></p>
+<p><strong>Compass</strong></p>
+<p>The compass is something that existed way back in devlog #1 but I removed it to focus on other elements. I&#8217;ve put it back and improved its appearance ever so slightly. Its a good way to keep your bearings, especially in the new larger map.</p>
+<p>The compass also acts as the trigger for opening and closing the inventory.</p>
+<p><strong>Inventory</strong></p>
+<p>I&#8217;ve overhauled the inventory slightly to only render items once the panels are fully extended. The inventory now also shows smaller items to make selection easier. It&#8217;s generally more robust in its handling.</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/inventory_final.jpg" alt="final Inventory Design" width="742" height="463" class="aligncenter size-full wp-post-4331 wp-image-4338" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/inventory_final.jpg 742w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/inventory_final-300x187.png 300w" sizes="(max-width: 742px) 100vw, 742px" /></p>
+<p><strong>Items</strong></p>
+<p>Items are now driven by the JSON map data so its easy to place them in any room.</p>
+<p>The process for creating a new item currently looks like this:</p>
+<ol>
+<li>Create a model using <a href="https://voxel.codeplex.com/">MagicaVoxel</a> and export as an &#8220;obj&#8221; file</li>
+<li>Import the &#8220;obj&#8221; file into <a href="https://www.blender.org/">Blender </a>in order to export it as a collada (dae) file (I had issues texturing obj files in v1 of A-Frame but its unlikely you&#8217;d face this issue now and could just use &#8220;obj&#8221; files directly)</li>
+<li>Define the assets in A-Frame</li>
+<li>Create an entity, and figure out the position/rotation for the object when its in the player&#8217;s hand</li>
+<li>Add the item to the JSON map data to specify where it should appear</li>
+</ol>
+<p>The code takes care of rendering the item in the correct room and the inventory.</p>
+<p>I also created a new shield item :)</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/shield1.jpg" alt="Shield" width="742" height="462" class="aligncenter size-full wp-post-4331 wp-image-4341" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/shield1.jpg 742w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/shield1-300x187.png 300w" sizes="(max-width: 742px) 100vw, 742px" /></p>
+<p><strong>A new area</strong></p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/outside.jpg" alt="Cardboard Dungeon Tutorial" width="743" height="463" class="aligncenter size-full wp-post-4331 wp-image-4340" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/outside.jpg 743w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/outside-300x187.png 300w" sizes="(max-width: 743px) 100vw, 743px" /></p>
+<p>I&#8217;ve created a new area outside of the dungeon. This is where the player first enters the experience and is intended to teach the basics. Rather than implementing lots of text, I&#8217;ve hopefully created a simple enough area that the player can intuitively experiment to figure out the controls.</p>
+<p>In this area, the player needs to find the key, select the key from the inventory, and gaze at the door to enter the dungeon.</p>
+<p>This area is kept separate from the JSON map data and is in fact rendered above the dungeon. Here you can see through the smoke and mirrors :)</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/rendering.jpg" alt="Rendering" width="595" height="427" class="aligncenter size-full wp-post-4331 wp-image-4346" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/rendering.jpg 595w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/rendering-300x215.png 300w" sizes="(max-width: 595px) 100vw, 595px" /></p>
+<p><strong>A new map</strong></p>
+<p>I&#8217;ve created a new, much larger map for the final experience. This is all defined using JSON and, since I haven&#8217;t yet created a level editor, its fairly laborious to create. Hopefully the new map is a much more guided experience. It doesn&#8217;t have an exit, its just a larger dungeon with a few items that can be collected.</p>
+<p><strong>What&#8217;s next?</strong></p>
+<p>That&#8217;s it for this series. Cardboard Dungeon is complete for now. I&#8217;ll definitely be checking in on <a href="https://aframe.io/">A-Frame</a> regularly and I can certainly see myself using it again. For now though, I&#8217;m moving on to some Virtual Reality experiments with Unity (with any luck my HTC Vive will arrive soon :) )</p>
+<p>You can read the full series of weblog&#8217;s here:</p>
+<ol>
+<li><a href="https://www.chriswaite.dev/devlog/cardboard-dungeon-devlog-1/">Cardboard Dungeon Devlog #1</a></li>
+<li><a href="https://www.chriswaite.dev/devlog/cardboard-dungeon-devlog-2/">Cardboard Dungeon Devlog #2</a></li>
+<li><a href="https://www.chriswaite.dev/devlog/cardboard-dungeon-devlog-3/">Cardboard Dungeon Devlog #3</a></li>
+<li>Cardboard Dungeon Devlog #4 &#8211; You are here!</li>
+</ol>
+<p><strong>Play Cardboard Dungeon</strong></p>
+<p><a href="https://chrismwaite.github.io/cardboard-dungeon/">Play Cardboard Dungeon here!</a></p>
+<p>OR</p>
+<p>(Scan this QR code with your phone to launch it directly on your device)</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo.png" alt="Cardboard Dungeon QR code" width="370" height="370" class="aligncenter size-full wp-post-4331 wp-image-4353" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo.png 370w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo-150x150.png 150w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo-300x300.png 300w" sizes="(max-width: 370px) 100vw, 370px" /></p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

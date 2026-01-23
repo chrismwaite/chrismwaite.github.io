@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">App Development – The Testing</h2>
+                <div class="date">July 2011</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/4671731838_07cfd48b64.jpg"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/4671731838_07cfd48b64-300x199.jpg" alt="" title="Crash Test Dummy" width="300" height="199" class="alignleft size-medium wp-post-2228 wp-image-2291" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/4671731838_07cfd48b64-300x199.jpg 300w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/4671731838_07cfd48b64.jpg 500w" sizes="(max-width: 300px) 100vw, 300px" /></a>I&#8217;m currently in the process of testing my Coffee App and wanted to share the testing process with you. This is the first time I&#8217;ve done any significant public testing for one of my Apps. In the past I&#8217;ve just tested with a couple of close friends/family. With my Coffee App, I wanted to be sure that I could get a good mix of people who didn&#8217;t feel obliged to say nice things.</p>
+<p>In this post I&#8217;m going to take you through the full process of Beta testing your App.</p>
+<p>This post puts us back on track in my 8-step (9 if you count going to the pub) guide to App development success (or total failure &#8211; or more likely a shade in between). You can catch up on the previous posts in the series here.</p>
+<p>1) <a href="https://www.chriswaite.dev/devlog/app-development-doing-it-properly/">App Development &#8211; Doing it properly</a><br />
+2) <a href="https://www.chriswaite.dev/devlog/app-development-the-design-document/">App Development &#8211; The Design Document</a><br />
+3) <a href="https://www.chriswaite.dev/devlog/app-development-the-wireframes/">App Development &#8211; The Wireframes</a><br />
+4) <a href="https://www.chriswaite.dev/devlog/app-development-the-artwork/">App Development &#8211; The Artwork</a><br />
+5) App Development &#8211; The Code (Split into 3 development diary posts &#8211; <a href="https://www.chriswaite.dev/devlog/app-development-progress-report-1/">Diary #1</a>, <a href="https://www.chriswaite.dev/devlog/app-development-progress-report-2/">Diary #2</a>, <a href="https://www.chriswaite.dev/devlog/app-development-progress-report-3/">Diary #3</a>)<br />
+6) App Development &#8211; The Testing (You&#8217;re here)<br />
+7) App Development &#8211; The Final Art<br />
+8) App Development &#8211; The Marketing<br />
+9) Go to the Winchester and have a nice cold pint</p>
+<p><!--more--><strong>The Tools</strong></p>
+<p>There was a time when sharing an incomplete App with others was a very manual process with a multitude of headaches. These days, there are some tools out there to help you. In addition to Apple improving Xcode and the provisioning portal, you now have access to free (currently) services such as <a href="https://testflightapp.com">TestFlight</a>. (I&#8217;m sure there are others out there too, feel free to share them in the comments).</p>
+<p>TestFlight aims to make App testing easy by managing your Beta testers, distributing your App to them (over-the-air), and collecting feedback. It&#8217;s an extremely slick service that removes many of the Admin headaches from the testing process.</p>
+<p><strong>Getting Beta testers</strong></p>
+<p>First up, sign up to TestFlight. You can do that <a href="https://testflightapp.com">here</a>.</p>
+<p>Once you&#8217;ve signed up to TestFlight, you&#8217;ll then need to create a team. TestFlight describes this as &#8220;&#8230;a means of grouping your builds and testers&#8221;. For my Coffee App, I decided to create a single team called &#8220;Bytesize Adventures&#8221; for testing all of my Apps.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.41.571.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.41.571.png" alt="" title="TestFlight Teams" width="500" height="318" class="aligncenter size-full wp-post-2228 wp-image-2271" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.41.571.png 500w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.41.571-300x190.png 300w" sizes="(max-width: 500px) 100vw, 500px" /></a></p>
+<p>Once you&#8217;ve done this, you&#8217;ll have an option to &#8220;Invite a Teammate&#8221;. You can either add them using their email addresses or, if you click &#8220;Start Recruiting Testers&#8221;, you can use a TestFlight hosted recruitment form. This has its own URL that you can share publicly.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.47.52.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.47.52.png" alt="" title="TestFlight Sign Up" width="264" height="500" class="aligncenter size-full wp-post-2228 wp-image-2273" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.47.52.png 264w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.47.52-158x300.png 158w" sizes="(max-width: 264px) 100vw, 264px" /></a></p>
+<p>Gathering Beta testers is not as easy as it sounds. If you&#8217;ve never discussed your App publicly before, you may find it difficult to get people interested. This is yet another good reason to blog/tweet/talk about your App early in development.</p>
+<p>I decided to put a call out on twitter for anyone interested in Beta testing my App. I also posted a link on one of my development updates. Within a couple of days, 16 people had signed up &#8211; not bad at all.</p>
+<p>People who have signed up appear in the TestFlight dashboard and you are given the option to approve or reject them. You&#8217;ll also notice that TestFlight automatically collects device details for each person (and crucially, the UUID for each device).</p>
+<p>Once you&#8217;re ready to send your App to your testers, you need to get your hands dirty.</p>
+<p><strong>The Provisioning Portal</strong></p>
+<p>Whilst TestFlight handles a lot of things, it can&#8217;t handle your certificates or building and signing the App. These steps assume that you&#8217;ve already setup an App ID and that you&#8217;ve already created and installed a Distribution certificate.</p>
+<p>First, in TestFlight, under Teams, you should have the option to select all of you testers and then in the &#8220;actions&#8221; drop-down, &#8220;export devices&#8221;.</p>
+<p>Now, log into Apple developer connection and access the iOS provisioning portal. Go to the Devices section and &#8220;Upload Devices&#8221; (selecting the file you downloaded from TestFlight). This will load the UUID&#8217;s of all of your testers devices into the provisioning portal and register them as development devices against your account.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.51.18.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.51.18.png" alt="" title="Provisioning Portal" width="500" height="285" class="aligncenter size-full wp-post-2228 wp-image-2275" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.51.18.png 500w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.51.18-300x171.png 300w" sizes="(max-width: 500px) 100vw, 500px" /></a></p>
+<p>Still in the provisioning portal, you then need to go to the Provisioning section, hit the Distribution tab and create a new profile. When creating your profile, be sure to select the &#8220;Ad Hoc&#8221; distribution method and &#8220;select all&#8221; devices (this will enable the testers, and only the testers, to run the App).</p>
+<p>Download the Ad Hoc provisioning profile and drag it onto the Xcode Dock icon &#8211; magic will ensue and the profile will be registered with Xcode.</p>
+<p><strong>Building for Ad-Hoc</strong></p>
+<p>I&#8217;d get a coffee if I were you because whilst this process isn&#8217;t particularly taxing it often throws up obscure issues. Thankfully the iPhone development community rock and, if you do face any issues, you&#8217;ll find a solution in no time.</p>
+<p>First of all you&#8217;ll need to duplicate your release build. You do this by selecting your project in Xcode and then in the Configurations section, click the + icon and select &#8220;duplicate Release configuration&#8221;. You&#8217;ll also want to name it something like &#8220;Ad Hoc&#8221;.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.56.45.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.56.45.png" alt="" title="Duplicate release build" width="500" height="264" class="aligncenter size-full wp-post-2228 wp-image-2277" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.56.45.png 500w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.56.45-300x158.png 300w" sizes="(max-width: 500px) 100vw, 500px" /></a></p>
+<p>You&#8217;re now going to need to create an Entitlements plist and tell the build about it. To do this, create a new file (use the Entitlements template under the code signing section). You can leave the name as Entitlements.plist.</p>
+<p>Click on the Entitlements.plist file and add a key for &#8220;Can be debugged&#8221; (if it doesn&#8217;t already exist), and then set it to &#8220;NO&#8221;.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.58.27.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.58.27.png" alt="" title="Entitlements plist" width="438" height="83" class="aligncenter size-full wp-post-2228 wp-image-2278" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.58.27.png 438w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-09.58.27-300x56.png 300w" sizes="(max-width: 438px) 100vw, 438px" /></a></p>
+<p>In you App target&#8217;s build settings, search for the Code Signing section and expand the Code Signing Entitlements key. You should then copy the Entitlements filename (Entitlements.plist) into the Ad Hoc key value.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.03.36.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.03.36.png" alt="" title="Build Settings" width="600" height="371" class="aligncenter size-full wp-post-2228 wp-image-2279" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.03.36.png 600w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.03.36-300x185.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<p>Next, in the build settings for your project, scroll to Code Signing section and you should now see an Ad-Hoc key under the Code Signing Identity key. Its value needs to be set to the Ad Hoc provisioning profile you created above. It should appear in the drop-down (along with any other provisioning profiles you have).</p>
+<p>Now you need to edit your schemes so that the Archive command builds for Ad-Hoc. To do this click the schemes drop-down in the toolbar and select &#8220;Edit Schemes&#8221;. Then in the left hand panel, select Archive. In the Build Configuration drop down in the right panel, select Ad Hoc.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.06.50.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.06.50.png" alt="" title="Schemes" width="692" height="378" class="aligncenter size-full wp-post-2228 wp-image-2280" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.06.50.png 692w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.06.50-300x163.png 300w" sizes="(max-width: 692px) 100vw, 692px" /></a></p>
+<p>The Archive command will now build based on the Ad Hoc distribution. Archiving is Xcode&#8217;s process for building and signing your App for distribution.</p>
+<p>Ensure you have &#8220;iOS Device&#8221; selected in the Scheme drop-down (rather than the simulator), then select &#8220;Archive&#8221; from the Product drop-down menu. Once the process completes, the Organizer will launch with the new Ad Hoc build listed.</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.09.311.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.09.311.png" alt="" title="Archive and Share" width="600" height="408" class="aligncenter size-full wp-post-2228 wp-image-2282" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.09.311.png 600w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.09.311-300x204.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<p>To share this with TestFlight you need to click the &#8220;Share&#8221; button, select .ipa as the content, and then select the Ad Hoc distribution profile from the drop down (this is the same one you selected in the build settings).</p>
+<p>Choose a name and save destination and you&#8217;re done.</p>
+<p><strong>Sharing the App with your Beta testers</strong></p>
+<p>With our freshly created IPA, we now need to get this into TestFlight &#8211; which will take care of the distribution.</p>
+<p>In TestFlight you need to select the &#8220;Builds&#8221; tab, then &#8220;Upload a build&#8221;. Select the IPA you created in the previous step and wait for it to upload. TestFlight has some basic verification and it will notify you if something appears to be wrong (In my case I had accidentally signed the shared build with a different certificate to the one I built it with &#8211; doh!).</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.11.07.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.11.07.png" alt="" title="Upload a build in TestFlight" width="600" height="289" class="aligncenter size-full wp-post-2228 wp-image-2283" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.11.07.png 600w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.11.07-300x144.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<p>Hold on before you hit &#8220;Confirm testers&#8221;.</p>
+<p>You need to enter some release notes. This section is literally the email body that will go out to your testers. Here are a few tips I&#8217;ve made up (and used for my Coffee App Beta), take them or leave them.</p>
+<ul>
+<li>Be polite and thank your testers for their involvement</li>
+<li>Highlight specific areas of interest in your App (e.g. the awesome laser-shooting feature)</li>
+<li>Highlight areas that aren&#8217;t complete (I feel this is useful so as not to waste your testers time pointing out missing/broken features you are already aware of)</li>
+<li>Let your testers know how they can send their feedback to you (covered in more detail below)</li>
+<li>Say thanks again. Honestly, these people are giving up their time to help you so be nice.</li>
+</ul>
+<p>When you finally click through to the next stage you&#8217;ll have another opportunity to target specific testers. Once you&#8217;ve done this the email and link is sent to your testers&#8230; and then TestFlight becomes even more awesome!</p>
+<p>The builds section of TestFlight will show you exactly what stage each tester is at. It will tell you if the email has been sent successfully, if the email has been opened, if the App link has been clicked, and if the tester has installed the App.</p>
+<p>13 of my 16 testers installed my App. The other 3 opened the email but didn&#8217;t proceed (for whatever reason). I think thats a fairly good install rate.</p>
+<p><strong>Managing Feedback</strong></p>
+<p>As I alluded to above, you should provide your testers with as many avenues for feedback as possible. TestFlight allows them to reply directly to the original email and it will collect their feedback in the TestFlight dashboard for you to view. I also provided my email address in the release notes in addition to a &#8220;contact me&#8221; link within the App itself (this will stay in the final release and initiates a new email to my support address).</p>
+<p>Before we move on to managing the feedback, we need to discuss managing your expectations. I was fairly impatient and, having received no replies within the first 2 days, was a little disappointed. It took the best part of a week to receive any volume of feedback and even then, of my 13 testers who installed the App, only 4 sent me feedback (so about 1/3rd).</p>
+<p><a href="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.15.56.png"><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.15.56.png" alt="" title="A cry for help" width="351" height="142" class="aligncenter size-full wp-post-2228 wp-image-2287" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.15.56.png 351w, https://cms.bytesizeadventures.com/wp-content/uploads/2011/07/Screen-shot-2011-07-16-at-10.15.56-300x121.png 300w" sizes="(max-width: 351px) 100vw, 351px" /></a></p>
+<p>Knowing what I know now, I would probably have pushed for more testers to begin with. I think getting a sign-up form out early and promoting the Beta is crucial.</p>
+<p>Moving onto managing the feedback itself, this is going to depend on the volume of responses. Because my pool of testers was small, I didn&#8217;t receive a flood of feedback to manage. However, I did still receive around 30 individual items to be looked at (an item being something like &#8220;have you thought of x&#8221; or &#8220;you should fix y&#8221;).</p>
+<p>The first thing I did was to look for duplicate items across testers. If more than one person feels the same about a feature, chances are you should listen. In these instances I&#8217;ve pretty much just gone ahead and implemented the changes.</p>
+<p>Next up was looking for conflicts. If a tester highlights a particular behaviour they&#8217;d like changed and a second tester contradicts it, chances are its just opinion. In these instances it depends on how many are contradicting. You could just go with the highest volume or you could try to come up with a compromise.</p>
+<p>Finally you&#8217;ll have the one-off items that only exist in a single testers feedback. These are a mixture of uninformed opinion, impractical suggestions, minor fixes, good advice, wacky suggestions, and absolute gems! You have to pick out the gems and make judgement calls on the rest. Keep in mind your ultimate goal with the App and try not to deviate too much from your original vision.</p>
+<p><strong>How much testing?</strong></p>
+<p>I suppose this depends on the complexity of your App and how far along you are with development. I&#8217;ve completed my first Beta and am working on applying the feedback to my App. I then plan on a second Beta just to give people a last opportunity to provide feedback before launch. This second Beta will be complete with all features, all polish, and no bugs (hopefully).</p>
+<p>You could go on testing endlessly but at some point you have to draw a line and submit the App. I&#8217;ve already begun moving some items into a &#8220;First update&#8221; task list to be handled after launch.</p>
+<p><strong>Conclusion</strong></p>
+<p>So there you have it. Beta testing doesn&#8217;t have to be painful and provides you with truly valuable feedback. My next post will focus on the final Artwork for my App and then we move on to Marketing (by which time my App will have been submitted).</p>
+<p>(Crash test dummy photo courtesy of <a href="https://www.flickr.com/photos/busyprinting/4671731838/">BusyPrinting</a>)</p>
+<p><a href="https://www.chriswaite.dev/devlog/app-development-doing-it-properly/">Part 1 &#8211; Doing it properly</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-the-design-document/">Part 2 &#8211; The Design Document</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-the-wireframes/">Part 3 &#8211; The Wireframes</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-the-artwork/">Part 4 &#8211; The Artwork</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-1/">Part 5a -The Code (Xcode, GIT, and Core Data)</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-2/">Part 5b &#8211; The Code (Coffee sharing and Camera functionality)</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-3/">Part 5c &#8211; The Code (A change in workflow)</a><br />
+Part 6 &#8211; The testing (You are here)<br />
+<a href="https://www.chriswaite.dev/devlog/app-development-the-final-artwork/">Part 7 &#8211; The Final Artwork</a><br />
+<a href="https://www.chriswaite.dev/devlog/app-development-the-marketing/">Part 8 &#8211; The Marketing</a><br />
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-is-out-now/">Part 9 &#8211; The Launch</a><br />
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-the-numbers/">Part 10 &#8211; The Numbers</a><br />
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-postmortem/">Part 11 &#8211; The Postmortem</a><br />
+<a href="https://www.chriswaite.dev/devlog/from-idea-to-app-store-in-6-months/">(Bonus) Part 12 &#8211; A review of the process</a></p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

@@ -35,27 +35,30 @@ html {
 }
 
 a {
-    color: var(--theme-color-2);
+    color: var(--theme-color-1);
     text-decoration: underline;
 }
 
 body {
-    background-color: var(--theme-color-1);
     color: var(--theme-color-1);
     font-family: "Lato", sans-serif;
 }
 
 .wrapper {
-    background-color: var(--theme-color-4);
-    border: 0.5rem solid var(--theme-color-1);
-    border-radius: 30px;
+    background-color: var(--theme-color-1);
+    background: linear-gradient(
+        90deg,
+        rgba(128, 194, 255, 1) 0%,
+        rgba(166, 128, 255, 1) 100%
+    );
     min-height: 100vh;
 }
 
 .inner {
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-color-4);
     min-height: 100vh;
     color: var(--theme-color-4);
+    padding: 10px;
 }
 
 header {
@@ -64,17 +67,23 @@ header {
 }
 
 h1 {
+    font-size: 1.5rem;
     float: left;
-    background-color: var(--theme-color-1);
-    padding: 15px;
-    border-radius: 0 0 30px 0;
-    color: var(--theme-color-4);
+    background-color: var(--theme-color-4);
+    padding: 5px 15px;
+    border-radius: 0 0 20px 0;
+    color: var(--theme-color-1);
 }
 
 nav {
     max-width: 740px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 10px;
+    color: var(--theme-color-4);
+}
+
+nav a {
+    color: var(--theme-color-4);
 }
 
 img {
@@ -96,20 +105,22 @@ img.aligncenter {
     max-width: 740px;
     margin: 20px auto;
     padding: 10px;
-    background-color: var(--theme-color-1);
-    color: var(--theme-color-4);
+    color: var(--theme-color-1);
 }
 
 .page-intro {
     max-width: 740px;
     margin: 20px auto;
     padding: 10px;
+    color: var(--theme-color-4);
 }
 
 .devlog-stream {
+    background-color: var(--theme-color-4);
     max-width: 740px;
     margin: 20px auto;
     padding: 20px 10px 20px 10px;
+    color: var(--theme-color-1);
 }
 
 .devlog-stream article {
@@ -117,10 +128,11 @@ img.aligncenter {
 }
 
 .devlog {
+    background-color: var(--theme-color-4);
     max-width: 740px;
     margin: 20px auto;
     padding: 10px;
-    color: var(--theme-color-4);
+    color: var(--theme-color-1);
 }
 
 .devlog article {
@@ -147,18 +159,20 @@ img.aligncenter {
     margin: 0 auto;
     padding: 10px;
     font-weight: bold;
+    color: var(--theme-color-4);
 }
 
 .post-header .date {
-    color: var(--theme-color-2);
+    color: var(--theme-color-4);
     font-weight: bold;
 }
 
 .post {
+    background-color: var(--theme-color-4);
     max-width: 740px;
     margin: 0 auto;
     padding: 20px 10px 20px 10px;
-    color: var(--theme-color-4);
+    color: var(--theme-color-1);
 }
 
 .post p {

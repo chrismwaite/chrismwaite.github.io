@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Procjam 2014 – A Procedurally Generated                                 Roguelike Using Phaser</h2>
+                <div class="date">November 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.36.png" alt="Dronelike screenshot" width="673" height="561" class="aligncenter size-full wp-post-4080 wp-image-4101" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.36.png 673w, https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.36-300x250.png 300w" sizes="(max-width: 673px) 100vw, 673px" /></p>
+<p>Last week I participated in <a href="https://itch.io/jam/procjam">Procjam 2014</a>. Procjam is a game jam about procedural generation in which you are encouraged to build a game or tool that utilises some form of procedural generation.</p>
+<p>This jam coincided with a few things I&#8217;ve been wanting to try. Namely:-</p>
+<p>1) I&#8217;ve been meaning to try <a href="https://phaser.io">Phaser</a> out for some time. It seems like an ideal framework for rapidly prototyping games and making them publicly available.</p>
+<p>2) I&#8217;ve also been itching to create a roguelike for quite some time (as has every man/woman and his/her dog/cat).</p>
+<p>Procedural generation really appeals to me, not only because it has the potential to save considerable time in producing content, but also because it&#8217;s really fun to write a piece of code that creates imaginative content without the intervention of a human.</p>
+<p>I started by investigating roguelikes and phaser and quickly discovered <a href="https://gamedevelopment.tutsplus.com/tutorials/how-to-make-your-first-roguelike--gamedev-13677">a guide to creating a roguelike in phaser</a>. Pretty handy as a starting point. I quickly deviated from the guide but it did give me a good hint at the sort of direction I should follow.</p>
+<p>You can <a href="https://chrismwaite.itch.io/dronelike">play my entry, Dronelike, here</a> and the full <a href="https://github.com/chrismwaite/procjam">source code is also available here</a>.</p>
+<p>What I briefly want to discuss in this post is technique I employed to generate the levels.</p>
+<p>For my roguelike I wanted to generate a series of caves that could house objects and enemies. To achieve this, I used the same method that I experimented with in my previous <a href="https://www.youtube.com/watch?v=SybIg2TI5N8">Lua project</a>. Essentially, you fill the screen with tiles, or in this case ASCII characters, representing solid material (#). This is achieved simply by storing this data in a grid.</p>
+<pre><code class="js">
+for(var y=0; y &lt; rows; y++) {
+  map[y] = [];
+  display[y] = [];
+  for(var x=0; x &lt; columns; x++)
+  {
+    var tile = new Tile(x, y, &#039;#&#039;, default_colour);
+    display[y][x] = tile;
+    map[y][x] = &#039;#&#039;;
+  }
+}</code></pre>
+<p>You then create a series of &#8220;drones&#8221; to mine out the caves for you. This gives you much more natural looking caves than simply randomly selecting whether a position houses a wall tile or not (0 or 1).</p>
+<pre><code class="js">
+function initialiseDrones() {
+  var number_of_drones = Math.floor((Math.random() * max_caves) + min_caves);
+  for(var x=0; x &lt; number_of_drones; x++)
+  {
+    var life = Math.floor((Math.random() * max_size) + min_size);
+    var row = Math.floor(Math.random() * (rows-1));
+    var column = Math.floor(Math.random() * (columns-1));
+    var drone = new Drone(column, row, life);
+    mining_drones.push(drone);
+  }
+}
+</code></pre>
+<p>There is a timer called every 1/4 of a second that iterates over an array storing the drones. It simply calls each drone&#8217;s mining function unless the drone is at the end of it&#8217;s life, in which case it dies.</p>
+<pre><code class="js">
+for(var x=0; x  0) {
+    drone.mine();
+  }
+  else {
+    drone.die(x);
+  }
+}
+</code></pre>
+<p>These mining drones start in a randomly selected position on the screen, mine that position (replacing the ASCII wall character with a floor character), and then randomly select a direction to move in. Having done this, each drone mines out the next position. And so forth and so on, for the duration of its life.</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.04.png" alt="Mining drone" width="283" height="312" class="aligncenter size-full wp-post-4080 wp-image-4099" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.04.png 283w, https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.04-272x300.png 272w" sizes="(max-width: 283px) 100vw, 283px" /></p>
+<pre><code class="js">
+Drone.prototype.mine = function() {
+  updateSymbol(this.row, this.column, this.mine_symbol, this.mine_colour);
+  updateSymbol(this.row-1, this.column, this.mine_symbol, this.mine_colour);
+  updateSymbol(this.row+1, this.column, this.mine_symbol, this.mine_colour);
+  updateSymbol(this.row, this.column-1, this.mine_symbol, this.mine_colour);
+  updateSymbol(this.row, this.column+1, this.mine_symbol, this.mine_colour);
+
+  var tile = tileAtPosition(this.row, this.column);
+  if(tile!=null) {tile.original_colour = this.mine_colour};
+  tile = tileAtPosition(this.row-1, this.column);
+  if(tile!=null) {tile.original_colour = this.mine_colour};
+  tile = tileAtPosition(this.row+1, this.column);
+  if(tile!=null) {tile.original_colour = this.mine_colour};
+  tile = tileAtPosition(this.row, this.column-1);
+  if(tile!=null) {tile.original_colour = this.mine_colour};
+  tile = tileAtPosition(this.row, this.column+1);
+  if(tile!=null) {tile.original_colour = this.mine_colour};
+
+  switch(Math.floor((Math.random() * 4) + 1)) {
+    //north
+    case 1:
+      this.row-1 &gt;= 0 ? this.row-=1 : this.row=this.row;
+      break;
+    //east
+    case 2:
+      this.column+1 &lt;= columns ? this.column+=1 : this.column=this.column;
+      break;
+    //south
+    case 3:
+      this.row+1 = 0 ? this.column-=1 : this.column=this.column;
+      break;
+  }
+
+  updateSymbol(this.row, this.column, this.symbol, this.colour);
+  updateSymbol(this.row-1, this.column, this.symbol, this.colour);
+  updateSymbol(this.row+1, this.column, this.symbol, this.colour);
+  updateSymbol(this.row, this.column-1, this.symbol, this.colour);
+  updateSymbol(this.row, this.column+1, this.symbol, this.colour);
+
+  this.life--;
+}
+</code></pre>
+<p>The life of the drone is dictated by a parameter which is actually a randomly selected value between a min and max number. This gives us variance in our cave sizes.</p>
+<p>Another point worth noting is that each time the drone mines, it also mines out the 4 wall tiles surrounding it (North, East, South, West). This gives us chunkier caves. You could experiment with different patterns to achieve different effects.</p>
+<p>This whole cycle is usually achieved in a loading screen prior to the player seeing it. However, for this jam I wanted to visualise this procedural generation process. This meant creating them as real entities and displaying them on screen which is the reason for having such an elaborate drone object.</p>
+<p>Corridor and water generation are done in a very similar way by randomly navigating the caves and updating each grid positions contents.</p>
+<p>It&#8217;s a simple technique but one that I think is fairly effective.</p>
+<p>Anyway, please do <a href="https://itch.io/jam/procjam">check out the game</a> and the <a href="https://github.com/chrismwaite/procjam">source code</a>.</p>
+<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.26.png" alt="Procjam 2014" width="673" height="561" class="aligncenter size-full wp-post-4080 wp-image-4100" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.26.png 673w, https://cms.bytesizeadventures.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-20-at-19.35.26-300x250.png 300w" sizes="(max-width: 673px) 100vw, 673px" /></p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

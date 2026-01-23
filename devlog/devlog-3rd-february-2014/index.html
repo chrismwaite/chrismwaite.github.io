@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>chriswaite.dev</h1>
+            </header>
+
+            <div class="post-header">
+                <h2 class="title">Devlog – 3rd February 2014</h2>
+                <div class="date">February 2014</div>
+            </div>
+
+            <div class="inner">
+                <article class="post">
+<p>A bout of illness early in the week slowed me down somewhat. That&#8217;s not to say that nothing was achieved though.</p>
+<p>In the latter part of the week I focused on getting the game running on the iPad. Things are out of alignment and textures are cropped but it proves the concept &#8211; enough for me to park it for now.</p>
+<p>I ran a solo play-test of a single level. This will be my vertical slice. As such I wrote down everything that was rubbish about it. It includes items like the menu&#8217;s being completely &#8220;off&#8221; in terms of design consistency with the game, the background and foreground&#8217;s tile elements causing sprite overlap because they are not separate layers, a lack of sound effects and music, tile-to-tile movement causing accuracy issues, a general lack of movement in the scene which appears very static, etc.</p>
+<p>Its a long and slightly daunting list but I feel its important to absolutely nail it. Even at this stage with some features missing (most notably quests, shops, and character progression).</p>
+<p>Over the weekend, I started to tackle a couple of these.</p>
+<p>I&#8217;ve revamped the movement system. This allows you to place a tile at the last moment and still have the player move on to the tile. This was essential for the pressure element of the puzzles.</p>
+<p>I played around with background elements and animation but ultimately scrapped it. I also played around with the colour palette which may or may not stick. its closer to what I&#8217;m after but still not right.</p>
+<p>The water background is currently causing me huge headaches and is something I want desperately to get right.</p>
+<p>I also separated all of the objects from the tiles. Items like trees and rocks are now loaded on a separate layer so that the player moves behind them. This creates a better illusion of depth. Additionally I&#8217;ve somewhat randomised placement. Tiles have a series of possible points for scenery placement and these are selected from when a tile is placed. It needs tweaking but it certainly adds more variety to the scene.</p>
+<p>So over the next, who knows how many weeks, I&#8217;ll be addressing the rest of the items from the list to create a single, polished level (music may be the exception). My biggest challenge is perhaps going to be getting movement into the scene through subtle use of animation. The visual presentation (particularly colour palette) also remains a challenge.</p>
+<p>Oh and I&#8217;ll try to show some images in next week&#8217;s post :)</p>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>
