@@ -1,0 +1,166 @@
+/* reset */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    hanging-punctuation: first allow-end last;
+    font-size: 20px;
+}
+
+/* variables */
+:root {
+    --theme-color-1: #555b6e;
+    --theme-color-2: #89b0ae;
+    --theme-color-3: #bee3db;
+    --theme-color-4: #faf9f9;
+    --theme-color-5: #ffd6ba;
+}
+
+/* fonts */
+@font-face {
+    font-display: swap;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/lato-v25-latin-regular.woff2") format("woff2");
+}
+
+a {
+    color: var(--theme-color-2);
+    text-decoration: underline;
+}
+
+body {
+    background-color: var(--theme-color-1);
+    color: var(--theme-color-1);
+    font-family: "Lato", sans-serif;
+}
+
+.wrapper {
+    background-color: var(--theme-color-4);
+    border: 0.5rem solid var(--theme-color-1);
+    border-radius: 30px;
+    min-height: 100vh;
+}
+
+.inner {
+    background-color: var(--theme-color-1);
+    min-height: 100vh;
+    color: var(--theme-color-4);
+}
+
+header {
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    float: left;
+    background-color: var(--theme-color-1);
+    padding: 15px;
+    border-radius: 0 0 30px 0;
+    color: var(--theme-color-4);
+}
+
+nav {
+    max-width: 740px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: fit-content;
+}
+
+img.alignleft {
+    float: left;
+    margin-right: 20px;
+}
+
+img.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+.stream {
+    max-width: 740px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: var(--theme-color-1);
+    color: var(--theme-color-4);
+}
+
+.page-intro {
+    max-width: 740px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.devlog-stream {
+    max-width: 740px;
+    margin: 20px auto;
+    padding: 20px 10px 20px 10px;
+}
+
+.devlog-stream article {
+    margin-bottom: 20px;
+}
+
+.devlog {
+    max-width: 740px;
+    margin: 20px auto;
+    padding: 10px;
+    color: var(--theme-color-4);
+}
+
+.devlog article {
+    margin-bottom: 20px;
+}
+
+.devlog .title {
+    display: inline-block;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.devlog .title a {
+    color: var(--theme-color-2);
+    text-decoration: underline;
+}
+
+.date {
+    font-size: 0.8rem;
+}
+
+.post-header {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.post-header .date {
+    color: var(--theme-color-2);
+    font-weight: bold;
+}
+
+.post {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 20px 10px 20px 10px;
+    color: var(--theme-color-4);
+}
+
+.post p {
+    margin-bottom: 1rem;
+}
