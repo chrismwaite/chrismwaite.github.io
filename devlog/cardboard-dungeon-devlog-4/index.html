@@ -28,7 +28,7 @@
 <p>The compass also acts as the trigger for opening and closing the inventory.</p>
 <p><strong>Inventory</strong></p>
 <p>I&#8217;ve overhauled the inventory slightly to only render items once the panels are fully extended. The inventory now also shows smaller items to make selection easier. It&#8217;s generally more robust in its handling.</p>
-<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/inventory_final.jpg" alt="final Inventory Design" width="742" height="463" class="aligncenter size-full wp-post-4331 wp-image-4338" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/inventory_final.jpg 742w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/inventory_final-300x187.png 300w" sizes="(max-width: 742px) 100vw, 742px" /></p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/inventory_final.jpg" alt="final Inventory Design" width="742" height="463" class="aligncenter size-full wp-post-4331 wp-image-4338" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/inventory_final.jpg 742w, https://res.cloudinary.com/dmq7gxinn/image/upload/inventory_final.png 300w" sizes="(max-width: 742px) 100vw, 742px" /></p>
 <p><strong>Items</strong></p>
 <p>Items are now driven by the JSON map data so its easy to place them in any room.</p>
 <p>The process for creating a new item currently looks like this:</p>
@@ -41,13 +41,13 @@
 </ol>
 <p>The code takes care of rendering the item in the correct room and the inventory.</p>
 <p>I also created a new shield item :)</p>
-<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/shield1.jpg" alt="Shield" width="742" height="462" class="aligncenter size-full wp-post-4331 wp-image-4341" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/shield1.jpg 742w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/shield1-300x187.png 300w" sizes="(max-width: 742px) 100vw, 742px" /></p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/shield1.jpg" alt="Shield" width="742" height="462" class="aligncenter size-full wp-post-4331 wp-image-4341" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/shield1.jpg 742w, https://res.cloudinary.com/dmq7gxinn/image/upload/shield1.png 300w" sizes="(max-width: 742px) 100vw, 742px" /></p>
 <p><strong>A new area</strong></p>
-<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/outside.jpg" alt="Cardboard Dungeon Tutorial" width="743" height="463" class="aligncenter size-full wp-post-4331 wp-image-4340" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/outside.jpg 743w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/outside-300x187.png 300w" sizes="(max-width: 743px) 100vw, 743px" /></p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/outside.jpg" alt="Cardboard Dungeon Tutorial" width="743" height="463" class="aligncenter size-full wp-post-4331 wp-image-4340" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/outside.jpg 743w, https://res.cloudinary.com/dmq7gxinn/image/upload/outside.png 300w" sizes="(max-width: 743px) 100vw, 743px" /></p>
 <p>I&#8217;ve created a new area outside of the dungeon. This is where the player first enters the experience and is intended to teach the basics. Rather than implementing lots of text, I&#8217;ve hopefully created a simple enough area that the player can intuitively experiment to figure out the controls.</p>
 <p>In this area, the player needs to find the key, select the key from the inventory, and gaze at the door to enter the dungeon.</p>
 <p>This area is kept separate from the JSON map data and is in fact rendered above the dungeon. Here you can see through the smoke and mirrors :)</p>
-<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/rendering.jpg" alt="Rendering" width="595" height="427" class="aligncenter size-full wp-post-4331 wp-image-4346" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/rendering.jpg 595w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/rendering-300x215.png 300w" sizes="(max-width: 595px) 100vw, 595px" /></p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/rendering.jpg" alt="Rendering" width="595" height="427" class="aligncenter size-full wp-post-4331 wp-image-4346" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/rendering.jpg 595w, https://res.cloudinary.com/dmq7gxinn/image/upload/rendering.png 300w" sizes="(max-width: 595px) 100vw, 595px" /></p>
 <p><strong>A new map</strong></p>
 <p>I&#8217;ve created a new, much larger map for the final experience. This is all defined using JSON and, since I haven&#8217;t yet created a level editor, its fairly laborious to create. Hopefully the new map is a much more guided experience. It doesn&#8217;t have an exit, its just a larger dungeon with a few items that can be collected.</p>
 <p><strong>What&#8217;s next?</strong></p>
@@ -63,7 +63,7 @@
 <p><a href="https://chrismwaite.github.io/cardboard-dungeon/">Play Cardboard Dungeon here!</a></p>
 <p>OR</p>
 <p>(Scan this QR code with your phone to launch it directly on your device)</p>
-<p><img decoding="async" loading="lazy" src="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo.png" alt="Cardboard Dungeon QR code" width="370" height="370" class="aligncenter size-full wp-post-4331 wp-image-4353" srcset="https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo.png 370w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo-150x150.png 150w, https://cms.bytesizeadventures.com/wp-content/uploads/2016/03/static_qr_code_without_logo-300x300.png 300w" sizes="(max-width: 370px) 100vw, 370px" /></p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/static_qr_code_without_logo.png" alt="Cardboard Dungeon QR code" width="370" height="370" class="aligncenter size-full wp-post-4331 wp-image-4353" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/static_qr_code_without_logo.png 370w, https://res.cloudinary.com/dmq7gxinn/image/upload/static_qr_code_without_logo.png 150w, https://res.cloudinary.com/dmq7gxinn/image/upload/static_qr_code_without_logo.png 300w" sizes="(max-width: 370px) 100vw, 370px" /></p>
                 </article>
             </div>
         </div>
