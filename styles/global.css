@@ -249,6 +249,10 @@ p {
     color: var(--theme-color-1);
 }
 
+.me a {
+  color: var(--theme-color-5);
+}
+
 @media (max-width: 600px) {
     .experiments {
         grid-template-columns: 1fr;
