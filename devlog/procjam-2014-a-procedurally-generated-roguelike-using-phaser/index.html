@@ -7,6 +7,7 @@
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <link rel="stylesheet" href="../../styles/global.css" />
+        <link href="../../styles/prism.css" rel="stylesheet" />
     </head>
     <body>
         <div class="wrapper">
@@ -37,7 +38,7 @@
 <p>You can <a href="https://chrismwaite.itch.io/dronelike">play my entry, Dronelike, here</a> and the full <a href="https://github.com/chrismwaite/procjam">source code is also available here</a>.</p>
 <p>What I briefly want to discuss in this post is technique I employed to generate the levels.</p>
 <p>For my roguelike I wanted to generate a series of caves that could house objects and enemies. To achieve this, I used the same method that I experimented with in my previous <a href="https://www.youtube.com/watch?v=SybIg2TI5N8">Lua project</a>. Essentially, you fill the screen with tiles, or in this case ASCII characters, representing solid material (#). This is achieved simply by storing this data in a grid.</p>
-<pre><code class="js">
+<pre><code class="language-js">
 for(var y=0; y &lt; rows; y++) {
   map[y] = [];
   display[y] = [];
@@ -49,7 +50,7 @@ for(var y=0; y &lt; rows; y++) {
   }
 }</code></pre>
 <p>You then create a series of &#8220;drones&#8221; to mine out the caves for you. This gives you much more natural looking caves than simply randomly selecting whether a position houses a wall tile or not (0 or 1).</p>
-<pre><code class="js">
+<pre><code class="language-js">
 function initialiseDrones() {
   var number_of_drones = Math.floor((Math.random() * max_caves) + min_caves);
   for(var x=0; x &lt; number_of_drones; x++)
@@ -63,7 +64,7 @@ function initialiseDrones() {
 }
 </code></pre>
 <p>There is a timer called every 1/4 of a second that iterates over an array storing the drones. It simply calls each drone&#8217;s mining function unless the drone is at the end of it&#8217;s life, in which case it dies.</p>
-<pre><code class="js">
+<pre><code class="language-js">
 for(var x=0; x  0) {
     drone.mine();
   }
@@ -74,7 +75,7 @@ for(var x=0; x  0) {
 </code></pre>
 <p>These mining drones start in a randomly selected position on the screen, mine that position (replacing the ASCII wall character with a floor character), and then randomly select a direction to move in. Having done this, each drone mines out the next position. And so forth and so on, for the duration of its life.</p>
 <p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-11-20-at-19.35.png" alt="Mining drone" width="283" height="312" class="aligncenter size-full wp-post-4080 wp-image-4099" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-11-20-at-19.35.png 283w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-11-20-at-19.35.png 272w" sizes="(max-width: 283px) 100vw, 283px" /></p>
-<pre><code class="js">
+<pre><code class="language-js">
 Drone.prototype.mine = function() {
   updateSymbol(this.row, this.column, this.mine_symbol, this.mine_colour);
   updateSymbol(this.row-1, this.column, this.mine_symbol, this.mine_colour);
@@ -127,5 +128,6 @@ Drone.prototype.mine = function() {
                 </article>
             </div>
         </div>
+       	<script src="../../scripts/prism.js"></script>
     </body>
 </html>

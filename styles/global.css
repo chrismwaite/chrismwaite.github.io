@@ -154,25 +154,28 @@ p {
 
 .devlog .title {
     display: inline-block;
-    padding: 2px;
     font-weight: bold;
 }
 
 .devlog .title a {
-  display: inline-block;
-  padding: 5px 20px 5px 15px;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 5px 15px;
   background-color: var(--theme-color-3);
   color: var(--theme-color-1);
   text-decoration: none;
-  border-radius: 999px 0 0 999px;
-  clip-path: polygon(0% 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 0% 100%);
+  line-height: 2.2;
+  border-radius: 999px;
 }
 
 .devlog .date {
   display: inline-block;
   color: var(--theme-color-1);
-  font-size: 0.8em;
-  margin-left: 20px;
+  font-size: 0.7em;
+  background-color: var(--theme-color-2);
+  border-radius: 999px;
+  padding: 5px;
 }
 
 .devlog .summary {
@@ -189,8 +192,13 @@ p {
 }
 
 .post-header .date {
-    color: var(--theme-color-3);
-    font-weight: bold;
+  display: inline-block;
+  color: var(--theme-color-1);
+  background-color: var(--theme-color-2);
+  border-radius: 999px;
+  padding: 10px;
+  font-size: 0.8em;
+  margin-top: 10px;
 }
 
 .post {
@@ -201,6 +209,20 @@ p {
 }
 
 .post a {
+  color: var(--theme-color-3);
+}
+
+.post ol,
+.post ul {
+  list-style-position: inside;
+  margin-bottom: 1rem;
+}
+
+.post li {
+  margin-bottom: 10px;
+}
+
+.post li::marker {
   color: var(--theme-color-3);
 }
 

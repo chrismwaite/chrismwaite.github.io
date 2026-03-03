@@ -7,6 +7,7 @@
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <link rel="stylesheet" href="../../styles/global.css" />
+        <link href="../../styles/prism.css" rel="stylesheet" />
     </head>
     <body>
         <div class="wrapper">
@@ -37,7 +38,7 @@
 <p><strong>Research</strong></p>
 <p>As it turns out, not only is such a thing possible but it has a very <a href="https://gendev.spritesmind.net/forum/" title="spritesmind forum">active, thriving community</a> around it. Documentation and tutorials are sparse but there is a wealth of knowledge in those forums.</p>
 <p>The Mega Drive was originally programmed in Motorola 68000 Assembly language. That looks something like this (Shamelessly borrowed from <a href="https://bigevilcorporation.co.uk/2012/02/28/sega-megadrive-1-getting-started/">here</a>):</p>
-<pre><code class="bash">Loop:
+<pre><code class="language-bash">Loop:
    move.l #0xF, d0 ; Move 15 into register d0
    move.l d0, d1   ; Move contents of register d0 into d1
    jmp Loop        ; Jump back up to 'Loop'</code></pre>
@@ -80,7 +81,7 @@ cp -R gendev-read-only/sgdk/skeleton megadrive-test</pre>
 <p><strong>Creating and compiling a simple program</strong></p>
 <p>You&#8217;re basically left to your own devices then. If you go to the <a href="https://code.google.com/p/sgdk/wiki/">SGDK Wiki</a> there is a <a href="https://code.google.com/p/sgdk/wiki/HelloWorld">hello world example</a>.</p>
 <p>Just open your favourite text editor (I used <a href="https://www.sublimetext.com/">Sublime Text</a>) and copy the hello world example into a new file:-</p>
-<pre><code class="c">#include <genesis.h>
+<pre><code class="language-c">#include <genesis.h>
 
 int main()
 {
@@ -109,5 +110,6 @@ make</pre>
                 </article>
             </div>
         </div>
-    </body>
+       	<script src="../../scripts/prism.js"></script>
+        </body>
 </html>
