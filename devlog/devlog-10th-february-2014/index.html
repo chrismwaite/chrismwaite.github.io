@@ -6,7 +6,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Fairly limited but good progress this week." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/devlog-10th-february-2014/" />
+        <meta property="og:title" content="Devlog – 10th February 2014" />
+        <meta property="og:description" content="Fairly limited but good progress this week." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/devlog-10th-february-2014/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Devlog – 10th February 2014" />
+        <meta name="twitter:description" content="Fairly limited but good progress this week." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Devlog – 10th February 2014",
+  "description": "Fairly limited but good progress this week.",
+  "url": "https://chriswaite.dev/devlog/devlog-10th-february-2014/",
+  "datePublished": "2014-02-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png"
+}
+        </script>
     </head>
     <body>
         <div class="wrapper">
@@ -21,11 +50,11 @@
             </header>
 
             <div class="post-header">
-                <h2 class="title">Devlog – 10th February 2014</h2>
+                <h1 class="title">Devlog – 10th February 2014</h1>
                 <div class="date">February 2014</div>
             </div>
 
-            <div class="inner">
+            <main class="inner">
                 <article class="post">
 <p>Fairly limited but good progress this week.</p>
 <p>I&#8217;ve mainly focussed on the separation of foreground elements from the tiles that I mentioned last week. I finished adding scenery points to each of the tiles. The way this works is that each tile type, for example a corner with exits to the north and east, has an array of CGPoints. These are viable positions on the tile for scenery placement. When a tile is placed, n points are selected at random from the array (a single point cannot be selected more than once). Then a random scenery object is selected and placed at that point.</p>
@@ -39,7 +68,7 @@
 <p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" alt="WIP shot of level showing random scenery placement" width="321" height="569" class="aligncenter size-full wp-post-3845 wp-image-3848" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 321w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 169w" sizes="(max-width: 321px) 100vw, 321px" /></p>
 <p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" alt="WIP screenshot of level showing walls" width="320" height="568" class="aligncenter size-full wp-post-3845 wp-image-3849" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 320w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 169w" sizes="(max-width: 320px) 100vw, 320px" /></p>
                 </article>
-            </div>
+            </main>
         </div>
     </body>
 </html>

@@ -6,7 +6,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/handling-help-in-iphone-games/" />
+        <meta property="og:title" content="Handling help in iPhone games" />
+        <meta property="og:description" content="Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/handling-help-in-iphone-games/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Handling help in iPhone games" />
+        <meta name="twitter:description" content="Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a..." />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Handling help in iPhone games",
+  "description": "Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a...",
+  "url": "https://chriswaite.dev/devlog/handling-help-in-iphone-games/",
+  "datePublished": "2009-08-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  }
+}
+        </script>
     </head>
     <body>
         <div class="wrapper">
@@ -21,31 +47,31 @@
             </header>
 
             <div class="post-header">
-                <h2 class="title">Handling help in iPhone games</h2>
+                <h1 class="title">Handling help in iPhone games</h1>
                 <div class="date">August 2009</div>
             </div>
 
-            <div class="inner">
+            <main class="inner">
                 <article class="post">
 <p>Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a difficult task because you, having developed the game, know how to play the game already and need to relay this information to the new player; What is obvious to the developer is not always obvious to the user.<br />
 <br />My original aim with Star Fusion was to add an element of exploration to the learning process. Since I&#8217;m currently working on the first patch for Star Fusion, I decided to further enhance this element of the game to make it as interesting as possible. I&#8217;ll share it with you in a moment, but lets take a few minutes to look at some of the most popular help systems available in current iPhone games&#8230;<br />
 <br /><b>Static screens</b><br />
-<br /><img decoding="async" loading="lazy" class="alignnone Bborder" title="Pocket God Help Screen" src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0099.PNG" alt="" width="480" height="320" /><br />
+<br /><br />
 <br />This is a style used by the majority of iPhone games (e.g. Pocket God). A series of slides/screens are displayed in order with the player required to tap to advance to the next screen. The advantage of this style is that you get full control over the order in which the player learns. The disadvantage is that it can sometimes be a little dull and can end up dragging on in some instances.<!--more--><br />
 <br /><b>In-game tutorial</b><br />
-<br /><strong><img decoding="async" loading="lazy" class="alignnone Bborder" title="Underworlds Help Screen" src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0100.PNG" alt="" width="480" height="320" /></strong><br />
+<br /><strong></strong><br />
 <br />This style doesn&#8217;t present you with a separate help screen but instead displays help for the first few minutes of the game. Generally this is done by flashing up help screens as you perform actions. An example of a game using this type of help is Underworlds. The advantage here (from the developers point of view) is that the player is forced to read the help and is instantly engaged. The disadvantage (from the players point of view) is that the player is forced to read the help.<br />
 <br /><b>Demonstration</b><br />
-<br /><strong><img decoding="async" loading="lazy" class="alignnone Bborder" title="Ancient Frog Help Screen" src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0101.PNG" alt="" width="480" height="320" /></strong><br />
+<br /><strong></strong><br />
 <br />This style demonstrates the game using a set of predefined actions. A game using this style of help is Ancient Frog. The advantage is that it very clearly demonstrates what you need to do in the game. The disadvantage is that the player is not immediately engaged since they are locked into watching the demonstration.<br />
 <br /><b>Challenge-based</b><br />
-<br /><strong><img decoding="async" loading="lazy" class="alignnone Bborder" title="The Sims 3 iPhone Help Screen" src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0102.PNG" alt="" width="480" height="320" /></strong><br />
+<br /><strong></strong><br />
 <br />This style is similar to the in-game tutorial but specifically challenges the player to perform an action before progressing to the next help screen. An example of a game utilising this method is The Sims 3. The advantage is that the player is engaged and learns in the best possible way. The only real disadvantage is that if a player is unable to perform an action then they may be unable to progress through the help screens.<br />
 <br />In addition there are of course the many variations of these styles. As I mentioned, for Star Fusion, I wanted an element of exploration to my help system to ensure it is engaging for the player. I also wanted to ensure that I deliver the information in as short a time as possible to keep the player interested. What i&#8217;ve opted for is a combination of static screens and exploration. The player is presented with a screen containing all of the game elements. Everything is initially grayed out and as the player taps an object, it fills with colour and the player is told what the object does in the context of the game. The player can only exit the help screen once they have returned the colour to all objects. The disadvantage here is that I have no control over the order in which the information is consumed.<br />
 <br />Please feel free to add any additional help systems to the comments below. I&#8217;ll leave you with a screenshot from my help system&#8230;<br />
-<br /><img decoding="async" loading="lazy" class="alignnone Bborder" title="Star Fusion Help Screen" src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0103.PNG" alt="" width="480" height="320" /></p>
+<br /></p>
                 </article>
-            </div>
+            </main>
         </div>
     </body>
 </html>

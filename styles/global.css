@@ -67,13 +67,23 @@ header {
     overflow: hidden;
 }
 
-h1 {
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.me > h1,
+.experiments > h1 {
+    color: var(--theme-color-3);
     font-size: 1.5rem;
-    float: left;
-    background-color: var(--theme-color-4);
-    padding: 5px 15px;
-    border-radius: 0 0 20px 0;
-    color: var(--theme-color-1);
+    margin-bottom: 20px;
 }
 
 nav {
@@ -191,6 +201,10 @@ p {
     color: var(--theme-color-3);
 }
 
+.post-header .title {
+    font-size: 1.5rem;
+}
+
 .post-header .date {
   display: inline-block;
   color: var(--theme-color-1);
@@ -245,10 +259,11 @@ p {
     border-radius: 8px;
 }
 
-.experiment-card h3 {
+.experiment-card h2 {
   text-align: center;
     color: var(--theme-color-4);
     margin-bottom: 10px;
+    font-size: 1.17rem;
 }
 
 .experiment-card img {
