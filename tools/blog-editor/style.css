@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: #16213e;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+
+.toolbar-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #D65D0E;
+    margin-right: auto;
+}
+
+.save-status {
+    font-size: 12px;
+    color: #4caf50;
+    min-width: 120px;
+}
+
+.save-status.error {
+    color: #f44336;
+}
+
+button {
+    padding: 6px 14px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #2a2a4a;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+button:hover:not(:disabled) {
+    background: #3a3a5a;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#save-btn {
+    background: #D65D0E;
+    border-color: #D65D0E;
+    color: #fff;
+}
+
+#save-btn:hover:not(:disabled) {
+    background: #e06d1e;
+}
+
+#upload-btn {
+    background: #458588;
+    border-color: #458588;
+    color: #fff;
+}
+
+#upload-btn:hover:not(:disabled) {
+    background: #569b9e;
+}
+
+#load-select {
+    padding: 6px 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #2a2a4a;
+    color: #e0e0e0;
+    font-size: 13px;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+#load-select:hover {
+    background: #3a3a5a;
+}
+
+.panels {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.editor-panel {
+    width: 50%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    border-right: 1px solid #333;
+}
+
+.preview-panel {
+    width: 50%;
+    overflow: hidden;
+}
+
+#preview-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #002B36;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hint {
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #666;
+    font-size: 11px;
+}
+
+.char-count {
+    font-weight: normal;
+    text-transform: none;
+    float: right;
+    font-size: 11px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #0f0f23;
+    color: #e0e0e0;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    font-size: 13px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #D65D0E;
+}
+
+#post-description {
+    resize: none;
+}
+
+#post-content {
+    flex: 1;
+    min-height: 200px;
+    resize: none;
+    line-height: 1.6;
+    tab-size: 2;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+}
+
+.field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.slug-field {
+    flex: 2;
+}
+
+input.slug-exists {
+    background: #3a1111 !important;
+    border-color: #f44336 !important;
+}
+
+.exists-label {
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #f44336;
+}
