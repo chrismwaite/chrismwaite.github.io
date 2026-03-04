@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{TITLE}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="{{DESCRIPTION}}" />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/{{SLUG}}/" />
+        <meta property="og:title" content="{{TITLE}}" />
+        <meta property="og:description" content="{{DESCRIPTION}}" />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/{{SLUG}}/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+{{OG_IMAGE_META}}        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{{TITLE}}" />
+        <meta name="twitter:description" content="{{DESCRIPTION}}" />
+{{TW_IMAGE_META}}        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="{{CSS_PATH}}" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{TITLE}}",
+  "description": "{{DESCRIPTION}}",
+  "url": "https://chriswaite.dev/devlog/{{SLUG}}/",
+  "datePublished": "{{DATE_ISO}}",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  }{{JSON_IMAGE}}
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">{{TITLE}}</h1>
+                <div class="date">{{DATE_DISPLAY}}</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+{{CONTENT}}
+                </article>
+            </main>
+        </div>
+    </body>
+</html>
