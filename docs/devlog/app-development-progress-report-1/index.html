@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>App Development - progress report #1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="As you may know, if you read this blog regularly, I&#x27;m currently working on my first non-game App. My aim is to produce my App following a careful plan,..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/app-development-progress-report-1/" />
+        <meta property="og:title" content="App Development - progress report #1" />
+        <meta property="og:description" content="As you may know, if you read this blog regularly, I&#x27;m currently working on my first non-game App. My aim is to produce my App following a careful plan,..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/app-development-progress-report-1/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/mv2en-300x225.jpg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="App Development - progress report #1" />
+        <meta name="twitter:description" content="As you may know, if you read this blog regularly, I&#x27;m currently working on my first non-game App. My aim is to produce my App following a careful plan,..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/mv2en-300x225.jpg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "App Development - progress report #1",
+  "description": "As you may know, if you read this blog regularly, I&#x27;m currently working on my first non-game App. My aim is to produce my App following a careful plan,...",
+  "url": "https://chriswaite.dev/devlog/app-development-progress-report-1/",
+  "datePublished": "2011-06-06",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/mv2en-300x225.jpg"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">App Development - progress report #1</h1>
+                <div class="date">June 2011</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/mv2en.jpg"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/mv2en-300x225.jpg" alt="" title="Desk" width="300" height="225" class="alignleft size-medium wp-image-2203" /></a>As you may know, if you read this blog regularly, I'm currently working on my first <a href="https://www.chriswaite.dev/devlog/a-foray-into-app-development/">non-game App</a>. My aim is to produce my App following a <a href="https://www.chriswaite.dev/devlog/app-development-doing-it-properly/">careful plan</a>, blog the process, and share the results.</p>
+<p>You can catch up on the previous posts here</p>
+<ul>
+	<li><a href="https://www.chriswaite.dev/devlog/app-development-doing-it-properly/">Part 1 - Doing it properly</a>
+	<li><a href="https://www.chriswaite.dev/devlog/app-development-the-design-document/">Part 2 - The Design Document</a></li>
+	<li><a href="https://www.chriswaite.dev/devlog/app-development-the-wireframes/">Part 3 - The Wireframes</a></li>
+	<li><a href="https://www.chriswaite.dev/devlog/app-development-the-artwork/">Part 4 - The Artwork</a></li>
+</ul>
+<p><!--more-->I'm currently working on the code and had originally planned to share some how-to posts on this blog. Unfortunately I've been flat out just finding the time I need to work on the App. Thats where you need to make a decision. Its all very well writing about creating Apps but the important step is actually creating them. So, whilst my blog has suffered, the coding is going well.</p>
+<p>I recently spent some time going back over my plan and re-reading my design document. It struck me that my steps 5, 6, and 7 are very tightly dependent upon one another. As a result I'm going to roll them up somewhat for the purposes of this blog. I'll be working iteratively on final art and code leading up to and throughout the testing process.</p>
+<p>My current plan is to switch tact slightly and blog a series of progress reports - these will be a series of brain dumps rather than fully thought out articles. To complement them, I am planning two fairly meaty posts on both the final artwork and the testing process I will use. Then we'll go back to the plan for steps 8 and 9.</p>
+<p>So this is my first progress report and lots has happened. Last time you read this I had just created a <a href="https://www.chriswaite.dev/devlog/app-development-the-artwork/">basic cupboard screen</a> for the App and was about to dive into the code.</p>
+<p>My first challenge was Xcode 4. I pretty much switched to Xcode 4 as soon as it was released but this is the first App I've built with it. I don't believe in holding off on new technologies when you're independent. One of the advantages to independence is the speed at which you can switch technologies and adapt to what is current. If you are part of a larger team then this is a different matter altogether.</p>
+<p>Pain points initially were related to the change in build settings. The scheme drop down has been simplified, complimented by a confusing iTunes-esque play menu. The Interface builder had also changed considerably and baffled me for some time. Anyway, its fair to say that I'm now happy with Xcode 4. I feel its superior to Xcode 3 in every way.
+ 
+The built-in GIT support is particularly good. On the subject of GIT I'm currently using it for my version control as I was before Xcode 4. Since I'm a sole developer, I'm not pushing to a remote repository and am instead just committing locally and backing up my system to an external drive. This means I lose offsite backup but I still reap the main rewards of version controls (avoiding screw ups and easy branching). If you're not using it, you should.</p>
+<p>Core data has also been interesting. The entity relationship modeller in Xcode 4 was very overwhelming at fist but now seems pretty well thought out. I'm far from comfortable with my knowledge of Core Data but my App is simple enough that I'm not running into too many issues. I can certainly see the benefits of abstracting the data management (I'm using SQLite as my persistent data store).</p>
+<p>In terms of the App feature, its going well. Here's a refined list of what's done...</p>
+<p>Displaying Coffees in your cupboard (this is your hub for the coffees you are currently tasting)
+Adding a Coffee
+Viewing a Coffee
+Editing a Coffee
+Rating a Coffee
+Editing preparation notes for a Coffee
+Editing the tasting notes for a Coffee</p>
+<p>That leaves me with 15 tasks in my task list in order to get to reach Beta. Having said that, I'm at that stage of development where you check off one task but add 5 more in the process. I intend the Beta to contain all final functionality apart from the Coffee Search and periphery screens (such as help and about). The functionality will work but won't be fully tested, the workflow won't be refined, and the graphics will still be WIP. The point of running a Beta without refined workflow is of course to get early feedback so that I can tweak the workflow based on real data (rather than purely personal opinion).</p>
+<p>On the subject of Art - its going well. I want to use colours that evoke thoughts of Coffee whilst providing complimentary textures. I've started to create the beginnings to a style that I think is fairly subtle, avoiding too many cliches such as overly glossy surfaces. I posted a work in progress teaser on twitter so here it is for you to enjoy. You'll note it lacks detail, has too much repetition, and has some inconsistencies - all of which will be resolved in the final artwork.</p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/cxum.png"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/cxum.png" alt="" title="Coffee App Teaser" width="312" height="181" class="aligncenter size-full wp-image-2201" /></a></p>
+<p>I'm a little apprehensive about putting a date on the Beta but I am expecting to be ready by the end of the month. I'll be looking for some Beta testers soon so keep and eye out either on <a href="https://twitter.com/chrismwaite">twitter</a> or at this blog. I'm not just looking for coffee lovers (although that will help), any feedback is welcome.</p>
+<p>In other related news, I upgraded my mid-2009 Macbook Pro from 2GB RAM to 8GB RAM. Xcode 4 is now much nicer to work with. I can comfortably run Xcode 4 alongside the simulator and the profiling tools without waiting for endless spinning beach balls.</p>
+<p>Thats it for this update. Check back soon (or <a href="www.bytesizeadventures.com/blog/feed/">subscribe to my RSS feed</a>)</p>
+<p><a href="https://www.chriswaite.dev/devlog/app-development-doing-it-properly/">Part 1 - Doing it properly</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-design-document/">Part 2 - The Design Document</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-wireframes/">Part 3 - The Wireframes</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-artwork/">Part 4 - The Artwork</a>
+Part 5a -The Code (Xcode, GIT, and Core Data) (You are here)
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-2/">Part 5b - The Code (Coffee sharing and Camera functionality)</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-3/">Part 5c - The Code (A change in workflow)</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-testing/">Part 6 - The testing</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-final-artwork/">Part 7 - The Final Artwork</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-marketing/">Part 8 - The Marketing</a>
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-is-out-now/">Part 9 - The Launch</a>
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-the-numbers/">Part 10 - The Numbers</a>
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-postmortem/">Part 11 - The Postmortem</a>
+<a href="https://www.chriswaite.dev/devlog/from-idea-to-app-store-in-6-months/">(Bonus) Part 12 - A review of the process</a></p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>
