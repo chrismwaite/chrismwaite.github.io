@@ -51,6 +51,29 @@ body {
     font-family: "Lato", sans-serif;
 }
 
+img {
+    max-width: 100%;
+    height: fit-content;
+}
+
+img.alignleft {
+    float: left;
+    margin-right: 20px;
+}
+
+img.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
 .wrapper {
   background-color: var(--theme-color-6);
 }
@@ -130,25 +153,6 @@ nav li:nth-child(3) a {
 nav li a:hover {
   background-color: var(--theme-color-2);
   color: var(--theme-color-1);
-}
-
-img {
-    max-width: 100%;
-    height: fit-content;
-}
-
-img.alignleft {
-    float: left;
-    margin-right: 20px;
-}
-
-img.aligncenter {
-    display: block;
-    margin: 0 auto;
-}
-
-p {
-    margin-bottom: 1rem;
 }
 
 .devlog {

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>App Development – progress report #2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="True to my word, it&#x27;s time for another progress report. Much of my time, during the last few weeks, has been spent iterating the art. I&#x27;m now at the..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/app-development-progress-report-2/" />
+        <meta property="og:title" content="App Development – progress report #2" />
+        <meta property="og:description" content="True to my word, it&#x27;s time for another progress report. Much of my time, during the last few weeks, has been spent iterating the art. I&#x27;m now at the..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/app-development-progress-report-2/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="App Development – progress report #2" />
+        <meta name="twitter:description" content="True to my word, it&#x27;s time for another progress report. Much of my time, during the last few weeks, has been spent iterating the art. I&#x27;m now at the..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "App Development – progress report #2",
+  "description": "True to my word, it&#x27;s time for another progress report. Much of my time, during the last few weeks, has been spent iterating the art. I&#x27;m now at the...",
+  "url": "https://chriswaite.dev/devlog/app-development-progress-report-2/",
+  "datePublished": "2011-06-28",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">App Development – progress report #2</h1>
+                <div class="date">June 2011</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png" alt="" title="Shared coffee" width="319" height="156" class="alignleft size-full wp-image-2219" /></a>True to <a href="https://www.chriswaite.dev/devlog/app-development-progress-report-1/">my word</a>, it's time for another progress report.</p>
+<p>Much of my time, during the last few weeks, has been spent iterating the art. I'm now at the point where some of the artwork within the App is pretty much finally and I don't expect it to change before launch (barring any issues during the Beta). There's still a fair bit to do though, mainly related to the UITableView which looks out of place with its default look and therefore needs a drastic overhaul.<!--more--></p>
+<p>On the coding side of things I've advanced the App quite considerably. Along with numerous minor features, I've also completed two more pieces of core functionality. Namely, the Coffee sharing and the camera functionality.</p>
+<p><strong>Coffee sharing</strong></p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-2.png" alt="" title="Shared coffee" width="319" height="156" class="aligncenter size-full wp-image-2219" /></a></p>
+<p>The idea here is that you can navigate to one of your Coffees within the App, tap share, and then choose between Email, Twitter, and potentially Facebook. This will share a link and, in the case of email, details of the coffee. If the recipient clicks the link whilst on their iPhone, the App will launch and import the Coffee into their cupboard.</p>
+<p>Its surprisingly easy to implement sharing via URL. I followed Owen's post <a href="https://www.streamingcolour.com/blog/2010/06/28/custom-app-urls/">here</a>. In fact, the main challenge is parsing the URL and doing something useful with its parameters. For me, that is some basic data sanitisation and creating a new Coffee entity.</p>
+<p>The other decision I had to make was how to represent a shared Coffee within the cupboard. I decided to mark it as shared with a small badge. I'm then thinking, once you open the Coffee, the badge will disappear (although, the Coffee will still appear in your Cupboard until you archive it).</p>
+<p><strong>Camera Functionality</strong></p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/photo.png"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/photo.png" alt="" title="Coffee photo" width="308" height="176" class="aligncenter size-full wp-image-2220" /></a></p>
+<p>I wanted the ability for the user to assign a photo to each coffee. My thoughts are that this could be a picture of the beans, a photo of the packaging, or some other related shot.</p>
+<p>Implementation of the camera delegate was easy enough. I did a custom check to identify whether the device has a camera. If it does, you get a UIActionSheet with the options of camera or photo library. If it doesn't, you are taken straight to the photo library. It's a subtle difference but one that should help.</p>
+<p>I also have a transform to rotate the image slightly. It just helps to create visual interest on the page (rectangles and symmetry aren't always a good thing).</p>
+<p><strong>Other stuff</strong></p>
+<p>I still have a number of tasks remaining. Mostly small features/fixes (and the aforementioned table artwork). The biggest feature remaining is the search functionality. I've decided to implement it before I begin the Beta. This will mean that the first Beta will be feature complete. I'm hoping that this will help to maximise the feedback I receive.</p>
+<p>There's still a fairly long road ahead but I'm still aiming for, and expecting, a July Beta. Since its getting so close now, if you'd like to help test the App, you can .</p>
+<p><a href="https://www.chriswaite.dev/devlog/app-development-doing-it-properly/">Part 1 - Doing it properly</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-design-document/">Part 2 - The Design Document</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-wireframes/">Part 3 - The Wireframes</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-artwork/">Part 4 - The Artwork</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-1/">Part 5a -The Code (Xcode, GIT, and Core Data)</a>
+Part 5b - The Code (Coffee sharing and Camera functionality) (You are here)
+<a href="https://www.chriswaite.dev/devlog/app-development-progress-report-3/">Part 5c - The Code (A change in workflow)</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-testing/">Part 6 - The testing</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-final-artwork/">Part 7 - The Final Artwork</a>
+<a href="https://www.chriswaite.dev/devlog/app-development-the-marketing/">Part 8 - The Marketing</a>
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-is-out-now/">Part 9 - The Launch</a>
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-the-numbers/">Part 10 - The Numbers</a>
+<a href="https://www.chriswaite.dev/devlog/coffee-cellar-postmortem/">Part 11 - The Postmortem</a>
+<a href="https://www.chriswaite.dev/devlog/from-idea-to-app-store-in-6-months/">(Bonus) Part 12 - A review of the process</a></p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>
