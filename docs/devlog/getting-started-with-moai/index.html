@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Getting started with Moai</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="This weekend I fancied dabbling with something a bit different. I’ve had my eye on Moai for some time now…" />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/getting-started-with-moai/" />
+        <meta property="og:title" content="Getting started with Moai" />
+        <meta property="og:description" content="This weekend I fancied dabbling with something a bit different. I’ve had my eye on Moai for some time now…" />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/getting-started-with-moai/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Getting started with Moai" />
+        <meta name="twitter:description" content="This weekend I fancied dabbling with something a bit different. I’ve had my eye on Moai for some time now…" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Getting started with Moai",
+  "description": "This weekend I fancied dabbling with something a bit different. I’ve had my eye on Moai for some time now…",
+  "url": "https://chriswaite.dev/devlog/getting-started-with-moai/",
+  "datePublished": "2012-06-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Getting started with Moai</h1>
+                <div class="date">June 2012</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png" alt="" title="Moai_Logo_On_White_700px" width="300" height="115" class="alignleft size-medium wp-post-3108 wp-image-3126" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png 300w, https://res.cloudinary.com/dmq7gxinn/image/upload/Moai_Logo_On_White_700px.png 736w" sizes="(max-width: 300px) 100vw, 300px" /></a>This weekend I fancied dabbling with something a bit different. I&#8217;ve had my eye on <a href="https://getmoai.com">Moai</a> for some time now&#8230;</p>
+<p><strong>What is Moai?</strong></p>
+<p>In their own words, Moia is a &#8220;fast, minimalist, open-source Lua framework for pro game developers&#8221;. It&#8217;s also cross-platform, allowing you to target iOS, Android, PC, Mac, and Chrome (apparently Linux is coming too).</p>
+<p><strong>Never heard of it</strong></p>
+<p>It crossed my radar a while back (because of its <a href="https://getmoai.com/moai-custom-cloud-logic.html">cloud features</a>) but more recently its been enjoying some attention because <a href="https://www.doublefine.com/">Double Fine</a> have opted to use it for their upcoming Adventure game (<a href="https://www.kickstarter.com/projects/doublefine/double-fine-adventure">the one that raised over $3 million</a> in funding through Kickstarter).</p>
+<p>The team at Double Fine have been sharing lots of insights into the development of the game (a perk for backers) and its been really interesting to read about how they&#8217;re using Moai. They&#8217;re even talking about feeding improvements back into the framework for the community to benefit from.</p>
+<p><!--more--><strong>Lua</strong></p>
+<p><a href="https://www.lua.org">Lua</a> is a lightweight scripting language that, as I understand, is used prolifically throughout the game development industry. Its typically embedded into the game to allow non-programmers (and programmer I guess) to easily script the game.</p>
+<p>I&#8217;ve only dabbled with Lua fairly recently, mainly thanks to the excellent <a href="https://twolivesleft.com/Codea/">Codea</a> for the iPad.</p>
+<p>So, I&#8217;m new to both Moai and Lua which makes this an interesting and exciting challenge.</p>
+<p><strong>Setup</strong></p>
+<p>Moai is incredibly, perhaps deceptively, simple. Its this simplicity that causes some problems with getting your environment set up. There is documentation but to be honest its not that clearly laid out (I&#8217;m referring to the getting started stuff, not the class references).</p>
+<p>So here are the steps I used to get an environment up and running.</p>
+<p>First, you need to determine your primary development platform. I chose the PC because that&#8217;s the platform I want to focus on for my next game. This guide is therefore targeted at that platform.</p>
+<p><em><strong>Step 1: Tools</strong></em></p>
+<p>There isn&#8217;t a formal IDE for Moai as of yet. This means that your best bet is to choose your favourite programmers text editor and use that. Moai make reference to <a href="https://notepad-plus-plus.org/">Notepad++</a> a few times in their documentation but I&#8217;m currently loving <a href="https://www.sublimetext.com/2">Sublime Text 2</a>. As such, we&#8217;ll focus on getting that set up.</p>
+<p>Download Sublime Text 2 <a href="https://www.sublimetext.com/2">here</a>.</p>
+<p><em><strong>Step 2: Moai</strong></em></p>
+<p>Download Moai from <a href="https://dashboard.moaicloud.com/signup.php">here</a> (required signup) and extract its contents to a folder on your system. I created a folder called &#8220;Development&#8221; in my user account area (so I ended up with C:\Users\Chris\Development\moai-sdk).</p>
+<p>This folder will contain the Moai framework along with lots of sample projects.</p>
+<p><em><strong>Step 3: Setup a new project</strong></em></p>
+<p>Create a folder on your system for your projects. I opted for a folder called &#8220;Moai Projects&#8221; under my &#8220;Development&#8221; directory (this gave me C:\Users\Chris\Development\Moai Projects).</p>
+<p>Next, copy a sample project from the Moai SDK directory to your projects directory. I went with &#8220;anim-basic&#8221; which can be found under &#8220;moai-sdk\samples\anim\anmi-basic&#8221;. Once you&#8217;ve copied it, you can now rename this folder in your projects directory (I renamed it test so I ended up with C:\Users\Chris\Development\Moai Projects\test).</p>
+<p>Your new project folder will contain 3 files&#8230;</p>
+<p>main.lua &#8211; this is the main lua script containing the code for the sample that we copied<br />
+run.bat &#8211; this is the batch file for running the game<br />
+moai.png &#8211; this is a resource used by the lua script for this particular sample</p>
+<p>We&#8217;re still missing something. The config.lua file. I don&#8217;t yet know enough about Moia to know whether this file is likely to need to be changed on a per project basis or whether it can be shared across projects (the structure of the Moai samples directory suggests the latter). For now I feel more comfortable assuming it&#8217;s per project and placing it within our new project directory.</p>
+<p>To do this, copy the config folder from the &#8220;moai-sdk\samples&#8221; directory.</p>
+<p>You should now have a config folder containing config.lua under your new project directory (C:\Users\Chris\Development\Moai Projects\test\config).</p>
+<p><em><strong>Step 4: Setting up environment variables and modifying run.bat</strong></em></p>
+<p>Open Sublime Text 2, then do File -> Open Folder, and select your new project directory (C:\Users\Chris\Development\Moai Projects\test\).</p>
+<p>You&#8217;ll see the 3 files mentioned above in addition to the config directory containing the config.lua file.</p>
+<p>Click the run.bat file. Not much in here but we need to make some tweaks.</p>
+<p>First lets setup the MOAI_BIN environment variable. Go to the windows control panel. Now navigate to system and advanced system settings. At the bottom of the dialogue box is a button titled &#8220;Environment Variables&#8221;. Click that and under User Variables, click &#8220;new&#8221;.</p>
+<p>Call your new variable &#8220;MOAI_BIN&#8221; and enter the location of the moai executable. For me, that was &#8220;C:\Users\Chris\Development\moai-sdk\bin\win32&#8221;</p>
+<p>For the new variable to take effect, I believe you&#8217;ll need to log off your system and log back in.</p>
+<p>Back in Sublime text 2, we still need to modify the lua config file location. We could have created another environment variable but we&#8217;ve opted to place the config file in our project directory. So lets simply replace the relevant paths&#8230;</p>
+<p>change this line&#8230;</p>
+<p><em>if not exist &#8220;%MOAI_CONFIG%&#8221; (</em></p>
+<p>to this&#8230;</p>
+<p><em>if not exist &#8220;config\config.lua&#8221; (</em></p>
+<p>and change this line&#8230;</p>
+<p><em>&#8220;%MOAI_BIN%\moai&#8221; &#8220;%MOAI_CONFIG%\config.lua&#8221; &#8220;main.lua&#8221;</em></p>
+<p>to this&#8230;</p>
+<p><em>&#8220;%MOAI_BIN%\moai&#8221; &#8220;config\config.lua&#8221; &#8220;main.lua&#8221;</em></p>
+<p>Okay. Now we just have to modify the config.lua file slightly.</p>
+<p>Change this line&#8230;</p>
+<p><em>package.path = package.path .. &#8216;;../../../src/lua-modules/?.lua&#8217;</em></p>
+<p>to this&#8230;</p>
+<p><em>package.path = package.path .. &#8216;;../../moai-sdk/include/lua-modules/moai/?.lua&#8217;</em></p>
+<p>All we&#8217;re doing in all of these instances is changing the locations of the various components to reflect our setup.</p>
+<p><em><strong>Step 5: Running it</strong></em></p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/moai_running-e1339934287733.jpg"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/moai_running-e1339934287733.jpg" alt="" title="Moai development environment" width="600" height="314" class="aligncenter size-full wp-post-3108 wp-image-3125" /></a></p>
+<p>We should be able to run our sample application now. Open the windows command prompt, change directory to your new project folder (in my case, test) and type &#8220;run&#8221;. Voilà!</p>
+<p>You can now edit the main.lua file to write your own code.</p>
+<p><em><strong>Step 6: Improving the environment</strong></em></p>
+<p>Sublime Text 2 has its own command line built in. As such, we can improve the build environment considerably.</p>
+<p>In Sublime Text 2, navigate to Tools -> Build System -> New Build System.</p>
+<p>Copy and paste this (all it does is launch the run.bat application)&#8230;</p>
+<p><em>{<br />
+       &#8220;cmd&#8221;: [&#8220;${project_path:${folder}}/run.bat&#8221;]<br />
+}</em></p>
+<p>Now, Ctrl+S to save the file and call it something sensible like &#8220;Moai-Windows&#8221;.</p>
+<p>Now set the new build system by navigating to Tools -> Build System and selecting your new build system (In my case Moia-Windows).</p>
+<p>Now when you&#8217;re modifying main.lua, you can hit Ctrl+B to automatically run the program. You don&#8217;t need to open a separate command line any more.</p>
+<p><strong>Bonus Update</strong></p>
+<p>Here&#8217;s a video of my progress this afternoon. Not much to show but its the start of something and I&#8217;ve been impressed with both Moai and Lua.</p>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe loading="lazy" width="420" height="315" src="https://www.youtube.com/embed/rmshSckKgzk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p><strong>Conclusion</strong></p>
+<p>I&#8217;m still learning and reading about the structure of Moai so I&#8217;ll likely write some follow-up articles as I learn more. If you spot anything stupid in this guide, or have any advice, then let me know in the comments :)</p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

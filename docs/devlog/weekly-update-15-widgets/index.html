@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Weekly Update #15 – Widgets</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="It’s been a bit of a struggle for the last, hmmm let me see… 3 weeks! A mixture of social networking saturation combined with some tough game design..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/weekly-update-15-widgets/" />
+        <meta property="og:title" content="Weekly Update #15 – Widgets" />
+        <meta property="og:description" content="It’s been a bit of a struggle for the last, hmmm let me see… 3 weeks! A mixture of social networking saturation combined with some tough game design..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/weekly-update-15-widgets/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Weekly Update #15 – Widgets" />
+        <meta name="twitter:description" content="It’s been a bit of a struggle for the last, hmmm let me see… 3 weeks! A mixture of social networking saturation combined with some tough game design..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Weekly Update #15 – Widgets",
+  "description": "It’s been a bit of a struggle for the last, hmmm let me see… 3 weeks! A mixture of social networking saturation combined with some tough game design...",
+  "url": "https://chriswaite.dev/devlog/weekly-update-15-widgets/",
+  "datePublished": "2012-06-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Weekly Update #15 – Widgets</h1>
+                <div class="date">June 2012</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p>It&#8217;s been a bit of a struggle for the last, hmmm let me see&#8230; 3 weeks! A mixture of <a href="https://www.chriswaite.dev/devlog/a-break-from-twitter/">social networking saturation</a> combined with some tough game design dilemmas have resulted in a development lull and very little progress.</p>
+<p>I&#8217;ve really struggled to get my game back on track but a break from programming, plenty of scribbling, small pieces of paper and reading seems to have sorted things out. At least a little.</p>
+<p>This list is going to be short but here&#8217;s what&#8217;s been done the last few weeks&#8230;<!--more--></p>
+<p>&#8211; The crafting system has been removed (parked for the time being)<br />
+&#8211; The questing system has been put on hold<br />
+&#8211; Widget system implemented</p>
+<p>Lets talk about what&#8217;s been removed.</p>
+<p>The crafting system was a solution to a hypothetical game design problem. Basically I had concerns over lots of permutations of unused inventory items. With crafting, I felt that I could place that responsibility in the hands of the player. I think this is a bad idea. If I do add crafting, I want it to enhance the gameplay not make the player work harder. I&#8217;m also worried about complexity. Too many concepts are going to water down the game.</p>
+<p>The questing system is interesting. I haven&#8217;t properly fleshed it out and it suffers from some of the same issues as the crafting system. I feel like I&#8217;m forcing it into the game but can&#8217;t quite figure out why. Currently it would just contain a bunch of &#8220;find this person&#8221; quests. I still think I want questing in the game, just not in its current incarnation.</p>
+<p>The removal (or temporary parking) of these sub-systems allows me to focus on the core gameplay.</p>
+<p><strong>Widgets</strong></p>
+<p>Widgets are central to the game. They essentially apply properties to a tile. A tile can only have a single widget and its optional. Crafting would have exposed this feature to the player but as it stands the player will have no control over which widget is applied to which tile. They will however be able to select tiles (with widgets) from their inventory to solve levels.</p>
+<p>For example, the only widget that exists at the moment is direction reversal. Any tile with this widget applied will reverse the players direction. Gameplay would work something like this &#8211; a level contains a chest of loot down a dead end. The player can open their inventory and select a tile with the reversal widget. They can then place this just past the chest in order to collect it without getting trapped.</p>
+<p>Widgets are intended to provide answers to puzzles/obstacles in the game. Coming up with lots of interesting obstacles is my next big challenge.</p>
+<p>Here&#8217;s an image showing a new indoor tile set (unfinished) and the reversal widget. The current widget design is purely for debugging. It won&#8217;t look like that in the final game. Just to reiterate, these are unfinished graphics.</p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png" alt="" title="Reversal Widget" width="319" height="484" class="aligncenter size-full wp-post-3084 wp-image-3094" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png 319w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-06-09-at-16.41.png 197w" sizes="(max-width: 319px) 100vw, 319px" /></a></p>
+<p><strong>Emergent gameplay</strong></p>
+<p>Widgets open up the possibility of emergent gameplay (that is, new gameplay that emerges by combining other gameplay elements).</p>
+<p>In this case you can, for example, place two direction reversal tiles and create a path that the player permanently moves along. This could be used to bide time whilst determining a solution. You could break the path using the explosive tile.</p>
+<p>I want to support this type of gameplay as much as possible whilst still ensuring that it doesn&#8217;t break fundamental gameplay (for example, that would currently result in a huge experience boost which I&#8217;ll need to fix).</p>
+<p>As it stands my short term goal remains. I&#8217;m creating a short throwaway 5-level demo. These levels won&#8217;t necessarily be used in the final game, they&#8217;re purely to demo gameplay. I&#8217;m going to come up with a mini story for it too. Hopefully with crafting and questing removed from the equation, this should prove easier now.</p>
+<p><strong>Stuff I liked this week</strong></p>
+<p>I think we can call this a regular feature now :). Here&#8217;s one thing I liked from the internet.</p>
+<ul>
+<li>Tokyo Jungle PV. Sometimes there are no words&#8230;
+<div class="embed-responsive embed-responsive-16by9">
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/GF3x7O59yU8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</li>
+</ul>
+<p>See you next time.</p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Devlog – 6th January 2014</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="And we’re off." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/devlog-6th-january-2014/" />
+        <meta property="og:title" content="Devlog – 6th January 2014" />
+        <meta property="og:description" content="And we’re off." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/devlog-6th-january-2014/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Devlog – 6th January 2014" />
+        <meta name="twitter:description" content="And we’re off." />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Devlog – 6th January 2014",
+  "description": "And we’re off.",
+  "url": "https://chriswaite.dev/devlog/devlog-6th-january-2014/",
+  "datePublished": "2014-01-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  }
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Devlog – 6th January 2014</h1>
+                <div class="date">January 2014</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p>And we&#8217;re off.</p>
+<p>My first devlog of 2014. I&#8217;m breaking these into week long blocks. They&#8217;re designed to be short, discussing what has been achieved each week. Hopefully they will help to keep me on track.</p>
+<p>This week I focussed on Sprite Kit migration. This is likely to be my focus for the month since there&#8217;s a fair amount of code to port. So far I&#8217;ve done the main menu and data persistence class. As expected, the data persistence class required almost no work, being pure objective-c, other than changing the property declarations slightly and removing some &#8220;retain&#8221; calls from my code. When using cocos2d, I hadn&#8217;t being using ARC so all of that was necessary.</p>
+<p>The main menu required its texture atlas and sprite declarations switching. Honestly, thanks to cocos and sprite kit both being Objective-C and sharing familiar concepts, this wasn&#8217;t too bad.</p>
+<p>Next up is going to be adding the texture atlases for iPad and iPad Retina, to ensure I&#8217;m universal from the start, and converting the character and level selection classes.</p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

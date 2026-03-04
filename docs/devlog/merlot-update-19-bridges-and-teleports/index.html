@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Merlot Update #19 – Bridges and Teleports</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Level 3 of my demo is at last complete." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/merlot-update-19-bridges-and-teleports/" />
+        <meta property="og:title" content="Merlot Update #19 – Bridges and Teleports" />
+        <meta property="og:description" content="Level 3 of my demo is at last complete." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/merlot-update-19-bridges-and-teleports/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-08-04-at-14.13.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Merlot Update #19 – Bridges and Teleports" />
+        <meta name="twitter:description" content="Level 3 of my demo is at last complete." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-08-04-at-14.13.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Merlot Update #19 – Bridges and Teleports",
+  "description": "Level 3 of my demo is at last complete.",
+  "url": "https://chriswaite.dev/devlog/merlot-update-19-bridges-and-teleports/",
+  "datePublished": "2013-08-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-08-04-at-14.13.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Merlot Update #19 – Bridges and Teleports</h1>
+                <div class="date">August 2013</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p>Level 3 of my demo is at last complete.</p>
+<p>This sprint has included the addition of a new river tile and two new widgets (the bridge and the teleport). The idea for level 3 was to investigate some possible widgets to ensure that widgets work as a puzzle mechanic.</p>
+<p>The new widgets have also driven me to separate the inventory item texture from the widget textures. This allows me to retain independent logic for both widget functionality and inventory item functionality. It also solves an issue with cohesive widget design across tilesets. Now I can have consistent inventory icons whilst still having flavourful, even tileset specific, widgets.</p>
+<p>The new river tile is an attempt at a new obstacle. Its an impassable terrain type, currently in vertical and horizontal flavours. I plan to add corners as well as river crossings (perhaps even lakes). So how do you traverse a river? There are actually a few ways introduced in this level.<!--more--></p>
+<p>(The widget designs are purely placeholder and will be appropriately pimped up for the final game)</p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-08-04-at-14.13.png" alt="Bridges" width="434" height="704" class="aligncenter size-full wp-post-3624 wp-image-3625" /></p>
+<p><strong>The bridge widget</strong></p>
+<p>Placing the bridge widget on a river tile automatically detects it orientation and places a bridge across it. You can travel across the bridge as you would any road.</p>
+<p><strong>The teleport widget</strong></p>
+<p>The teleport widget is fairly powerful but not without its challenges. You can place as many teleport widgets as you wish, provided you have enough in your inventory. When you enter a tile with a teleport widget you will be randomly teleported to another tile that also contains a teleport widget. In this way you can control where you end up by only placing two teleports. I&#8217;m currently playing around with whether the teleports should persist or disappear after use.</p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-08-04-at-14.18.png" alt="teleport" width="434" height="704" class="aligncenter size-full wp-post-3624 wp-image-3627" /></p>
+<p><strong>Why use a bridge rather than a teleport?</strong></p>
+<p>Well, you may not have any teleport widgets. They&#8217;ll be more expensive and difficult to find. Additionally bridges are more predictable for getting to certain spaces whilst teleports will be required for really hard to reach places (containing some nice loot).</p>
+<p>Next up is demo level 4 which will focus on loot from chests, npc placement, and a new speech model for preset conversations (driving the story). Quite a lot to deal with but some of the structure is already in place from the previous attempt. I&#8217;ll also try to implement another tile type and associated widget.</p>
+<p>More to come soon.</p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

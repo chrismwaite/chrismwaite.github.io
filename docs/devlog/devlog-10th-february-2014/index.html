@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Devlog – 10th February 2014</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Fairly limited but good progress this week." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/devlog-10th-february-2014/" />
+        <meta property="og:title" content="Devlog – 10th February 2014" />
+        <meta property="og:description" content="Fairly limited but good progress this week." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/devlog-10th-february-2014/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Devlog – 10th February 2014" />
+        <meta name="twitter:description" content="Fairly limited but good progress this week." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Devlog – 10th February 2014",
+  "description": "Fairly limited but good progress this week.",
+  "url": "https://chriswaite.dev/devlog/devlog-10th-february-2014/",
+  "datePublished": "2014-02-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Devlog – 10th February 2014</h1>
+                <div class="date">February 2014</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p>Fairly limited but good progress this week.</p>
+<p>I&#8217;ve mainly focussed on the separation of foreground elements from the tiles that I mentioned last week. I finished adding scenery points to each of the tiles. The way this works is that each tile type, for example a corner with exits to the north and east, has an array of CGPoints. These are viable positions on the tile for scenery placement. When a tile is placed, n points are selected at random from the array (a single point cannot be selected more than once). Then a random scenery object is selected and placed at that point.</p>
+<p>This creates subtle but noticeable variation in the scenery. Of course its expandable too with almost no effort &#8211; new pieces of scenery and specific scenery points. On a per tileset basis too. So introducing even more variety is something I can, and will, come back to.</p>
+<p>It seemed silly not to take advantage of the separation of these pieces of scenery into individual objects. As such, I also worked on some new animation this week. I wanted to create an effect where the scenery pops up from the tile (a sort of simple growth animation). I&#8217;m pretty pleased with the result. You can check it out in my earlier post <a href="https://www.chriswaite.dev/devlog/growth-animation/">here</a>.</p>
+<p>Its the sort of detail that doesn&#8217;t immediately bring anything to the game but the accumulation of this kind of thought across many elements has a significant impact on your enjoyment of the game.</p>
+<p>Aside from this I once again attempted to tackle a dynamic background. I opted to break the background into a series of water tiles that I could then manipulate to appear as waves. This worked but unfortunately didn&#8217;t look that great. It also detracts too much from the game.</p>
+<p>As a result I&#8217;ve reverted back to my static background. I think my solution needs to be simple. Something to suggest movement without taking over the scene.</p>
+<p>That&#8217;s it for this week. In the coming week my focus will be on some more tidy-up and embellishment. I may also begin to tackle the level select screen.</p>
+<p>As promised, here are a few WIP screenshots from the game.</p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" alt="WIP shot of level showing random scenery placement" width="321" height="569" class="aligncenter size-full wp-post-3845 wp-image-3848" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 321w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 169w" sizes="(max-width: 321px) 100vw, 321px" /></p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png" alt="WIP screenshot of level showing walls" width="320" height="568" class="aligncenter size-full wp-post-3845 wp-image-3849" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 320w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-02-16-at-11.23.png 169w" sizes="(max-width: 320px) 100vw, 320px" /></p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

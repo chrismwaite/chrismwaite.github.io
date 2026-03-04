@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Ludum Dare 39 Liveblog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Ludum Dare is a game development competition (and game jam) that takes place over 48 hours. During that time, the aim is to develop a game totally from..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/ludum-dare-39-liveblog/" />
+        <meta property="og:title" content="Ludum Dare 39 Liveblog" />
+        <meta property="og:description" content="Ludum Dare is a game development competition (and game jam) that takes place over 48 hours. During that time, the aim is to develop a game totally from..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/ludum-dare-39-liveblog/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/ludumdare_logo.jpg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Ludum Dare 39 Liveblog" />
+        <meta name="twitter:description" content="Ludum Dare is a game development competition (and game jam) that takes place over 48 hours. During that time, the aim is to develop a game totally from..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/ludumdare_logo.jpg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ludum Dare 39 Liveblog",
+  "description": "Ludum Dare is a game development competition (and game jam) that takes place over 48 hours. During that time, the aim is to develop a game totally from...",
+  "url": "https://chriswaite.dev/devlog/ludum-dare-39-liveblog/",
+  "datePublished": "2011-09-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/ludumdare_logo.jpg"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Ludum Dare 39 Liveblog</h1>
+                <div class="date">September 2011</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/ludumdare_logo.jpg"
+                            alt=""
+                            width="300"
+                            height="125"
+                            class="alignleft size-medium wp-post-4388 wp-image-4391"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/ludumdare_logo.jpg 300w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/ludumdare_logo.jpg         600w
+                            "
+                            sizes="(max-width: 300px) 100vw, 300px"
+                        /><a href="https://ldjam.com/events/ludum-dare/39"
+                            >Ludum Dare</a
+                        >
+                        is a game development competition (and game jam) that
+                        takes place over 48 hours. During that time, the aim is
+                        to develop a game totally from scratch (inclusive of
+                        code, art, sound effects and music). Additionally a
+                        theme is voted on and announced just prior to the
+                        competition start time.
+                    </p>
+                    <p>
+                        It just so happens that there is one
+                        <a href="https://ldjam.com/events/ludum-dare/39"
+                            >taking place this weekend</a
+                        >, and so I’ve decided to join in.
+                    </p>
+                    <p>
+                        This will be my second time entering Ludum Dare; my
+                        first one was way back in 2012 for Ludum Dare 25. During
+                        that, I came a fairly respectable 254th out of 1,326
+                        entries with my
+                        <a
+                            href="https://ludumdare.com/compo/ludum-dare-25/?action=preview&amp;uid=17895"
+                            >crime simulator – Micro Mob</a
+                        >. Let’s see if I can top that this time.
+                    </p>
+                    <p>
+                        Last time I also
+                        <a
+                            href="https://www.chriswaite.dev/devlog/ludum-dare-25-my-liveblog/"
+                            >live blogged my progress</a
+                        >
+                        which I enjoyed so I figured I’d do the same again this
+                        time.
+                    </p>
+                    <p>
+                        One of the things that limited me with Micro Mob was its
+                        requirement to download it in order to play. So this
+                        time, a platform with web deployment is a must. As a
+                        result, I’ve opted for
+                        <a href="https://phaser.io/">Phaser</a> which I used for
+                        my
+                        <a href="https://chrismwaite.github.io/procjam/"
+                            >procjam entry</a
+                        >
+                        a while back and really enjoyed.
+                    </p>
+                    <p>
+                        In addition to this liveblog, I’ll probably also create
+                        a development timelapse and will try to post some gifs.
+                    </p>
+                    <p><strong>Tools</strong></p>
+                    <p>
+                        Framework: <a href="https://phaser.io/">Phaser</a><br />
+                        Sound Effects:
+                        <a href="https://thirdcog.eu/apps/cfxr">CFXR</a>
+                        (and maybe my analogue synth)<br />
+                        Music: I might try to create something with my
+                        <a href="https://teenage.engineering/products/po"
+                            >Pocket Operator</a
+                        ><br />
+                        Art:
+                        <a href="https://affinity.serif.com/en-gb/designer/"
+                            >Affinity Designer</a
+                        ><br />
+                        Other:
+                        <a href="https://www.codeandweb.com/texturepacker"
+                            >TexturePacker</a
+                        >,
+                        <a href="https://71squared.com/glyphdesigner"
+                            >GlyphDesigner</a
+                        >
+                    </p>
+                    <p><strong>Development Diary</strong></p>
+                    <p><strong>7:50am (Hour 6)</strong></p>
+                    <p>
+                        Im up, showered and coffee is brewing! Ludum Dare began
+                        at 2am this morning (due to timezone differences) so I’m
+                        already somewhat behind.
+                    </p>
+                    <p>
+                        I’ve just checked the website and the chosen theme is:
+                        <strong>Running out of power</strong>
+                    </p>
+                    <p>
+                        I’m going to spend some time coming up with some ideas
+                        and getting some inspiration.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_075246.jpg"
+                            alt=""
+                            width="600"
+                            height="450"
+                            class="aligncenter size-full wp-post-4388 wp-image-4395"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_075246.jpg         600w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_075246.jpg 300w
+                            "
+                            sizes="(max-width: 600px) 100vw, 600px"
+                        />
+                    </p>
+                    <p><strong>8.30am (Hour 7)</strong></p>
+                    <p>
+                        I think I’ve settled on an idea. It has a basic premise
+                        and I think the assets are achievable in the time.
+                        There’s some complexity around input so I’ll focus on
+                        that first. I’m going to box out some areas of the
+                        screen with some basic shapes.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_082458.jpg"
+                            alt=""
+                            width="600"
+                            height="450"
+                            class="aligncenter size-full wp-post-4388 wp-image-4402"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_082458.jpg         600w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_082458.jpg 300w
+                            "
+                            sizes="(max-width: 600px) 100vw, 600px"
+                        />
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_082344.jpg"
+                            alt=""
+                            width="600"
+                            height="450"
+                            class="aligncenter size-full wp-post-4388 wp-image-4401"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_082344.jpg         600w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_20170729_082344.jpg 300w
+                            "
+                            sizes="(max-width: 600px) 100vw, 600px"
+                        />
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/hqdefault.jpg"
+                            alt=""
+                            width="480"
+                            height="360"
+                            class="aligncenter size-full wp-post-4388 wp-image-4399"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/hqdefault.jpg         480w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/hqdefault.jpg 300w
+                            "
+                            sizes="(max-width: 480px) 100vw, 480px"
+                        />
+                    </p>
+                    <p>Time to crack on!</p>
+                    <p><strong>10.30am (Hour 9)</strong></p>
+                    <p>
+                        Slow progress but speeding up a little now. I’m just
+                        working on getting some of the basic elements in place
+                        and some of the core mechanics.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-10.29.png"
+                            alt=""
+                            width="813"
+                            height="863"
+                            class="aligncenter size-full wp-post-4388 wp-image-4404"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-10.29.png         813w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-10.29.png 283w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-10.29.png 768w
+                            "
+                            sizes="(max-width: 813px) 100vw, 813px"
+                        />
+                    </p>
+                    <p><strong>12.45pm (Hour 11)</strong></p>
+                    <p>
+                        I forgot just how quickly time whips by in these events.
+                        I now have the basic interaction and fuel mechanic in
+                        place. Still lots to do to make it engaging. I’m taking
+                        a short break for something to eat before moving on to
+                        some basic graphics.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-12.44.png"
+                            alt=""
+                            width="821"
+                            height="898"
+                            class="aligncenter size-full wp-post-4388 wp-image-4406"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-12.44.png         821w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-12.44.png 274w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-12.44.png 768w
+                            "
+                            sizes="(max-width: 821px) 100vw, 821px"
+                        />
+                    </p>
+                    <p><strong>4.15pm (Hour 15)</strong></p>
+                    <p>
+                        I have some very basic graphics now and I’ve also added
+                        a few placeholder sound effects. I’m going to spend a
+                        few minutes creating a prioritised list of the remaining
+                        work and nice-to-have’s.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-16.19.jpg"
+                            alt=""
+                            width="682"
+                            height="700"
+                            class="aligncenter size-full wp-post-4388 wp-image-4408"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-16.19.jpg         682w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-29-at-16.19.jpg 292w
+                            "
+                            sizes="(max-width: 682px) 100vw, 682px"
+                        />
+                    </p>
+                    <p><strong>6.30pm (Hour 17)</strong></p>
+                    <p>
+                        Visually, I haven’t added anything new really. I’ve
+                        introduced the start of a new game mechanic and I’ve
+                        refactored some of the code ready for extension.
+                    </p>
+                    <p>
+                        Fatigue is starting to kick in big time now so I’m going
+                        to take a break for an hour or so. The remainder of the
+                        evening is likely to be spent on graphics and/or sound
+                        effects.
+                    </p>
+                    <p><strong>11pm (Hour 22)</strong></p>
+                    <p>
+                        I’ve put some placeholder music in place. Hopefully I’ll
+                        get a chance to replace it but its not a huge priority.
+                        I’ve also completed some of the key graphical assets –
+                        by no means my best work, or even very good but they’ll
+                        suffice if I run out of time.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/ld39_art.jpg"
+                            alt=""
+                            width="610"
+                            height="593"
+                            class="aligncenter size-full wp-post-4388 wp-image-4411"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/ld39_art.jpg         610w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/ld39_art.jpg 300w
+                            "
+                            sizes="(max-width: 610px) 100vw, 610px"
+                        />
+                    </p>
+                    <p>
+                        And with that I’m going to get some sleep ready for day
+                        2!
+                    </p>
+                    <p><strong>8.30am (Hour 31)</strong></p>
+                    <p>
+                        I’m up a little later than I’d have liked but I’m ready
+                        to go. There are 17 hours of the competition remaining.
+                        My first task is to put the graphics from last night
+                        into the game. Then its onwards with the gameplay.
+                    </p>
+                    <p><strong>12.25pm (Hour 35)</strong></p>
+                    <p>
+                        The last 4 hours went by shockingly fast! Lots done
+                        though. I’ve implemented the new graphics, added some
+                        visual clues to avoid text, fixed some bugs, and added
+                        several game features.
+                    </p>
+                    <p>
+                        I’ve got some larger features to work on now which will
+                        require new graphics and gameplay.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-11.59.jpg"
+                            alt=""
+                            width="648"
+                            height="649"
+                            class="aligncenter size-full wp-post-4388 wp-image-4415"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-11.59.jpg         648w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-11.59.jpg 150w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-11.59.jpg 300w
+                            "
+                            sizes="(max-width: 648px) 100vw, 648px"
+                        />
+                    </p>
+                    <p><strong>5pm (Hour 40)</strong></p>
+                    <p>
+                        Phew! lots done. Everything is now in place. With the
+                        remaining time, I have a couple of bugs to squash, a
+                        game over and restart function to write, and the dreaded
+                        tutorial. I probably won’t have time to work further on
+                        the graphics which is a shame.
+                    </p>
+                    <p>
+                        I plan on taking a break for an hour or two to recharge.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-17.07.jpg"
+                            alt=""
+                            width="723"
+                            height="656"
+                            class="aligncenter size-full wp-post-4388 wp-image-4417"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-17.07.jpg         723w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-17.07.jpg 300w
+                            "
+                            sizes="(max-width: 723px) 100vw, 723px"
+                        />
+                    </p>
+                    <p><strong>11pm (Hour 46)</strong></p>
+                    <p>
+                        Success! I’ve just submitted my entry to Ludum Dare 39 –
+                        Stoked. I’m thoroughly exhausted. I really wanted to
+                        revisit the graphics but I’ve ended up improving
+                        gameplay a little instead.
+                    </p>
+                    <p>
+                        I’ll tidy this post up in the coming days. I also have a
+                        development timelapse to stitch together and post :)
+                    </p>
+                    <p>
+                        <a href="https://ldjam.com/events/ludum-dare/39/stoked"
+                            >You can view the entry and play it here.</a
+                        >
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-22.47.jpg"
+                            alt=""
+                            width="700"
+                            height="588"
+                            class="aligncenter size-full wp-post-4388 wp-image-4419"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-22.47.jpg         700w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2017-07-30-at-22.47.jpg 300w
+                            "
+                            sizes="(max-width: 700px) 100vw, 700px"
+                        />
+                    </p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

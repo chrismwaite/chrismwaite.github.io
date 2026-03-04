@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Weekly Update #13 – Data Persistence and                                 Levelling Mechanics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="These weeks are zipping by rather quickly, don’t you think? We’re 13 weekly updates into full production on this project. That puts us about 30% of the..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/weekly-update-13-data-persistence-and-levelling-mechanics/" />
+        <meta property="og:title" content="Weekly Update #13 – Data Persistence and Levelling Mechanics" />
+        <meta property="og:description" content="These weeks are zipping by rather quickly, don’t you think? We’re 13 weekly updates into full production on this project. That puts us about 30% of the..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/weekly-update-13-data-persistence-and-levelling-mechanics/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-e1335702521112.jpg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Weekly Update #13 – Data Persistence and Levelling Mechanics" />
+        <meta name="twitter:description" content="These weeks are zipping by rather quickly, don’t you think? We’re 13 weekly updates into full production on this project. That puts us about 30% of the..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-e1335702521112.jpg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Weekly Update #13 – Data Persistence and Levelling Mechanics",
+  "description": "These weeks are zipping by rather quickly, don’t you think? We’re 13 weekly updates into full production on this project. That puts us about 30% of the...",
+  "url": "https://chriswaite.dev/devlog/weekly-update-13-data-persistence-and-levelling-mechanics/",
+  "datePublished": "2012-04-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/photo-e1335702521112.jpg"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Weekly Update #13 – Data Persistence and                                 Levelling Mechanics</h1>
+                <div class="date">April 2012</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p>These weeks are zipping by rather quickly, don&#8217;t you think? We&#8217;re 13 weekly updates into full production on this project. That puts us about 30% of the way through development. That feels about right to me, with the game engine coming along nicely, place-holder menus present, data inputs functioning, and the game generally feeling playable.</p>
+<p>Here&#8217;s what I&#8217;ve accomplished this week.</p>
+<p>+ Persistent data storage<br />
++ Basic Experience Point and Levelling mechanics</p>
+<p><strong>Data Persistence</strong></p>
+<p><!--more-->Data persistence is an important part of most, if not all, games. My games up until now have been very basic with the only persistent data required being a level number, and points value to continue from. NSUserDefaults, whilst not intended for this, has been more than adequate.</p>
+<p>The development of Coffee Cellar lead me into the murky world of Core Data. Core Data abstracts the data models from the storage method. I ended up using it in conjunction with SQLite3 and it worked quite nicely (Especially since I had relationships between coffees, tasting notes, etc).</p>
+<p>For this game I decided to ask my peer group on twitter and got a decent number of opinions. Suggested solutions included plist&#8217;s, the NSCoding protocol, and JSON. These solutions all have their pro&#8217;s and cons.</p>
+<p>The data I want to persist in this game is&#8230;</p>
+<ul>
+<li>The players character level, experience points, and class.</li>
+<li>The inventory &#8211; quantities of each tile and amount of &#8220;gold&#8221; (This is complicated slightly by the crafting system)</li>
+<li>Quest Data &#8211; completed quests and quests in progress</li>
+<li>The levels that have been completed</li>
+</ul>
+<p>Its not a trivial amount of data but neither is it absolutely huge (something you can&#8217;t know without knowing the underlying solutions for each of those concepts). The solution I&#8217;ve opted for is a single plist (Property List). A plist can only contain a small number of data types but they are more than sufficient for my needs and they tie in well to the solutions for the systems mentioned above. I also use a plist for all of my level data (its the output from my level editor).</p>
+<p>There are a couple of downsides to using a plist. All of the data is loaded into memory &#8211; this isn&#8217;t a problem for the persistent data because I know its maximum size up front (and its not storing huge amounts of data). The levels are another matter and I may end up splitting them into individual plist&#8217;s &#8211; I&#8217;ll run performance tests to make that decision.</p>
+<p>The other issue is that a plist is not obfuscated in any way so, should someone wish, they have easy access to the data (and therefore easy access to modify it).</p>
+<p>That last point is really a non-issue for me right now. This game does not have a competitive element to it (I&#8217;m not planning on leaderboards). I figure I can use a slightly different concept for score data if I do ever feel the desire to incorporate some form of leaderboard.</p>
+<p>So, for now, its a singleton writing to, and reading from, a single plist.</p>
+<p><strong>Character Levelling</strong></p>
+<p>PPRPG is going to have the concept of levelling-up your character. I wan&#8217;t to keep it simple so that its totally transparent to the user as to why they gained a level. I also want to ensure that the complexity fits with the iPhone as a gaming device (i.e. people playing on the go).</p>
+<p>You&#8217;re character will not have any attributes other than experience points. No health, stamina, strength, charisma, and what not &#8211; they&#8217;re too complicated for a game that you play when you have a few moments to spare. That&#8217;s not to say the game won&#8217;t have depth (I just don&#8217;t want statistical depth).</p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-e1335702521112.jpg"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/photo-e1335702521112.jpg" alt="" title="Character Levelling" width="320" height="480" class="aligncenter size-full wp-post-3032 wp-image-3047" /></a></p>
+<p>(This image is just to show you the concept. It won&#8217;t be this ugly in the finished game.)</p>
+<p>So, you&#8217;ll start off as a level 1 character with 0 experience points.</p>
+<p>You&#8217;ll be show how many experience points you need for the next level. This is currently calculated as ((current character level * 200) + 50). Adding a static value to the simple multiplication formula ensures that the early levels take a little while to reach, with this effect becoming less relevant in later levels. These values will be tweaked once I have the content in place. I may have oversimplified this but I think it will be easier to tell once I have my 5 level demo.</p>
+<p>Tiles in the game have a number of experience points assigned to them. You are awarded these points when you pass over them in the game (that is, you need to have successfully placed them on the board and been able to use them). The experience points will vary dependent upon the tile type and the widget applied (see a future post on crafting :). The experience points you&#8217;ve earned in the current level are displayed during gameplay (This shows you what you&#8217;re playing for).</p>
+<p>If you successfully reach the level exit, you keep those points (otherwise they are lost).</p>
+<p>You are presented with a screen that shows experience points earned, accumulated total experience points, current character level, and experience points needed for the next level.</p>
+<p>Levelling up will give you a choice between 3 perks. These will be randomly generated but influenced by your current level. Potential perks are likely to include a special tile type, a quantity of basic tiles, widgets, a decent amount of gold, a new tile queue slot. These aren&#8217;t defined yet.</p>
+<p>I&#8217;m also toying with the possibility of rewarding the player with something more minor (gold and/or basic tiles) for simply reaching the exit.</p>
+<p>Balancing all of this is going to be a challenge. That&#8217;s another reason to keep the formula&#8217;s simple. The more complexity added here, the more difficult it will be to create a stable playing experience throughout the full game, across a wide range of players.</p>
+<p>I&#8217;m also thinking about grinding. I think ideally I want to avoid it (especially with no stats to level). The easiest way to do this is to prevent the player from earning experience points when replaying completed levels.</p>
+<p>Something else I need to consider is a level cap. This is essentially an artificial system for prevent overpowered players. Again, without player statistics, I&#8217;m unlikely to need to do this.</p>
+<p><strong>Level 1 Done</strong></p>
+<p>So, I&#8217;ve reached my level 1 milestone. Its now onto level 2 which means a new tileset, the loot system, and the quest system.</p>
+<p>A few asides that I need to work on. The menu screens need an overhaul since I now dislike them severely. I also feel compelled to get some placeholder sound effects into the game. Oh, and the background for level 1 (or that tileset) is horrible so I&#8217;m going to rework it.</p>
+<p><strong>Stuff I liked this week</strong></p>
+<p>I totally omitted this the last few times. Oops! Anyway, here&#8217;s some interesting stuff from around the internet.</p>
+<ul>
+<li><a href="https://twitter.com/#!/notch/status/195141690917523456">https://twitter.com/#!/notch/status/195141690917523456</a> &#8211; Notch asked if any indies wanted to be included in his new game, 0x10c, as fictional software companies. I put Bytesize Adventures forward and it sounds like it was accepted &#8211; how cool is that?</li>
+<li><a href="https://not.vlambeer.com/luftrauser/">https://not.vlambeer.com/luftrauser/</a> &#8211; Play this web game.</li>
+<li><a href="https://www.ludumdare.com/compo/ludum-dare-23/?action=preview&#038;uid=1163">https://www.ludumdare.com/compo/ludum-dare-23/?action=preview&#038;uid=1163</a> &#8211; I enjoyed this Ludum Dare entry.</li>
+<li><a href="https://www.icoderogue.com/2012/04/game-level-and-rapid-prototyping-demo.html">https://www.icoderogue.com/2012/04/game-level-and-rapid-prototyping-demo.html</a> &#8211; This JS web framework looks pretty interesting. Its by <a href="https://twitter.com/#!/lzantal">@LZAntal</a>. More on it here &#8211; <a href="https://raptorgl.com/">https://raptorgl.com/</a></li>
+<li><a href="https://frenden.com/the-little-monoprice-graphics-tablet-that-could/">https://frenden.com/the-little-monoprice-graphics-tablet-that-could/</a> &#8211; A Wacom graphics tablet competitor. Shame UK shipping is so expensive (still cheaper than a comparable Wacom though).</li>
+<li><a href="https://www.makeuseof.com/tag/7-apps-coffee-lover-ios/">https://www.makeuseof.com/tag/7-apps-coffee-lover-ios/</a> &#8211; Coffee Cellar was featured in a &#8220;7 Apps that every Coffee lover should own&#8221; article.</li>
+</ul>
+<p>Thanks for reading. More Soon.</p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

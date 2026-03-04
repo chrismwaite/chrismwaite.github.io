@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tactical Overlay – Mini Mob Development Diary #5</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Mini Mob is going through a bit of a rough patch at the moment with my motivation on the project dipping significantly. I’ve faced this in my last few..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/tactical-overlay-mini-mob-development-diary-5/" />
+        <meta property="og:title" content="Tactical Overlay – Mini Mob Development Diary #5" />
+        <meta property="og:description" content="Mini Mob is going through a bit of a rough patch at the moment with my motivation on the project dipping significantly. I’ve faced this in my last few..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/tactical-overlay-mini-mob-development-diary-5/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Tactical Overlay – Mini Mob Development Diary #5" />
+        <meta name="twitter:description" content="Mini Mob is going through a bit of a rough patch at the moment with my motivation on the project dipping significantly. I’ve faced this in my last few..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tactical Overlay – Mini Mob Development Diary #5",
+  "description": "Mini Mob is going through a bit of a rough patch at the moment with my motivation on the project dipping significantly. I’ve faced this in my last few...",
+  "url": "https://chriswaite.dev/devlog/tactical-overlay-mini-mob-development-diary-5/",
+  "datePublished": "2013-04-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">
+                    Tactical Overlay – Mini Mob Development Diary #5
+                </h1>
+                <div class="date">April 2013</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+                    <p>
+                        Mini Mob is going through a bit of a rough patch at the
+                        moment with my motivation on the project dipping
+                        significantly. I&#8217;ve faced this in my
+                        <a
+                            href="https://www.chriswaite.dev/devlog/the-state-of-things/"
+                            >last few projects</a
+                        >
+                        and it has resulted in the projects being shelved.
+                    </p>
+                    <p>
+                        Its funny because its not something I really suffered
+                        from in my
+                        <a
+                            href="https://www.chriswaite.dev/devlog/astro-noughts-postmortem/"
+                            >earlier projects</a
+                        >. I&#8217;ve been mulling over what may have caused it.
+                        Perhaps its that I have placed a higher expectation on
+                        myself for this game, or maybe I&#8217;m just at that
+                        painful &#8220;middle phase&#8221; of a project where
+                        its predominantly just work. I don&#8217;t know, but I
+                        do know that I need to push through it.
+                    </p>
+                    <p>So where am I at with the project?</p>
+                    <p>
+                        I&#8217;ve scrapped the art style from the
+                        <a
+                            href="https://www.chriswaite.dev/devlog/the-beginnings-of-an-art-style-mini-mob-development-diary-4/"
+                            >last update</a
+                        >. It simply didn&#8217;t work once it was tiled, I
+                        think because it has such an odd perspective. I&#8217;ve
+                        ended up adopting an isometric view (for the artwork,
+                        its still a grid underneath) to create a more cohesive
+                        city. Thankfully this has solved my tiling issue.
+                        I&#8217;ve also adopted a black an white colour palette
+                        to give the city a noir feel. I think it works better
+                        than the art deco palette I had originally selected.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png"
+                            alt="mini mob art style"
+                            width="594"
+                            height="456"
+                            class="aligncenter size-full wp-post-3465 wp-image-3473"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png         594w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png 300w
+                            "
+                            sizes="(max-width: 594px) 100vw, 594px"
+                        /><!--more-->
+                    </p>
+                    <p>
+                        I have a new graphical issue and that is one of variety.
+                        I&#8217;ve created 4 zone types so far with subtle
+                        variation but the city still looks very uniform. I think
+                        I&#8217;m going to have to experiment with some slightly
+                        crazier designs to inject the variety that I&#8217;m
+                        after.
+                    </p>
+
+                    <style type="text/css">
+                        #gallery-1 {
+                            margin: auto;
+                        }
+                        #gallery-1 .gallery-item {
+                            float: left;
+                            margin-top: 10px;
+                            text-align: center;
+                            width: 25%;
+                        }
+                        #gallery-1 img {
+                            border: 2px solid #cfcfcf;
+                        }
+                        #gallery-1 .gallery-caption {
+                            margin-left: 0;
+                        }
+                        /* see gallery_shortcode() in wp-includes/media.php */
+                    </style>
+                    <div
+                        id="gallery-1"
+                        class="gallery galleryid-3465 gallery-columns-4 gallery-size-thumbnail"
+                    >
+                        <dl class="gallery-item">
+                            <dt class="gallery-icon portrait">
+                                <a
+                                    href="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_04.png"
+                                    ><img
+                                        width="64"
+                                        height="73"
+                                        src="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_04.png"
+                                        class="attachment-thumbnail size-thumbnail"
+                                        alt=""
+                                        decoding="async"
+                                        loading="lazy"
+                                /></a>
+                            </dt>
+                        </dl>
+                        <dl class="gallery-item">
+                            <dt class="gallery-icon portrait">
+                                <a
+                                    href="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_03.png"
+                                    ><img
+                                        width="64"
+                                        height="79"
+                                        src="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_03.png"
+                                        class="attachment-thumbnail size-thumbnail"
+                                        alt=""
+                                        decoding="async"
+                                        loading="lazy"
+                                /></a>
+                            </dt>
+                        </dl>
+                        <dl class="gallery-item">
+                            <dt class="gallery-icon portrait">
+                                <a
+                                    href="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_02.png"
+                                    ><img
+                                        width="64"
+                                        height="80"
+                                        src="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_02.png"
+                                        class="attachment-thumbnail size-thumbnail"
+                                        alt=""
+                                        decoding="async"
+                                        loading="lazy"
+                                /></a>
+                            </dt>
+                        </dl>
+                        <dl class="gallery-item">
+                            <dt class="gallery-icon portrait">
+                                <a
+                                    href="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_01.png"
+                                    ><img
+                                        width="64"
+                                        height="79"
+                                        src="https://res.cloudinary.com/dmq7gxinn/image/upload/zone_01.png"
+                                        class="attachment-thumbnail size-thumbnail"
+                                        alt=""
+                                        decoding="async"
+                                        loading="lazy"
+                                /></a>
+                            </dt>
+                        </dl>
+                        <br style="clear: both" />
+                    </div>
+
+                    <p>
+                        In other news, I&#8217;ve been playing around with a
+                        tactical overlay. I want to visually show the player
+                        which zones go into calculating their chance of winning
+                        a fight when they attack. I&#8217;ve implemented an
+                        initial concept whereby when you attack a zone, the
+                        surrounding zones are highlighted in blue and red if
+                        they are owned by the police or the mob (and therefore
+                        affect your odds). It&#8217;s effective up to a point
+                        but currently other visual aspects are clashing so its
+                        not clear if its going to fit well in the final design.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png"
+                            alt="mini mob tactical overlay"
+                            width="594"
+                            height="456"
+                            class="aligncenter size-full wp-post-3465 wp-image-3472"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png         594w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2013-04-27-at-10.59.png 300w
+                            "
+                            sizes="(max-width: 594px) 100vw, 594px"
+                        />
+                    </p>
+                    <p>
+                        I&#8217;ve also removed the defence values from every
+                        zone so that they are only visible when you tap a zone.
+                        This adds an element of discovery that was present in
+                        the original game. I quite like it but I suspect some
+                        players will prefer the efficiency of seeing all of the
+                        defence values at once. We&#8217;ll see what feedback I
+                        get once I enter the alpha phase.
+                    </p>
+                    <p>
+                        I&#8217;ve added a new recruit timer to the interface.
+                        The graphics are purely placeholder but the idea is that
+                        you get a visual representation of when your next
+                        allotment of reinforcements will arrive. This is
+                        essentially a countdown timer but in playing with it I
+                        decided to reverse it so that it fills up. This is a
+                        subtle change but it turns the action into something
+                        positive rather than something negative (something
+                        filling up rather than something depleting). It amazing
+                        how that can alleviate some of the time pressure you
+                        feel when playing.
+                    </p>
+                    <p>
+                        Next up is to work on the movement for the vehicles and
+                        people during a fight. This involves both logic and some
+                        basic artwork for vehicles and people. I want fights to
+                        be dynamic based on objects interacting rather than a
+                        static animation.
+                    </p>
+                    <p>
+                        I&#8217;d also like to get a first iteration of the
+                        defence value graphics in place.
+                    </p>
+                    <p>
+                        After that I&#8217;ll be blocking out some of the other
+                        screens in the game. Perhaps we can discuss overall
+                        gameplay flow and the meta-game next time.
+                    </p>
+                    <p>
+                        Thanks for reading and hopefully a few of you out there
+                        are still interested in the game.
+                    </p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

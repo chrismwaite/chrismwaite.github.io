@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Modern Mega Drive Programming – Getting Started</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="The Sega Mega Drive is my all time favourite games console. I had one as a kid when they were first introduced. I remember fondly playing Sonic for hours,..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/modern-mega-drive-programming-getting-started/" />
+        <meta property="og:title" content="Modern Mega Drive Programming – Getting Started" />
+        <meta property="og:description" content="The Sega Mega Drive is my all time favourite games console. I had one as a kid when they were first introduced. I remember fondly playing Sonic for hours,..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/modern-mega-drive-programming-getting-started/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Modern Mega Drive Programming – Getting Started" />
+        <meta name="twitter:description" content="The Sega Mega Drive is my all time favourite games console. I had one as a kid when they were first introduced. I remember fondly playing Sonic for hours,..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <link href="../../styles/prism.css" rel="stylesheet" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Modern Mega Drive Programming – Getting Started",
+  "description": "The Sega Mega Drive is my all time favourite games console. I had one as a kid when they were first introduced. I remember fondly playing Sonic for hours,...",
+  "url": "https://chriswaite.dev/devlog/modern-mega-drive-programming-getting-started/",
+  "datePublished": "2014-08-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Modern Mega Drive Programming – Getting Started</h1>
+                <div class="date">August 2014</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg" alt="Mega Drive" width="1024" height="632" class="aligncenter size-full wp-post-4021 wp-image-4026" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg 1024w, https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg 300w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+<p>The Sega Mega Drive is my all time favourite games console. I had one as a kid when they were first introduced. I remember fondly playing Sonic for hours, leaving the console on pause overnight to come back to it the next day (They have no persistent memory on board &#8211; although EA later introduced cartridges with a battery and limited memory).</p>
+<p>About 5 years ago, I bought a second hand Mega Drive on eBay. I really went to town on buying all the games I wanted as a kid (now priced at a few pounds). I also played through, and completed, every sonic back-to-back. Something I never managed to do as a kid.</p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/14391430.jpg" alt="Sonic screenshot" width="600" height="450" class="aligncenter size-full wp-post-4021 wp-image-4043" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/14391430.jpg 600w, https://res.cloudinary.com/dmq7gxinn/image/upload/14391430.jpg 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
+<p>That Mega Drive still takes pride of place under my TV and I still have friends over to play 4-player Micro Machine tournaments.</p>
+<p>There&#8217;s a heavy dose of nostalgia at play when I power on the Mega Drive. It evokes very happy memories for me.</p>
+<p>It was when chatting in a pub one night with a very good friend (about <a href="https://www.frontier.co.uk/games/elite/">Elite</a> and then all things retro), that I suddenly thought &#8220;wouldn&#8217;t it be cool to write a game for the Mega Drive&#8221;. So I set forth to investigate how such a thing could be done, and if it was even possible.</p>
+<p><strong>Research</strong></p>
+<p>As it turns out, not only is such a thing possible but it has a very <a href="https://gendev.spritesmind.net/forum/" title="spritesmind forum">active, thriving community</a> around it. Documentation and tutorials are sparse but there is a wealth of knowledge in those forums.</p>
+<p>The Mega Drive was originally programmed in Motorola 68000 Assembly language. That looks something like this (Shamelessly borrowed from <a href="https://bigevilcorporation.co.uk/2012/02/28/sega-megadrive-1-getting-started/">here</a>):</p>
+<pre><code class="language-bash">Loop:
+   move.l #0xF, d0 ; Move 15 into register d0
+   move.l d0, d1   ; Move contents of register d0 into d1
+   jmp Loop        ; Jump back up to 'Loop'</code></pre>
+<p>It looks a little overwhelming if its not something you&#8217;re used to. However, its possible to understand portions of it with a little effort. I found this <a href="https://bigevilcorporation.co.uk/">incredibly well written blog all about it</a>.</p>
+<p>I was actually quite attracted to giving assembler a shot since it looks like something meaty to get my teeth into. However, my desire to produce an actual product is still strong and it was then that I stumbled upon <a href="https://code.google.com/p/sgdk/">SGDK</a> &#8211; A Mega Drive SDK written in C. Much better. I don&#8217;t have much C knowledge but I do have knowledge of Objective-C (and a BSc in computer science) so I figure I&#8217;ll be able to fathom it with some effort.</p>
+<p>It turns out that SGDK is setup for Windows. I only have access to a Mac so what do I do? <a href="https://code.google.com/p/gendev/">Gendev</a> to the rescue. Gendev is another library that extends SGDk to allow it to be utilised on Linux. Perfect!</p>
+<p><strong>Getting Started</strong></p>
+<p>I wanted to isolate my Mega Drive development environment so what follows are the technical steps I took to setup such an environment in a Virtual Machine on a Mac.</p>
+<p>Some of this stuff is on the Gendev page itself but I&#8217;m writing it here for posterity and because I did have a couple of hickups, the solutions to which others may find useful.</p>
+<p>It&#8217;s worth mentioning up front that my hardware is a mid-2009 Macbook Pro (Core 2 Duo) with 8GB of RAM.</p>
+<ol>
+<li>Download and install <a href="https://www.virtualbox.org/">VirtualBox</a>. This should be self explanatory.</li>
+<li>Once installed, create a new VM instance and select Linux and Ubuntu 32-bit. I had quite a few failed attempts when doing all of this and one of the more recent things that caught me out was hard drive size. The recommended 8GB won&#8217;t be enough. Installation of Ubuntu and the Mega Drive tool chain occupies about 12GB. I went for 25GB as a sensible option.</li>
+<li>Download the 32-bit <a href="https://releases.ubuntu.com/12.04/">Ubuntu 12 iso</a> (it&#8217;s the one called ubuntu-12.04.4-desktop-i386.iso). I had speed issues with Ubuntu 14. Its far too slow when virtualised on my hardware. Additionally, the gendev tools were clearly tested on 12 so its a safer bet for compatibility.</li>
+<li>Start your Ubuntu instance and select the downloaded iso as the boot media. You should then follow the steps to install Ubuntu.</li>
+<li>As an optional step, once installation is complete, install <a href="https://www.xfce.org/">Xfce</a>. This is a much faster desktop environment than Unity (the Ubuntu default). The reason for doing this is to improve performance of the VM on my old-ish Macbook Pro. More recent hardware is unlikely to suffer as much. Run this command:-
+<pre>sudo apt-get install xfce4</pre>
+</li>
+<li>Install the Gendev dependencies. Run this command:-
+<pre>sudo apt-get install subversion build-essential texinfo</pre>
+</li>
+<li>Now we need to checkout Gendev. Find a suitable directory. I created a &#8220;Dev&#8221; folder in home. Then run this command:-
+<pre>svn checkout https://gendev.googlecode.com/svn/trunk/ gendev-read-only</pre>
+</li>
+<li>Now we need to compile the tools. This was another &#8220;fun&#8221; bit. I had quite a few failed attempts at this but if you&#8217;ve followed the steps above, you&#8217;re unlikely to face them. One thing worth noting is that this compilation process took about 15 hours on my hardware configuration. When you&#8217;re ready, run the following commands:-
+<pre>cd gendev-read-only
+make</pre>
+</li>
+<li>Now you need to compile the SGDK tools. This should only take a couple of minutes. Run these commands:-
+<pre>. ~/.gendev
+cd gendev-read-only/sgdk
+make install</pre>
+<p>(Note:- that first command is just exporting a couple of paths which you can view in the .gendev file in your home directory)</li>
+<li>You should be done now. You create a new project by copying the SGDK skeleton directory to any directory of your choice. Here I&#8217;m just creating a megadrive-test directory in my &#8220;Dev&#8221; folder. Run these commands:-
+<pre>mkdir megadrive-test
+cp -R gendev-read-only/sgdk/skeleton megadrive-test</pre>
+</li>
+</ol>
+<p>That&#8217;s it. You&#8217;re done.</p>
+<p><strong>Creating and compiling a simple program</strong></p>
+<p>You&#8217;re basically left to your own devices then. If you go to the <a href="https://code.google.com/p/sgdk/wiki/">SGDK Wiki</a> there is a <a href="https://code.google.com/p/sgdk/wiki/HelloWorld">hello world example</a>.</p>
+<p>Just open your favourite text editor (I used <a href="https://www.sublimetext.com/">Sublime Text</a>) and copy the hello world example into a new file:-</p>
+<pre><code class="language-c">#include <genesis.h>
+
+int main()
+{
+    VDP_drawText("Hello World!", 10, 13);
+
+    while(1)
+    {
+            VDP_waitVSync();
+    }
+    return (0);
+}</code></pre>
+<p>Save the above code as &#8220;test.c&#8221; (or anything you like provided it has the c file extension). You should save this file in the root project directory &#8220;megadrive-test&#8221;. Now run these commands:-</p>
+<pre>cd megadrive-test
+make</pre>
+<p>If you get something like this:-</p>
+<pre>make: m68k-elf-gcc: Command not found</pre>
+<p>Its because you need to run the <code>. ~/.gendev</code> command to export the path again. You can of course just add it permanently to your .profile file which can be found in your home directory.</p>
+<p>If it worked, you should have an &#8220;out.bin&#8221; file in your &#8220;megadrive-test&#8221; test directory. In order to run it, you&#8217;ll need a Mega Drive emulator. I&#8217;m using one called <a href="https://segaretro.org/Gens/GS">Gens/GS</a>.</p>
+<p>Download the Ubuntu 8.04+ package from <a href="https://segaretro.org/images/7/75/Gens_2.16.7_i386.deb">here</a>.</p>
+<p>Then navigate to the directory you downloaded to and run this command:-</p>
+<pre>sudo dpkg -i Gens_2.16.7_i386.deb</pre>
+<p>You should now be able to open Gens (its in &#8220;Games&#8221; in the &#8220;Applications Menu&#8221;) and &#8220;Open ROM&#8230;&#8221;. Select the &#8220;out.bin&#8221; file in &#8220;megadrive-test&#8221; and voila!</p>
+<p><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-08-26-at-21.47.png" alt="Mega Drive Emulator" width="1024" height="580" class="aligncenter size-large wp-post-4021 wp-image-4041" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-08-26-at-21.47.png 1024w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-08-26-at-21.47.png 300w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2014-08-26-at-21.47.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+<p><strong>Conclusion</strong></p>
+<p>I hope that was helpful. I&#8217;m not yet 100% sure if I&#8217;ll develop anything, I&#8217;m just dabbling at the moment. If I do however, then expect a follow up post at some point soon.</p>
+                </article>
+            </main>
+        </div>
+       	<script src="../../scripts/prism.js"></script>
+        </body>
+</html>

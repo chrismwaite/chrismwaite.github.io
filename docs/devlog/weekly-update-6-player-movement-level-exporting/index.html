@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Weekly Update #6 – Player Movement & Level                                 Exporting</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Its been a huge week in terms of progress. Here’s a quick list…" />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/weekly-update-6-player-movement-level-exporting/" />
+        <meta property="og:title" content="Weekly Update #6 – Player Movement &amp; Level Exporting" />
+        <meta property="og:description" content="Its been a huge week in terms of progress. Here’s a quick list…" />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/weekly-update-6-player-movement-level-exporting/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Weekly Update #6 – Player Movement &amp; Level Exporting" />
+        <meta name="twitter:description" content="Its been a huge week in terms of progress. Here’s a quick list…" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Weekly Update #6 – Player Movement & Level Exporting",
+  "description": "Its been a huge week in terms of progress. Here’s a quick list…",
+  "url": "https://chriswaite.dev/devlog/weekly-update-6-player-movement-level-exporting/",
+  "datePublished": "2012-02-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Weekly Update #6 – Player Movement & Level                                 Exporting</h1>
+                <div class="date">February 2012</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+<p>Its been a huge week in terms of progress. Here&#8217;s a quick list&#8230;</p>
+<p>&#8211; Reworked the tile queue system<br />
+&#8211; Added a temporary GUI &#8211; Please ignore the appearance, its nowhere near final.<br />
+&#8211; Added player<br />
+&#8211; Added player movement/pathfinding<br />
+&#8211; Added the timer<br />
+&#8211; Added very early experience point mechanics<br />
+&#8211; Progressed the web based level editing tools (Level DB saving and plist export)</p>
+<p>Lets take a look at a couple of the more interesting items from that list.<!--more--> First up, the player movement. You don&#8217;t have direct control over the main character. Instead, he will follow the path that you have laid down. The level is based upon a straightforward grid so pathfinding is fairly simple to implement (I have a tile class with edge attributes to determine which edges are open). Your character won&#8217;t begin moving until the timer reaches zero, at this point he&#8217;ll slowly begin to move along the path. Its your job, during the timer and after, to ensure that your character can reach the destination.</p>
+<p>(As an aside, the character you see below is a placeholder. I have an aesthetic in mind and some fun RPG tropes to go along with it :)</p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png" alt="" title="PPRPG early GUI" width="396" height="744" class="aligncenter size-full wp-post-2880 wp-image-2886" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png 396w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.24.png 159w" sizes="(max-width: 396px) 100vw, 396px" /></a></p>
+<p>Experience point and levelling mechanics are something I want to discuss in greater detail soon. For now I think its enough to say that you&#8217;ll gain experience points by laying tiles (only awarded upon successfully reaching the exit) and this will allow you to level your character, receiving appropriate perks/rewards.</p>
+<p>Finally, the web based level editing tools are taking shape. Whilst they barely look any different on the surface, beneath the hood I now have a level database. This represents the pool of levels that make up the game. I can save to this and, soon, load from it and modify the items. I&#8217;ve also created an export that generates a single plist from all of the level data. My game engine already parses this to generate the level. I&#8217;m hoping to access this plist remotely (during development) to give me a near-realitme level editing facility.</p>
+<p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.21.png"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-12-at-12.21.png" alt="" title="PPRPG Level Editor Progress" width="700" height="382" class="aligncenter size-full wp-post-2880 wp-image-2885" /></a></p>
+<p>Next week I&#8217;m going to continue to flesh out the level editing tool and work on an over world map (for now this will just be a list of levels, for speed. I have grander plans for the finished game). I&#8217;m also itching to move onto the quest system so I may dabble in that too.</p>
+<p>More soon.</p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>

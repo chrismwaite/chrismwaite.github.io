@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Dynamic hint system</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="description" content="Tutorial systems are a part of game design that can’t be avoided. You’ve developed the game so you know it inside and out – its the most intuitive..." />
+        <link rel="canonical" href="https://chriswaite.dev/devlog/dynamic-hint-system/" />
+        <meta property="og:title" content="Dynamic hint system" />
+        <meta property="og:description" content="Tutorial systems are a part of game design that can’t be avoided. You’ve developed the game so you know it inside and out – its the most intuitive..." />
+        <meta property="og:url" content="https://chriswaite.dev/devlog/dynamic-hint-system/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0039.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Dynamic hint system" />
+        <meta name="twitter:description" content="Tutorial systems are a part of game design that can’t be avoided. You’ve developed the game so you know it inside and out – its the most intuitive..." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0039.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../styles/global.css" />
+        <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Dynamic hint system",
+  "description": "Tutorial systems are a part of game design that can’t be avoided. You’ve developed the game so you know it inside and out – its the most intuitive...",
+  "url": "https://chriswaite.dev/devlog/dynamic-hint-system/",
+  "datePublished": "2010-11-01",
+  "author": {
+    "@type": "Person",
+    "name": "Christopher Waite",
+    "url": "https://chriswaite.dev/about/"
+  },
+  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0039.png"
+}
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+              <nav>
+                <ul>
+                  <li><a href="/">blog</a></li>
+                  <li><a href="/experiments">experiments</a></li>
+                  <li><a href="/about">about</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <div class="post-header">
+                <h1 class="title">Dynamic hint system</h1>
+                <div class="date">November 2010</div>
+            </div>
+
+            <main class="inner">
+                <article class="post">
+                    <p>
+                        Tutorial systems are a part of game design that
+                        can&#8217;t be avoided. You&#8217;ve developed the game
+                        so you know it inside and out &#8211; its the most
+                        intuitive gameplay in the world! However, others who
+                        play your game will have had no exposure to it and thats
+                        when the cracks start to show. You need a way to impart
+                        your knowledge to the player in a format that is easy to
+                        understand.
+                    </p>
+                    <p>
+                        In the past
+                        <a
+                            href="https://www.chriswaite.dev/devlog/handling-help-in-iphone-games/"
+                            >I&#8217;ve put a twist on the standard screen of
+                            text</a
+                        >. This is probably one of the least effective methods
+                        of imparting knowledge (due to players looking for
+                        instant engagement). When it came to Astro Noughts, I
+                        had originally planned on creating a playable tutorial
+                        which would guide you through the gameplay mechanics.
+                        Whilst this would no doubt be optimal, two things struck
+                        me. First &#8211; its a lot of work, and second &#8211;
+                        my game is fairly small in scope and may not warrant
+                        such an investment from the player. There are also other
+                        considerations with this style of tutorial, like how is
+                        it accessed? how long should it last? is it skippable?
+                        etc.
+                    </p>
+                    <p>
+                        It occurred to me that most of the gameplay in Astro
+                        Noughts is easy to understand and can be figured out
+                        after a few plays. There are however, some hidden
+                        controls that are not immediately apparent. What
+                        I&#8217;ve ended up settling on is a dynamic hint
+                        system. This is not a full blown tutorial but instead a
+                        system that dynamically collects data about the player
+                        and displays hints as and when the player is struggling
+                        with specific elements of the gameplay.
+                    </p>
+                    <p>
+                        I&#8217;ve set myself a deadline of the end of November
+                        for submitting Astro Noughts so I&#8217;ve kept this
+                        system light and to the point. Nothing fancy, and its
+                        not terribly reusable either. The code isn&#8217;t worth
+                        sharing but I will take you through the basic setup and
+                        how it works.<!--more-->
+                    </p>
+                    <p><strong>What you will need</strong></p>
+                    <ul>
+                        <li>
+                            A HintSystem class (I&#8217;m using cocos2d so
+                            i&#8217;ve subclassed CCNode otherwise you&#8217;d
+                            probably create it as an NSObject)
+                        </li>
+                        <li>
+                            A handful of integers and boolean values (for
+                            recording data)
+                        </li>
+                        <li>
+                            A game loop that will check the HintSystem
+                            periodically (I already have a 1 second timer
+                            running for less strenuous tasks)
+                        </li>
+                        <li>
+                            The patience to add hooks in the appropriate places
+                            in order to populate the player data
+                        </li>
+                    </ul>
+                    <p><strong>How it works</strong></p>
+                    <p>
+                        Its really very simple. I&#8217;ve created a HintSystem
+                        class. Within this I&#8217;ve added appropriate integers
+                        and booleans to store data about player behaviour. For
+                        example, I have an integer called
+                        <em>planetsCollected</em> that stores the number of
+                        planets the player has collected in the current game.
+                        Conversely I have an integer called
+                        <em>planetsMissed</em> to store the number of planets
+                        the player hasn&#8217;t managed to collect. I also have
+                        variables for each of the power-ups, recording the
+                        number of times each is collected and the number of
+                        times they&#8217;re used.
+                    </p>
+                    <p>
+                        I create a single instance of this class within the init
+                        method of my main game code. Then, in order to record
+                        data about the player, I&#8217;ve simply located the
+                        appropriate places in my code and incremented the
+                        variables within my hintSystem instance. For example, in
+                        the code that detects planet collision, I make a call to
+                        the hintSystem to increment the
+                        <em>planetsCollected</em> integer.
+                    </p>
+                    <p>
+                        Back in the HintSystem class, I have a method that
+                        returns a hint as an NSString. The method just checks
+                        for a series of simple conditions and returns the
+                        appropriate hint. For example, it checks to see if the
+                        <em>planetsMissed</em> integer is greater than 5 and the
+                        <em>planetsCollected</em> integer still equals zero. If
+                        this condition is satisfied, its safe to assume that the
+                        player is struggling with the core gameplay mechanics,
+                        so it returns a hint explaining how to collect planets.
+                        Likewise, I have test conditions for the power-ups so
+                        that if a powerup is collected but never used, a hint is
+                        returned explaining how to use that particular power-up.
+                    </p>
+                    <p>
+                        Moving back to the main game class, in the 1 second loop
+                        I mentioned earlier, I&#8217;ve added a call to the
+                        above method. If a string is returned then it passes it
+                        to a hint box and displays it on screen. If its
+                        doesn&#8217;t return a string then it hides the hint box
+                        (because the conditions in the method have now been
+                        satisfied).
+                    </p>
+                    <p>
+                        The system works because a player who is quick to pick
+                        up the gameplay elements will never see the hints. A
+                        player who doesn&#8217;t understand the gameplay at all
+                        is likely to see all of the hints. And then there are
+                        the shades of grey, players who have picked up some
+                        elements of the gameplay but not others (for which they
+                        receive hints).
+                    </p>
+                    <p>
+                        You could extend this system further by making it a
+                        Singleton and having methods to store the data between
+                        game sessions. You could also mine this data, sending it
+                        off to your server for later analysis.
+                    </p>
+                    <p><strong>What does it look like in action?</strong></p>
+                    <p>
+                        Here&#8217;s an example of a hint in Astro Noughts
+                        (These are a work in progress). It shows the hint that
+                        appears when a power-up appears on screen but
+                        doesn&#8217;t get collected. I&#8217;ve intentionally
+                        kept them fairly unobtrusive but you could of course
+                        make them flashy.
+                    </p>
+                    <p>
+                        <img
+                            decoding="async"
+                            loading="lazy"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0039.png"
+                            alt=""
+                            title="Astro Noughts hint system"
+                            width="600"
+                            height="450"
+                            class="aligncenter size-full wp-post-1692 wp-image-1708"
+                            srcset="
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0039.png         600w,
+                                https://res.cloudinary.com/dmq7gxinn/image/upload/IMG_0039.png 300w
+                            "
+                            sizes="(max-width: 600px) 100vw, 600px"
+                        />
+                    </p>
+                </article>
+            </main>
+        </div>
+    </body>
+</html>
