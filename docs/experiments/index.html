@@ -6,7 +6,6 @@
         <meta name="description" content="Programming experiments by Christopher Waite including game jam entries, VR experiences, procedural generation, and smartwatch apps." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <link rel="canonical" href="https://chriswaite.dev/experiments/" />
         <meta property="og:title" content="Experiments - chriswaite.dev" />
         <meta property="og:description" content="Programming experiments by Christopher Waite including game jam entries, VR experiences, procedural generation, and smartwatch apps." />
@@ -18,27 +17,32 @@
         <meta name="twitter:description" content="Programming experiments by Christopher Waite including game jam entries, VR experiences, procedural generation, and smartwatch apps." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/">devlog</a></li>
+                    <li><a href="/experiments/" aria-current="page">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-            <main class="inner">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page">
+                <h1 class="sr-only">Experiments</h1>
                 <section class="experiments">
-                    <h1 class="sr-only">Experiments</h1>
                     <article class="experiment-card">
                         <h2>Bogbrook Dungeon</h2>
                         <img
                             src="https://res.cloudinary.com/dmq7gxinn/images/f_auto,q_auto/v1668594328/cover_shot/cover_shot.png?_i=AA"
                             alt="Bogbrook Dungeon"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>My entry for the 2021 BGG Solitaire PnP contest.</p>
@@ -47,8 +51,10 @@
                     <article class="experiment-card">
                         <h2>Stoked</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599563249/Screen-Shot-2017-07-30-at-22.47.jpg"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599563249/Screen-Shot-2017-07-30-at-22.47.jpg"
                             alt="Stoked"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>My entry for Ludum Dare 39. I came 415th out of 2,431 entries.</p>
@@ -57,8 +63,10 @@
                     <article class="experiment-card">
                         <h2>Cardboard Dungeon</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599563424/sword_and_shield-e1484832546156.jpg"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599563424/sword_and_shield-e1484832546156.jpg"
                             alt="Cardboard Dungeon"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>An experimental virtual reality dungeon crawling experience.</p>
@@ -67,8 +75,10 @@
                     <article class="experiment-card">
                         <h2>Equaliser</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599563382/pebble-screenshot_2015-06-30_16-00-07.png"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599563382/pebble-screenshot_2015-06-30_16-00-07.png"
                             alt="Equaliser"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>A watch face for the Pebble Time smartwatch. Equaliser is a new take on telling the time.</p>
@@ -77,8 +87,10 @@
                     <article class="experiment-card">
                         <h2>Dronelike</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599563251/Screen-Shot-2014-11-20-at-19.35.png"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599563251/Screen-Shot-2014-11-20-at-19.35.png"
                             alt="Dronelike"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>Entry for procjam 2014: A Roguelike featuring procedurally generated levels and mining drones.</p>
@@ -87,8 +99,10 @@
                     <article class="experiment-card">
                         <h2>Unnamed space game</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599565019/Screen-Shot-2014-08-15-at-21.59.png"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599565019/Screen-Shot-2014-08-15-at-21.59.png"
                             alt="Unnamed space game"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>Very basic testing of procedural generation and seeds.</p>
@@ -97,8 +111,10 @@
                     <article class="experiment-card">
                         <h2>Subterranea</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599570129/subterranea.jpg"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599570129/subterranea.jpg"
                             alt="Subterranea"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>Early forays into cellular automata and procedural generation.</p>
@@ -107,8 +123,10 @@
                     <article class="experiment-card">
                         <h2>Micro Mob</h2>
                         <img
-                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/f_auto,q_auto/v1599564559/game1-e1355681317992.jpg"
+                            src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/v1599564559/game1-e1355681317992.jpg"
                             alt="Micro Mob"
+                            width="640"
+                            height="360"
                             loading="lazy"
                         />
                         <p>Entry for Ludum Dare 25, placing 254th out of 1,327 submissions.</p>
@@ -116,6 +134,5 @@
                     </article>
                 </section>
             </main>
-        </div>
     </body>
 </html>

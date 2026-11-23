@@ -2,59 +2,68 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Apple Trees</title>
+        <title>Apple Trees – chriswaite.dev</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <meta name="description" content="This week has been an interesting one, i’ve been playing with 2D physics engines. More specifically i’ve been testing integration of the Chipmunk physics..." />
+        <meta name="author" content="Christopher Waite" />
         <link rel="canonical" href="https://chriswaite.dev/devlog/apple-trees/" />
         <meta property="og:title" content="Apple Trees" />
         <meta property="og:description" content="This week has been an interesting one, i’ve been playing with 2D physics engines. More specifically i’ve been testing integration of the Chipmunk physics..." />
         <meta property="og:url" content="https://chriswaite.dev/devlog/apple-trees/" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="article:published_time" content="2010-03-07" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Apple Trees" />
         <meta name="twitter:description" content="This week has been an interesting one, i’ve been playing with 2D physics engines. More specifically i’ve been testing integration of the Chipmunk physics..." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
         <script type="application/ld+json">
         {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Apple Trees",
-  "description": "This week has been an interesting one, i’ve been playing with 2D physics engines. More specifically i’ve been testing integration of the Chipmunk physics...",
-  "url": "https://chriswaite.dev/devlog/apple-trees/",
-  "datePublished": "2010-03-01",
-  "author": {
-    "@type": "Person",
-    "name": "Christopher Waite",
-    "url": "https://chriswaite.dev/about/"
-  }
-}
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Apple Trees",
+          "description": "This week has been an interesting one, i’ve been playing with 2D physics engines. More specifically i’ve been testing integration of the Chipmunk physics...",
+          "url": "https://chriswaite.dev/devlog/apple-trees/",
+          "mainEntityOfPage": "https://chriswaite.dev/devlog/apple-trees/",
+          "datePublished": "2010-03-07",
+          "author": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          }
+        }
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/" aria-current="true">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-
-            <div class="post-header">
-                <h1 class="title">Apple Trees</h1>
-                <div class="date">March 2010</div>
-            </div>
-
-            <main class="inner">
-                <article class="post">
-
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="title">Apple Trees</h1>
+                    <time class="date" datetime="2010-03-07">7 March 2010</time>
+                </header>
+                <div class="post-body">
+<!-- post:content -->
 <p>This week has been an interesting one, i&#8217;ve been playing with 2D physics engines. More specifically i&#8217;ve been testing integration of the <a href="https://code.google.com/p/chipmunk-physics/">Chipmunk physics engine</a> into my new game. I have to say, it didn&#8217;t take too long to get to grips with Chipmunk and the templates included in cocos2d give you a good starting point. Rather than moving objects to a specific point, you move them by applying forces to their body within the game space (which itself has a number of attributes such as gravity).<!--more--></p>
 <p>For anyone interested here are some of the tutorials I used to help me:</p>
 <p><a href="https://www.alexandre-gomes.com/articles/chipmunk/">An Introduction to game physics with Chipmunk</a><br />
@@ -69,8 +78,13 @@
 <p>I&#8217;ll leave you with a link to this interesting Twitter tag &#8211; <a href="https://search.twitter.com/search?q=%23GameDevBookShelves">#GameDevBookShelves</a> &#8211; setup by <a href="https://twitter.com/mysterycoconut">@mysterycoconut</a>. It&#8217;s always interesting to see what other developers are reading.</p>
 <p>(Apple image courtesy of <a href="https://www.flickr.com/photos/abhijittembhekar/">Abhijit Tembhekar</a>)<br />
 (Courier image and video courtesy of <a href="https://www.engadget.com/2010/03/05/microsofts-courier-digital-journal-exclusive-pictures-and-de/">Engadget</a>)</p>
-                </article>
-            </main>
-        </div>
+<!-- /post:content -->
+                </div>
+            </article>
+            <nav class="post-nav" aria-label="More posts">
+                <a class="older" href="/devlog/another-week-gone/" rel="prev"><span>Older</span>Another week gone</a>
+                <a class="newer" href="/devlog/negative-critical-reception/" rel="next"><span>Newer</span>Negative Critical Reception</a>
+            </nav>
+        </main>
     </body>
 </html>

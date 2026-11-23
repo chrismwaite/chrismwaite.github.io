@@ -1,3 +1,19 @@
+/* Blog editor. Colours follow the site (docs/styles/global.css). */
+:root {
+    color-scheme: light;
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --line: #e4dfd6;
+    --text: #20242c;
+    --muted: #5a6170;
+    --link: #1f5fbf;
+    --link-hover: #174a96;
+    --ok: #23794b;
+    --error: #b3261e;
+    --error-bg: #fdeceb;
+    --radius: 6px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,94 +21,86 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #1a1a2e;
-    color: #e0e0e0;
+    font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
+:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 1px;
+}
+
 .toolbar {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 16px;
-    background: #16213e;
-    border-bottom: 1px solid #333;
+    padding: 10px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
     flex-shrink: 0;
 }
 
 .toolbar-title {
-    font-weight: bold;
-    font-size: 14px;
-    color: #D65D0E;
+    font-weight: 700;
     margin-right: auto;
 }
 
 .save-status {
-    font-size: 12px;
-    color: #4caf50;
+    font-size: 13px;
+    color: var(--ok);
     min-width: 120px;
 }
 
 .save-status.error {
-    color: #f44336;
+    color: var(--error);
 }
 
-button {
-    padding: 6px 14px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background: #2a2a4a;
-    color: #e0e0e0;
-    cursor: pointer;
+button,
+select {
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
     font-size: 13px;
+    cursor: pointer;
 }
 
-button:hover:not(:disabled) {
-    background: #3a3a5a;
+button:hover:not(:disabled),
+select:hover {
+    border-color: var(--muted);
 }
 
 button:disabled {
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 #save-btn {
-    background: #D65D0E;
-    border-color: #D65D0E;
+    background: var(--link);
+    border-color: var(--link);
     color: #fff;
+    font-weight: 600;
 }
 
 #save-btn:hover:not(:disabled) {
-    background: #e06d1e;
-}
-
-#upload-btn {
-    background: #458588;
-    border-color: #458588;
-    color: #fff;
-}
-
-#upload-btn:hover:not(:disabled) {
-    background: #569b9e;
+    background: var(--link-hover);
+    border-color: var(--link-hover);
 }
 
 #load-select {
-    padding: 6px 10px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background: #2a2a4a;
-    color: #e0e0e0;
-    font-size: 13px;
     max-width: 300px;
-    cursor: pointer;
 }
 
-#load-select:hover {
-    background: #3a3a5a;
+#post-series {
+    width: 100%;
+    padding: 8px 10px;
 }
 
 .panels {
@@ -108,7 +116,11 @@ button:disabled {
     flex-direction: column;
     gap: 6px;
     overflow-y: auto;
-    border-right: 1px solid #333;
+    border-right: 1px solid var(--line);
+}
+
+.editor-panel > label:not(:first-child) {
+    margin-top: 8px;
 }
 
 .preview-panel {
@@ -120,30 +132,32 @@ button:disabled {
     width: 100%;
     height: 100%;
     border: none;
-    background: #002B36;
+    background: var(--bg);
 }
 
 label {
     font-size: 12px;
     font-weight: 600;
-    color: #aaa;
+    color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.06em;
 }
 
 .hint {
     font-weight: normal;
     text-transform: none;
     letter-spacing: 0;
-    color: #666;
-    font-size: 11px;
 }
 
 .char-count {
     font-weight: normal;
     text-transform: none;
     float: right;
-    font-size: 11px;
+}
+
+.char-count.over {
+    color: var(--error);
+    font-weight: 600;
 }
 
 input[type="text"],
@@ -151,19 +165,25 @@ input[type="date"],
 textarea {
     width: 100%;
     padding: 8px 10px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background: #0f0f23;
-    color: #e0e0e0;
-    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
-    font-size: 13px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
 }
 
 input[type="text"]:focus,
 input[type="date"]:focus,
 textarea:focus {
     outline: none;
-    border-color: #D65D0E;
+    border-color: var(--link);
+    box-shadow: 0 0 0 2px rgb(31 95 191 / 0.2);
+}
+
+#post-slug,
+#post-content {
+    font-family: ui-monospace, "SF Mono", "Fira Code", Consolas, monospace;
+    font-size: 13px;
 }
 
 #post-description {
@@ -181,13 +201,14 @@ textarea:focus {
 .row {
     display: flex;
     gap: 12px;
+    margin-top: 8px;
 }
 
 .field {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .slug-field {
@@ -195,13 +216,13 @@ textarea:focus {
 }
 
 input.slug-exists {
-    background: #3a1111 !important;
-    border-color: #f44336 !important;
+    background: var(--error-bg);
+    border-color: var(--error);
 }
 
 .exists-label {
-    font-weight: bold;
+    font-weight: 700;
     text-transform: none;
     letter-spacing: 0;
-    color: #f44336;
+    color: var(--error);
 }

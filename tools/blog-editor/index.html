@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Blog Post Editor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/docs/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -31,6 +32,9 @@
                     <input type="text" id="post-slug" placeholder="auto-generated-from-title" />
                 </div>
             </div>
+
+            <label for="post-series">Series <span class="hint">(optional — edit tools/series.json to add or reorder)</span></label>
+            <select id="post-series"><option value="">None</option></select>
 
             <label for="post-description">Description <span class="char-count" id="desc-count">0/155</span></label>
             <textarea id="post-description" rows="2" placeholder="Summary for homepage and SEO meta description (~155 chars)"></textarea>

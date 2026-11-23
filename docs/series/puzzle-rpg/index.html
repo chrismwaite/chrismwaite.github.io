@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Weekly Update – Series – chriswaite.dev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://chriswaite.dev/series/puzzle-rpg/" />
+        <meta property="og:title" content="Weekly Update" />
+        <meta property="og:url" content="https://chriswaite.dev/series/puzzle-rpg/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="chriswaite.dev" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Weekly Update" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Weekly Update",
+          "url": "https://chriswaite.dev/series/puzzle-rpg/",
+          "hasPart": [
+            {
+              "@type": "BlogPosting",
+              "headline": "An update on PPRPG",
+              "url": "https://chriswaite.dev/devlog/an-update-on-pprpg/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #1 – Laying the foundations",
+              "url": "https://chriswaite.dev/devlog/weekly-update-1-laying-the-foundations/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #2 – Inventory",
+              "url": "https://chriswaite.dev/devlog/weekly-update-2-inventory/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #3 – Web tools",
+              "url": "https://chriswaite.dev/devlog/weekly-update-3-web-tools/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #4 – Early Artwork",
+              "url": "https://chriswaite.dev/devlog/weekly-update-4-early-artwork/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #5 – Core Puzzle Mechanics",
+              "url": "https://chriswaite.dev/devlog/weekly-update-5-core-puzzle-mechanics/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #6 – Player Movement & Level Exporting",
+              "url": "https://chriswaite.dev/devlog/weekly-update-6-player-movement-level-exporting/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #7 – Tools Milestone",
+              "url": "https://chriswaite.dev/devlog/weekly-update-7-tools-milestone/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #8 – NPC's",
+              "url": "https://chriswaite.dev/devlog/weekly-update-8-npcs/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #9 – A change of tack",
+              "url": "https://chriswaite.dev/devlog/weekly-update-9-a-change-of-tack/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #10 – Level 1",
+              "url": "https://chriswaite.dev/devlog/weekly-update-10-level-1/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #11 – Character Classes",
+              "url": "https://chriswaite.dev/devlog/weekly-update-11-character-classes/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #12 – Stability",
+              "url": "https://chriswaite.dev/devlog/weekly-update-12-stability/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #13 – Data Persistence and Levelling Mechanics",
+              "url": "https://chriswaite.dev/devlog/weekly-update-13-data-persistence-and-levelling-mechanics/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #14 – Inventory overhaul",
+              "url": "https://chriswaite.dev/devlog/weekly-update-14-inventory-overhaul/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Weekly Update #15 – Widgets",
+              "url": "https://chriswaite.dev/devlog/weekly-update-15-widgets/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Project Puzzle RPG – Big Ol' Development Thread",
+              "url": "https://chriswaite.dev/devlog/project-puzzle-rpg-big-ol-development-thread/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Merlot Update #16 – Rebooting the project",
+              "url": "https://chriswaite.dev/devlog/merlot-update-16-rebooting-the-project/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Merlot Update #17 – Level 1",
+              "url": "https://chriswaite.dev/devlog/merlot-update-17-level-1/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Merlot Update #18 – Widgets and Tiles",
+              "url": "https://chriswaite.dev/devlog/merlot-update-18-widgets-and-tiles/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Merlot Update #19 – Bridges and Teleports",
+              "url": "https://chriswaite.dev/devlog/merlot-update-19-bridges-and-teleports/"
+            },
+            {
+              "@type": "BlogPosting",
+              "headline": "Puzzle RPG – What's going on?",
+              "url": "https://chriswaite.dev/devlog/puzzle-rpg-whats-going-on/"
+            }
+          ]
+        }
+        </script>
+    </head>
+    <body>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
+                <ul>
+                    <li><a href="/" aria-current="true">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
+                </ul>
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page">
+            <header class="page-header">
+                <h1>Weekly Update</h1>
+                <p class="kicker">Series</p>
+            </header>
+            <div class="card-grid">
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/photo-5.jpg" alt="" width="640" height="360" loading="eager" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2011-12-06">December 2011</time>
+                        <h2><a href="/devlog/an-update-on-pprpg/">An update on PPRPG</a></h2>
+                        <p>In keeping with the purpose of this blog, as both a way to publicise my games and a diary to record my development activities, I thought it was about time...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-01-08-at-17.38.png" alt="" width="640" height="360" loading="eager" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-01-08">January 2012</time>
+                        <h2><a href="/devlog/weekly-update-1-laying-the-foundations/">Weekly Update #1 – Laying the foundations</a></h2>
+                        <p>As promised, I’m going to attempt to write weekly updates covering the development of my new game (working title – PPRPG). My aim is to chronicle my...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-01-15-at-12.46.png" alt="" width="640" height="360" loading="eager" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-01-15">January 2012</time>
+                        <h2><a href="/devlog/weekly-update-2-inventory/">Weekly Update #2 – Inventory</a></h2>
+                        <p>Another week has passed so its time for the second of my weekly development updates.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-01-22-at-14.31.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-01-22">January 2012</time>
+                        <h2><a href="/devlog/weekly-update-3-web-tools/">Weekly Update #3 – Web tools</a></h2>
+                        <p>Progress this week has been a little slow so this will be a short post. I’ve been focussing on the level editing tools which I need in order to create the...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/g4012.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-01-28">January 2012</time>
+                        <h2><a href="/devlog/weekly-update-4-early-artwork/">Weekly Update #4 – Early Artwork</a></h2>
+                        <p>This past week has been interesting. Playing some puzzle games I had a sudden realisation about one of the core mechanics in my game. I’ve yet to...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-02-05-at-13.54.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-02-05">February 2012</time>
+                        <h2><a href="/devlog/weekly-update-5-core-puzzle-mechanics/">Weekly Update #5 – Core Puzzle Mechanics</a></h2>
+                        <p>This week I’ve been working on the core puzzle mechanics. I’ve added in the feature I mentioned last week and I’m currently wrestling with my code to get...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-02-12-at-12.24.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-02-12">February 2012</time>
+                        <h2><a href="/devlog/weekly-update-6-player-movement-level-exporting/">Weekly Update #6 – Player Movement &amp; Level Exporting</a></h2>
+                        <p>Its been a huge week in terms of progress. Here’s a quick list…</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/P2260139.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-02-26">February 2012</time>
+                        <h2><a href="/devlog/weekly-update-7-tools-milestone/">Weekly Update #7 – Tools Milestone</a></h2>
+                        <p>For those of you following this series of posts closely, you may have noticed that I missed last weeks update. I was away for a few days taking a break...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/photo-6.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-03-04">March 2012</time>
+                        <h2><a href="/devlog/weekly-update-8-npcs/">Weekly Update #8 – NPC&#x27;s</a></h2>
+                        <p>First up, here’s a list of what’s been done this week.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-03-18-at-13.24.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-03-18">March 2012</time>
+                        <h2><a href="/devlog/weekly-update-9-a-change-of-tack/">Weekly Update #9 – A change of tack</a></h2>
+                        <p>I missed my weekly update last week because I didn’t have much to talk about. Sometimes that’s just how development goes. A feature, or series of...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Capture.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-03-25">March 2012</time>
+                        <h2><a href="/devlog/weekly-update-10-level-1/">Weekly Update #10 – Level 1</a></h2>
+                        <p>We’ve reached a bit of a milestone this week – the tenth post in this series of weekly updates. That means I’m at roughly the 2.5 month mark. Of course...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/characters.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-04-09">April 2012</time>
+                        <h2><a href="/devlog/weekly-update-11-character-classes/">Weekly Update #11 – Character Classes</a></h2>
+                        <p>These past few weeks have been fairly busy. Here’s what’s been achieved…</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-04-22-at-11.51.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-04-22">April 2012</time>
+                        <h2><a href="/devlog/weekly-update-12-stability/">Weekly Update #12 – Stability</a></h2>
+                        <p>Right, its been a few weeks so lets get straight to what’s been achieved?</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/photo-e1335702521112.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-04-29">April 2012</time>
+                        <h2><a href="/devlog/weekly-update-13-data-persistence-and-levelling-mechanics/">Weekly Update #13 – Data Persistence and Levelling Mechanics</a></h2>
+                        <p>These weeks are zipping by rather quickly, don’t you think? We’re 13 weekly updates into full production on this project. That puts us about 30% of the...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-05-19-at-15.58.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-05-19">May 2012</time>
+                        <h2><a href="/devlog/weekly-update-14-inventory-overhaul/">Weekly Update #14 – Inventory overhaul</a></h2>
+                        <p>The last few weeks have been fairly productive. I’m currently focused on producing a 2nd level for my mini demo. As anticipated, its throwing up plenty of...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2012-06-09-at-16.41.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-06-09">June 2012</time>
+                        <h2><a href="/devlog/weekly-update-15-widgets/">Weekly Update #15 – Widgets</a></h2>
+                        <p>It’s been a bit of a struggle for the last, hmmm let me see… 3 weeks! A mixture of social networking saturation combined with some tough game design...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/path4695.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2012-07-04">July 2012</time>
+                        <h2><a href="/devlog/project-puzzle-rpg-big-ol-development-thread/">Project Puzzle RPG – Big Ol&#x27; Development Thread</a></h2>
+                        <p>Hello there,</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/corner-se.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2013-06-08">June 2013</time>
+                        <h2><a href="/devlog/merlot-update-16-rebooting-the-project/">Merlot Update #16 – Rebooting the project</a></h2>
+                        <p>This is a post I didn’t think I’d be writing.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2013-06-24-at-20.54.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2013-06-24">June 2013</time>
+                        <h2><a href="/devlog/merlot-update-17-level-1/">Merlot Update #17 – Level 1</a></h2>
+                        <p>Following on from the last update, I’ve now successfully modified merlot to use relative positioning. This means that the game is now playable on the...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2013-07-08-at-20.41.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2013-07-08">July 2013</time>
+                        <h2><a href="/devlog/merlot-update-18-widgets-and-tiles/">Merlot Update #18 – Widgets and Tiles</a></h2>
+                        <p>I finally feel like I’m getting into a bit of a rhythm with this game. The last few sprints have been really good and level 2 of my 5-level demo is...</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><img src="https://res.cloudinary.com/dmq7gxinn/image/upload/c_fill,g_auto,w_640,h_360,f_auto,q_auto/Screen-Shot-2013-08-04-at-14.13.png" alt="" width="640" height="360" loading="lazy" decoding="async" /></div>
+                    <div class="card-body">
+                        <time datetime="2013-08-04">August 2013</time>
+                        <h2><a href="/devlog/merlot-update-19-bridges-and-teleports/">Merlot Update #19 – Bridges and Teleports</a></h2>
+                        <p>Level 3 of my demo is at last complete.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-media"><div class="card-noimg tile-3" aria-hidden="true">May<span>2014</span></div></div>
+                    <div class="card-body">
+                        <time datetime="2014-05-27">May 2014</time>
+                        <h2><a href="/devlog/puzzle-rpg-whats-going-on/">Puzzle RPG – What&#x27;s going on?</a></h2>
+                        <p>Its been a while since I posted a devlog and it was going so well – what happened?</p>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </body>
+</html>

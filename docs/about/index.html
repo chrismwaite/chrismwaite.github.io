@@ -6,7 +6,6 @@
         <meta name="description" content="My name is Christopher Waite and this is my personal blog. It’s home to my programming experiments and my varied ramblings on technology, creativity, and coffee." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <link rel="canonical" href="https://chriswaite.dev/about/" />
         <meta property="og:title" content="About - chriswaite.dev" />
         <meta property="og:description" content="My name is Christopher Waite and this is my personal blog. It’s home to my programming experiments and my varied ramblings on technology, creativity, and coffee." />
@@ -18,27 +17,31 @@
         <meta name="twitter:description" content="My name is Christopher Waite and this is my personal blog. It’s home to my programming experiments and my varied ramblings on technology, creativity, and coffee." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/" aria-current="page">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-            <main class="inner">
-                <section class="me">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+                <section class="prose">
                   <h1 class="sr-only">About</h1>
                   <p>My name is Christopher Waite and this is my personal blog. It’s home to my programming experiments and my varied ramblings on technology, creativity, and coffee.</p>
-                  <p>For the most part you’ll find posts on game development which is where my most recent tinkering has lead me. Head on over to the <a href="/experiments">experiments</a> page if you want to check out a few of my more interesting projects.</p>
+                  <p>For the most part you’ll find posts on game development which is where my most recent tinkering has lead me. Head on over to the <a href="/experiments/">experiments</a> page if you want to check out a few of my more interesting projects.</p>
                   <p>You can find me on <a href="https://bsky.app/profile/chrismwaite.bsky.social">Bluesky</a> or on <a href="https://github.com/chrismwaite">GitHub</a>.</p>
+                  <h3>AI Policy</h3>
+                  <p>AI has not been used to produce any of the content on this webisite. All words are written and proofread by me.</p>
                 </section>
             </main>
-        </div>
     </body>
 </html>

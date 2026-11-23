@@ -1,9 +1,4 @@
 (() => {
-  const MONTHS = [
-    "", "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-
   // Lines starting with one of these (opening or closing) are not wrapped in <p>
   const BLOCK_TAGS = /^<(?:!--|\/?(?:p|h[1-6]|ul|ol|li|dl|dt|dd|blockquote|div|pre|table|thead|tbody|tr|td|th|figure|figcaption|section|header|footer|nav|article|aside|form|fieldset|details|summary|iframe|video|audio|script|style|hr|br)\b)/i;
 
@@ -22,23 +17,14 @@
   const uploadBtn = document.getElementById("upload-btn");
   const uploadInput = document.getElementById("upload-input");
 
+  const seriesEl = document.getElementById("post-series");
+
   let previewTimer = null;
-  let templateStr = "";
+  let previewRequest = 0;
   let knownSlugs = new Set();
 
   // Set today's date as default
   dateEl.value = new Date().toISOString().slice(0, 10);
-
-  // --- Load external template ---
-  async function loadTemplate() {
-    try {
-      const resp = await fetch("template.html");
-      templateStr = await resp.text();
-    } catch {
-      templateStr = "";
-      showSaveStatus("Could not load template.html", true);
-    }
-  }
 
   // --- Slug generation ---
   function toSlug(text) {
@@ -111,18 +97,12 @@
 
   contentEl.addEventListener("input", schedulePreview);
   dateEl.addEventListener("input", schedulePreview);
+  seriesEl.addEventListener("change", schedulePreview);
 
   // --- Live preview ---
   function schedulePreview() {
     clearTimeout(previewTimer);
     previewTimer = setTimeout(updatePreview, 300);
-  }
-
-  function getDateDisplay() {
-    const val = dateEl.value;
-    if (!val) return "";
-    const [y, m] = val.split("-");
-    return `${MONTHS[parseInt(m, 10)]} ${y}`;
   }
 
   function escHtml(str) {
@@ -134,71 +114,42 @@
       .replace(/'/g, "&#x27;");
   }
 
-  function getFirstImage(html) {
-    const img = new DOMParser().parseFromString(html, "text/html").querySelector("img[src]");
-    return img ? img.getAttribute("src") : null;
-  }
-
-  // JSON string literal that is also safe inside a <script> block
-  function jsonStr(str) {
-    return JSON.stringify(str).replace(/</g, "\\u003c");
-  }
-
-  function buildPostHtml(opts = {}) {
-    if (!templateStr) return "<html><body><p>Template not loaded</p></body></html>";
-
-    const title = titleEl.value || "Untitled";
-    const desc = descEl.value || "";
-    const content = contentEl.value || "";
-    const firstImage = getFirstImage(content);
-    const hasCode = /<pre[\s>]/i.test(content);
-
-    // Saved posts use relative paths; the preview is served from the project root
-    const stylesPath = opts.forSave ? "../../styles" : "/docs/styles";
-    const scriptsPath = opts.forSave ? "../../scripts" : "/docs/scripts";
-
-    const values = {
-      TITLE: escHtml(title),
-      TITLE_JSON: jsonStr(title),
-      SLUG: slugEl.value || toSlug(title),
-      DESCRIPTION: escHtml(desc),
-      DESCRIPTION_JSON: jsonStr(desc),
-      DATE_ISO: dateEl.value || new Date().toISOString().slice(0, 10),
-      DATE_DISPLAY: getDateDisplay(),
-      CONTENT: content,
-      OG_IMAGE_META: firstImage
-        ? `        <meta property="og:image" content="${escHtml(firstImage)}" />\n`
-        : "",
-      TW_IMAGE_META: firstImage
-        ? `        <meta name="twitter:image" content="${escHtml(firstImage)}" />\n`
-        : "",
-      JSON_IMAGE: firstImage ? `,\n  "image": ${jsonStr(firstImage)}` : "",
-      STYLES_PATH: stylesPath,
-      PRISM_CSS: hasCode
-        ? `        <link href="${stylesPath}/prism.css" rel="stylesheet" />\n`
-        : "",
-      PRISM_JS: hasCode
-        ? `        <script src="${scriptsPath}/prism.js"></script>\n`
-        : ""
+  // The fields the server needs to render or save a post
+  function getFields() {
+    const title = titleEl.value.trim();
+    return {
+      title: title || "Untitled",
+      slug: slugEl.value.trim() || toSlug(title),
+      description: descEl.value.trim(),
+      date: dateEl.value || new Date().toISOString().slice(0, 10),
+      series: seriesEl.value,
+      content: contentEl.value
     };
-
-    // Single pass with a function, so "$" sequences and "{{...}}" in the
-    // post content are inserted literally rather than being reinterpreted.
-    return templateStr.replace(/\{\{([A-Z_]+)\}\}/g, (match, key) =>
-      key in values ? values[key] : match
-    );
   }
 
-  function updatePreview() {
-    const html = buildPostHtml({ forSave: false });
-    previewFrame.srcdoc = html;
+  // The server renders the preview with the same template used for saving
+  async function updatePreview() {
+    const request = ++previewRequest;
+    try {
+      const resp = await fetch("/api/preview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(getFields())
+      });
+      const data = await resp.json();
+      if (request !== previewRequest) return; // a newer preview is on its way
+      if (!resp.ok) throw new Error(data.error || `Server error: ${resp.status}`);
+      previewFrame.srcdoc = data.html;
+    } catch (err) {
+      showSaveStatus(`Preview error: ${err.message}`, true);
+    }
   }
 
   // --- New post ---
   function updateDescCount() {
     const len = descEl.value.length;
     descCount.textContent = `${len}/155`;
-    descCount.style.color = len > 155 ? "#f44336" : "#aaa";
+    descCount.classList.toggle("over", len > 155);
   }
 
   function resetForm() {
@@ -207,6 +158,7 @@
     descEl.value = "";
     contentEl.value = "";
     dateEl.value = new Date().toISOString().slice(0, 10);
+    seriesEl.value = "";
     updateDescCount();
     checkSlugExists();
   }
@@ -244,8 +196,17 @@
         showSaveStatus(`Post not found: ${slug}`, true);
         return;
       }
-      const data = await resp.json();
-      parsePostIntoEditor(data.html, data.slug);
+      const post = await resp.json();
+      resetForm();
+      titleEl.value = post.title;
+      slugEl.value = post.slug;
+      descEl.value = post.description;
+      dateEl.value = post.date;
+      seriesEl.value = post.series || "";
+      contentEl.value = post.content;
+      updateDescCount();
+      checkSlugExists();
+      updatePreview();
       showSaveStatus("Post loaded");
     } catch (err) {
       showSaveStatus(`Load error: ${err.message}`, true);
@@ -253,42 +214,16 @@
     loadSelect.value = "";
   });
 
-  function parsePostIntoEditor(html, slug) {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-
-    // Start clean so nothing carries over from the previously open post
-    resetForm();
-
-    const h1 = doc.querySelector(".post-header .title");
-    if (h1) titleEl.value = h1.textContent.trim();
-
-    const metaDesc = doc.querySelector('meta[name="description"]');
-    if (metaDesc) descEl.value = metaDesc.getAttribute("content") || "";
-
-    if (slug) {
-      slugEl.value = slug;
-    } else {
-      const canonical = doc.querySelector('link[rel="canonical"]');
-      if (canonical) {
-        const match = (canonical.getAttribute("href") || "").match(/\/devlog\/([^/]+)\//);
-        if (match) slugEl.value = match[1];
+  async function populateSeriesList() {
+    try {
+      const resp = await fetch("/api/series");
+      for (const s of await resp.json()) {
+        const opt = document.createElement("option");
+        opt.value = s.slug;
+        opt.textContent = s.title;
+        seriesEl.appendChild(opt);
       }
-    }
-
-    const ldScript = doc.querySelector('script[type="application/ld+json"]');
-    if (ldScript) {
-      try {
-        const ld = JSON.parse(ldScript.textContent);
-        if (ld.datePublished) dateEl.value = String(ld.datePublished).slice(0, 10);
-      } catch {}
-    }
-
-    const article = doc.querySelector("article.post");
-    if (article) contentEl.value = article.innerHTML.trim();
-
-    updateDescCount();
-    checkSlugExists();
-    updatePreview();
+    } catch {}
   }
 
   // --- Save post ---
@@ -307,11 +242,10 @@
     showSaveStatus("Saving...");
 
     try {
-      const html = buildPostHtml({ forSave: true });
       const resp = await fetch(`/api/posts/${encodeURIComponent(slug)}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ html })
+        body: JSON.stringify(getFields())
       });
 
       if (!resp.ok) {
@@ -379,8 +313,7 @@
 
   // --- Init ---
   async function init() {
-    await loadTemplate();
-    populatePostList();
+    await Promise.all([populatePostList(), populateSeriesList()]);
     updatePreview();
   }
 

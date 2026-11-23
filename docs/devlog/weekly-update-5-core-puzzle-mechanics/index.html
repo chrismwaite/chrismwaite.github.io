@@ -2,69 +2,118 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Weekly Update #5 – Core Puzzle Mechanics</title>
+        <title>Weekly Update #5 – Core Puzzle Mechanics – chriswaite.dev</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <meta name="description" content="This week I’ve been working on the core puzzle mechanics. I’ve added in the feature I mentioned last week and I’m currently wrestling with my code to get..." />
+        <meta name="author" content="Christopher Waite" />
         <link rel="canonical" href="https://chriswaite.dev/devlog/weekly-update-5-core-puzzle-mechanics/" />
         <meta property="og:title" content="Weekly Update #5 – Core Puzzle Mechanics" />
         <meta property="og:description" content="This week I’ve been working on the core puzzle mechanics. I’ve added in the feature I mentioned last week and I’m currently wrestling with my code to get..." />
         <meta property="og:url" content="https://chriswaite.dev/devlog/weekly-update-5-core-puzzle-mechanics/" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="article:published_time" content="2012-02-05" />
         <meta property="og:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png" />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png" />
         <meta name="twitter:title" content="Weekly Update #5 – Core Puzzle Mechanics" />
         <meta name="twitter:description" content="This week I’ve been working on the core puzzle mechanics. I’ve added in the feature I mentioned last week and I’m currently wrestling with my code to get..." />
-        <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
         <script type="application/ld+json">
         {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Weekly Update #5 – Core Puzzle Mechanics",
-  "description": "This week I’ve been working on the core puzzle mechanics. I’ve added in the feature I mentioned last week and I’m currently wrestling with my code to get...",
-  "url": "https://chriswaite.dev/devlog/weekly-update-5-core-puzzle-mechanics/",
-  "datePublished": "2012-02-01",
-  "author": {
-    "@type": "Person",
-    "name": "Christopher Waite",
-    "url": "https://chriswaite.dev/about/"
-  },
-  "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png"
-}
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Weekly Update #5 – Core Puzzle Mechanics",
+          "description": "This week I’ve been working on the core puzzle mechanics. I’ve added in the feature I mentioned last week and I’m currently wrestling with my code to get...",
+          "url": "https://chriswaite.dev/devlog/weekly-update-5-core-puzzle-mechanics/",
+          "mainEntityOfPage": "https://chriswaite.dev/devlog/weekly-update-5-core-puzzle-mechanics/",
+          "datePublished": "2012-02-05",
+          "author": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "image": "https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png",
+          "isPartOf": {
+            "@type": "CreativeWorkSeries",
+            "name": "Weekly Update",
+            "url": "https://chriswaite.dev/series/puzzle-rpg/"
+          }
+        }
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/" aria-current="true">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-
-            <div class="post-header">
-                <h1 class="title">Weekly Update #5 – Core Puzzle Mechanics</h1>
-                <div class="date">February 2012</div>
-            </div>
-
-            <main class="inner">
-                <article class="post">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="title">Weekly Update #5 – Core Puzzle Mechanics</h1>
+                    <p class="series-tag"><a href="/series/puzzle-rpg/">Weekly Update</a> · Part 6 of 22</p>
+                    <time class="date" datetime="2012-02-05">5 February 2012</time>
+                </header>
+                <div class="post-body">
+<!-- post:content -->
 <p>This week I&#8217;ve been working on the core puzzle mechanics. I&#8217;ve added in the feature I mentioned last week and I&#8217;m currently wrestling with my code to get it to behave! Its still not all there and I plan on using next week to get everything puzzle-related in place. I have the RPG elements already in mind and implementing each of the sub systems is going to take time and care.</p>
 <p>I&#8217;ve also imported the new graphics into the game which you can see below. This is running in the simulator.<!--more--></p>
 <p><a href="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png"><img decoding="async" loading="lazy" src="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png" alt="WIP first level graphics in engine" title="WIP first level graphics in engine" width="396" height="744" class="aligncenter size-full wp-post-2871 wp-image-2876" srcset="https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png 396w, https://res.cloudinary.com/dmq7gxinn/image/upload/Screen-Shot-2012-02-05-at-13.54.png 159w" sizes="(max-width: 396px) 100vw, 396px" /></a></p>
 <p>To begin to explain the core mechanics, each level will contain and entrance tile and an exit tile. Your job is to reach the exit. You achieve this by laying down a path (from a random pool of basic tiles). Of course its not that easy! You&#8217;ll need to act fast as well as deal with various obstacles. However, the RPG elements are what will really give the game its edge. I&#8217;m not ready to share them just yet but I&#8217;ll begin introducing you to them over the coming weeks.</p>
 <p>Apologies for the short post. I promise there is more to come. At this stage I&#8217;m just trying to get into the habit of writing these updates every week. In addition to finalising the core puzzle mechanics, I&#8217;ll also be moving back onto my level editor next week. My aim is to be able to produce level 1 through the web based editor.</p>
 <p>See you next time.</p>
-                </article>
-            </main>
-        </div>
+<!-- /post:content -->
+                </div>
+            </article>
+            <aside class="series-box" aria-labelledby="series-heading">
+                <p class="kicker">Series</p>
+                <h2 id="series-heading"><a href="/series/puzzle-rpg/">Weekly Update</a></h2>
+                <ol>
+                    <li><a href="/devlog/an-update-on-pprpg/">An update on PPRPG</a></li>
+                    <li><a href="/devlog/weekly-update-1-laying-the-foundations/">Weekly Update #1 – Laying the foundations</a></li>
+                    <li><a href="/devlog/weekly-update-2-inventory/">Weekly Update #2 – Inventory</a></li>
+                    <li><a href="/devlog/weekly-update-3-web-tools/">Weekly Update #3 – Web tools</a></li>
+                    <li><a href="/devlog/weekly-update-4-early-artwork/">Weekly Update #4 – Early Artwork</a></li>
+                    <li aria-current="page">Weekly Update #5 – Core Puzzle Mechanics</li>
+                    <li><a href="/devlog/weekly-update-6-player-movement-level-exporting/">Weekly Update #6 – Player Movement &amp; Level Exporting</a></li>
+                    <li><a href="/devlog/weekly-update-7-tools-milestone/">Weekly Update #7 – Tools Milestone</a></li>
+                    <li><a href="/devlog/weekly-update-8-npcs/">Weekly Update #8 – NPC&#x27;s</a></li>
+                    <li><a href="/devlog/weekly-update-9-a-change-of-tack/">Weekly Update #9 – A change of tack</a></li>
+                    <li><a href="/devlog/weekly-update-10-level-1/">Weekly Update #10 – Level 1</a></li>
+                    <li><a href="/devlog/weekly-update-11-character-classes/">Weekly Update #11 – Character Classes</a></li>
+                    <li><a href="/devlog/weekly-update-12-stability/">Weekly Update #12 – Stability</a></li>
+                    <li><a href="/devlog/weekly-update-13-data-persistence-and-levelling-mechanics/">Weekly Update #13 – Data Persistence and Levelling Mechanics</a></li>
+                    <li><a href="/devlog/weekly-update-14-inventory-overhaul/">Weekly Update #14 – Inventory overhaul</a></li>
+                    <li><a href="/devlog/weekly-update-15-widgets/">Weekly Update #15 – Widgets</a></li>
+                    <li><a href="/devlog/project-puzzle-rpg-big-ol-development-thread/">Project Puzzle RPG – Big Ol&#x27; Development Thread</a></li>
+                    <li><a href="/devlog/merlot-update-16-rebooting-the-project/">Merlot Update #16 – Rebooting the project</a></li>
+                    <li><a href="/devlog/merlot-update-17-level-1/">Merlot Update #17 – Level 1</a></li>
+                    <li><a href="/devlog/merlot-update-18-widgets-and-tiles/">Merlot Update #18 – Widgets and Tiles</a></li>
+                    <li><a href="/devlog/merlot-update-19-bridges-and-teleports/">Merlot Update #19 – Bridges and Teleports</a></li>
+                    <li><a href="/devlog/puzzle-rpg-whats-going-on/">Puzzle RPG – What&#x27;s going on?</a></li>
+                </ol>
+            </aside>
+            <nav class="post-nav" aria-label="More posts">
+                <a class="older" href="/devlog/weekly-update-4-early-artwork/" rel="prev"><span>Older</span>Weekly Update #4 – Early Artwork</a>
+                <a class="newer" href="/devlog/altdevconf-2012-my-experience/" rel="next"><span>Newer</span>AltDevConf 2012 – My Experience</a>
+            </nav>
+        </main>
     </body>
 </html>

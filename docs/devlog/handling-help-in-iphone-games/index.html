@@ -2,58 +2,68 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Handling help in iPhone games</title>
+        <title>Handling help in iPhone games – chriswaite.dev</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <meta name="description" content="Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a..." />
+        <meta name="author" content="Christopher Waite" />
         <link rel="canonical" href="https://chriswaite.dev/devlog/handling-help-in-iphone-games/" />
         <meta property="og:title" content="Handling help in iPhone games" />
         <meta property="og:description" content="Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a..." />
         <meta property="og:url" content="https://chriswaite.dev/devlog/handling-help-in-iphone-games/" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="article:published_time" content="2009-08-15" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Handling help in iPhone games" />
         <meta name="twitter:description" content="Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a..." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
         <script type="application/ld+json">
         {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Handling help in iPhone games",
-  "description": "Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a...",
-  "url": "https://chriswaite.dev/devlog/handling-help-in-iphone-games/",
-  "datePublished": "2009-08-01",
-  "author": {
-    "@type": "Person",
-    "name": "Christopher Waite",
-    "url": "https://chriswaite.dev/about/"
-  }
-}
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Handling help in iPhone games",
+          "description": "Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a...",
+          "url": "https://chriswaite.dev/devlog/handling-help-in-iphone-games/",
+          "mainEntityOfPage": "https://chriswaite.dev/devlog/handling-help-in-iphone-games/",
+          "datePublished": "2009-08-15",
+          "author": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          }
+        }
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/" aria-current="true">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-
-            <div class="post-header">
-                <h1 class="title">Handling help in iPhone games</h1>
-                <div class="date">August 2009</div>
-            </div>
-
-            <main class="inner">
-                <article class="post">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="title">Handling help in iPhone games</h1>
+                    <time class="date" datetime="2009-08-15">15 August 2009</time>
+                </header>
+                <div class="post-body">
+<!-- post:content -->
 <p>Instructing people on how to play your game is one of the most important aspects of development and yet is very easy to overlook. Its actually quite a difficult task because you, having developed the game, know how to play the game already and need to relay this information to the new player; What is obvious to the developer is not always obvious to the user.<br />
 <br />My original aim with Star Fusion was to add an element of exploration to the learning process. Since I&#8217;m currently working on the first patch for Star Fusion, I decided to further enhance this element of the game to make it as interesting as possible. I&#8217;ll share it with you in a moment, but lets take a few minutes to look at some of the most popular help systems available in current iPhone games&#8230;<br />
 <br /><b>Static screens</b><br />
@@ -71,8 +81,13 @@
 <br />In addition there are of course the many variations of these styles. As I mentioned, for Star Fusion, I wanted an element of exploration to my help system to ensure it is engaging for the player. I also wanted to ensure that I deliver the information in as short a time as possible to keep the player interested. What i&#8217;ve opted for is a combination of static screens and exploration. The player is presented with a screen containing all of the game elements. Everything is initially grayed out and as the player taps an object, it fills with colour and the player is told what the object does in the context of the game. The player can only exit the help screen once they have returned the colour to all objects. The disadvantage here is that I have no control over the order in which the information is consumed.<br />
 <br />Please feel free to add any additional help systems to the comments below. I&#8217;ll leave you with a screenshot from my help system&#8230;<br />
 <br /></p>
-                </article>
-            </main>
-        </div>
+<!-- /post:content -->
+                </div>
+            </article>
+            <nav class="post-nav" aria-label="More posts">
+                <a class="older" href="/devlog/appsaddicts-star-fusion-review/" rel="prev"><span>Older</span>AppsAddicts Star Fusion review</a>
+                <a class="newer" href="/devlog/star-fusion-1-1-whats-in-the-update/" rel="next"><span>Newer</span>Star Fusion 1.1: what&#x27;s in the update</a>
+            </nav>
+        </main>
     </body>
 </html>

@@ -6,20 +6,18 @@ Default port: 8010
 """
 
 import hashlib
-import html as html_module
+import importlib
 import json
-import os
 import re
 import sys
 import time
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote
 from urllib.request import urlopen, Request
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from build_feed import build_feed  # noqa: E402
+import build_site  # noqa: E402
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8010
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -29,10 +27,6 @@ DOCS_DIR = PROJECT_ROOT / "docs"
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ALLOWED_HOSTS = {f"localhost:{PORT}", f"127.0.0.1:{PORT}"}
 ALLOWED_ORIGINS = {f"http://{host}" for host in ALLOWED_HOSTS}
-MONTHS = [
-    "", "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-]
 
 # Load .env for Cloudinary credentials
 CLOUDINARY = {}
@@ -96,6 +90,9 @@ class EditorHandler(SimpleHTTPRequestHandler):
 
         if path == "/api/posts":
             self.list_posts()
+        elif path == "/api/series":
+            series = build_site.load_series()
+            self.send_json([{"slug": s["slug"], "title": s["title"]} for s in series])
         elif path.startswith("/api/posts/"):
             slug = path[len("/api/posts/"):]
             self.read_post(slug)
@@ -109,6 +106,8 @@ class EditorHandler(SimpleHTTPRequestHandler):
 
         if path == "/api/upload":
             self.upload_image()
+        elif path == "/api/preview":
+            self.preview_post()
         elif path.startswith("/api/posts/"):
             slug = path[len("/api/posts/"):]
             self.save_post(slug)
@@ -124,13 +123,50 @@ class EditorHandler(SimpleHTTPRequestHandler):
         self.send_json(slugs)
 
     def read_post(self, slug):
+        """Return the editable fields of a post."""
         if not self.valid_slug(slug):
             return
         filepath = DOCS_DIR / "devlog" / slug / "index.html"
         if not filepath.exists():
-            self.send_error(404, f"Post not found: {slug}")
+            self.send_json({"error": f"Post not found: {slug}"}, 404)
             return
-        self.send_json({"slug": slug, "html": filepath.read_text(encoding="utf-8")})
+        post = build_site.parse_post(filepath.read_text(encoding="utf-8"), slug)
+        in_series = build_site.series_for(slug, build_site.load_series())
+        post["series"] = in_series["slug"] if in_series else ""
+        self.send_json(post)
+
+    def read_fields(self):
+        """Read and validate the post fields sent by the editor."""
+        if "application/json" not in self.headers.get("Content-Type", ""):
+            self.send_json({"error": "Expected application/json"}, 415)
+            return None
+        body = self.read_body()
+        if body is None:
+            return None
+        try:
+            data = json.loads(body)
+            fields = {
+                key: str(data.get(key, "")).strip()
+                for key in ("slug", "title", "description", "date", "series")
+            }
+            fields["content"] = str(data.get("content", "")).strip("\n")
+        except (ValueError, AttributeError):
+            self.send_json({"error": "Invalid JSON"}, 400)
+            return None
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", fields["date"]):
+            self.send_json({"error": "Date must be YYYY-MM-DD"}, 400)
+            return None
+        return fields
+
+    def preview_post(self):
+        fields = self.read_fields()
+        if fields is None:
+            return
+        fields["slug"] = fields["slug"] or "preview"
+        posts = build_site.load_posts(DOCS_DIR)
+        series = build_site.load_series(posts)
+        # Asset paths are prefixed because the editor serves the project root
+        self.send_json({"html": build_site.render_post(fields, posts, series, root="/docs")})
 
     def upload_image(self):
         cloud = CLOUDINARY.get("CLOUDINARY_CLOUD_NAME", "")
@@ -225,142 +261,23 @@ class EditorHandler(SimpleHTTPRequestHandler):
     def save_post(self, slug):
         if not self.valid_slug(slug):
             return
-        if "application/json" not in self.headers.get("Content-Type", ""):
-            self.send_json({"error": "Expected application/json"}, 415)
+        fields = self.read_fields()
+        if fields is None:
             return
-        body = self.read_body()
-        if body is None:
+        if not fields["title"]:
+            self.send_json({"error": "Title is required"}, 400)
             return
-        try:
-            html = json.loads(body).get("html", "")
-        except (ValueError, AttributeError):
-            self.send_json({"error": "Invalid JSON"}, 400)
-            return
-        if not html.strip():
-            self.send_json({"error": "Empty post"}, 400)
-            return
+        fields["slug"] = slug
 
-        # Create directory and write file
-        post_dir = DOCS_DIR / "devlog" / slug
-        post_dir.mkdir(parents=True, exist_ok=True)
-        (post_dir / "index.html").write_text(html, encoding="utf-8")
-
-        # Update sitemap, homepage and RSS feed
-        self.update_sitemap(slug)
-        self.update_homepage(slug, html)
-        build_feed(DOCS_DIR)
+        # Pick up any changes made to the generator since the editor was started
+        importlib.reload(build_site)
+        build_site.write_post(fields, DOCS_DIR)
+        build_site.set_series(slug, fields["series"])
+        # Regenerates the homepage, series pages, sitemap, feed and llms.txt,
+        # and the newer/older links on neighbouring posts
+        build_site.build_all(DOCS_DIR)
 
         self.send_json({"ok": True, "path": f"devlog/{slug}/index.html"})
-
-    def update_homepage(self, slug, post_html):
-        """Add or update the post entry in docs/index.html, keeping date order."""
-
-        index_path = DOCS_DIR / "index.html"
-        if not index_path.exists():
-            return
-
-        # Extract metadata from the post HTML
-        title_match = re.search(r'<h1 class="title">([^<]+)</h1>', post_html)
-        title = html_module.unescape(title_match.group(1)) if title_match else slug
-
-        desc_match = re.search(r'<meta name="description" content="([^"]*)"', post_html)
-        description = html_module.unescape(desc_match.group(1)) if desc_match else ""
-
-        date_match = re.search(r'"datePublished":\s*"(\d{4})-(\d{2})', post_html)
-        if date_match:
-            year, month = date_match.group(1), int(date_match.group(2))
-            date_display = f"{MONTHS[month]} {year}"
-            date_key = (int(year), month)
-        else:
-            date_display = ""
-            date_key = None
-
-        # Build the new article entry
-        title_esc = html_module.escape(title)
-        desc_esc = html_module.escape(description)
-        new_article = (
-            f'                    <article>\n'
-            f'                        <span class="title"'
-            f'><a href="devlog/{slug}"'
-            f'>{title_esc}</a'
-            f'></span'
-            f'>\n'
-            f'                        <span class="date">{date_display}</span>\n'
-            f'                        <div class="summary">\n'
-            f'                            {desc_esc}\n'
-            f'                        </div>\n'
-            f'                    </article>'
-        )
-
-        homepage = index_path.read_text(encoding="utf-8")
-
-        # If slug already has a homepage entry, replace it in place
-        existing = re.compile(
-            r'[ \t]*<article>\s*<span class="title"[^>]*>'
-            r'<a href="devlog/' + re.escape(slug) + r'"'
-            r'.*?</article>',
-            re.DOTALL
-        )
-        if existing.search(homepage):
-            # A function avoids backslashes in the title being read as escapes
-            homepage = existing.sub(lambda m: new_article, homepage, count=1)
-            index_path.write_text(homepage, encoding="utf-8")
-            return
-
-        # New post: insert above the first entry that is the same month or
-        # older, so the list stays newest-first whatever date the post has.
-        insert_at = None
-        last_end = None
-        if date_key:
-            for m in re.finditer(r'[ \t]*<article>.*?</article>', homepage, re.DOTALL):
-                last_end = m.end()
-                d = re.search(r'<span class="date">\s*([A-Za-z]+) (\d{4})\s*</span>', m.group(0))
-                if d and d.group(1) in MONTHS:
-                    if (int(d.group(2)), MONTHS.index(d.group(1))) <= date_key:
-                        insert_at = m.start()
-                        break
-
-        if insert_at is not None:
-            homepage = homepage[:insert_at] + new_article + '\n' + homepage[insert_at:]
-        elif date_key and last_end is not None:
-            # Older than everything already listed
-            homepage = homepage[:last_end] + '\n' + new_article + homepage[last_end:]
-        else:
-            marker = '<h1 class="sr-only">chriswaite.dev</h1>'
-            if marker not in homepage:
-                return
-            homepage = homepage.replace(marker, marker + '\n' + new_article, 1)
-
-        index_path.write_text(homepage, encoding="utf-8")
-
-    def update_sitemap(self, slug):
-        sitemap_path = DOCS_DIR / "sitemap.xml"
-        if not sitemap_path.exists():
-            return
-
-        xml = sitemap_path.read_text(encoding="utf-8")
-        entry_url = f"/devlog/{slug}/"
-
-        if entry_url in xml:
-            return
-
-        new_entry = f"  <url><loc>https://chriswaite.dev/devlog/{slug}/</loc></url>"
-        lines = xml.split("\n")
-        result = []
-        inserted = False
-
-        for line in lines:
-            if not inserted and "</urlset>" in line:
-                result.append(new_entry)
-                inserted = True
-            elif not inserted and "/devlog/" in line:
-                m = re.search(r"/devlog/([^/]+)/", line)
-                if m and m.group(1) > slug:
-                    result.append(new_entry)
-                    inserted = True
-            result.append(line)
-
-        sitemap_path.write_text("\n".join(result), encoding="utf-8")
 
     def send_json(self, data, status=200):
         body = json.dumps(data).encode("utf-8")

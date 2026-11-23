@@ -9,23 +9,25 @@
         <link rel="stylesheet" href="/styles/global.css" />
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-            <main class="inner">
-                <section class="me">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+                <section class="prose">
                   <h1>Page not found</h1>
                   <p>Sorry, that page does not exist.</p>
                   <p><a href="/">Return to the homepage</a>.</p>
                 </section>
             </main>
-        </div>
     </body>
 </html>

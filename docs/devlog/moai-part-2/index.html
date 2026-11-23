@@ -2,65 +2,81 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Moai – Part 2</title>
+        <title>Moai – Part 2 – chriswaite.dev</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <meta name="description" content="So, after my last post on Moai, I’ve continued to play with the framework (and with Lua). Its all leading me towards a second game." />
+        <meta name="author" content="Christopher Waite" />
         <link rel="canonical" href="https://chriswaite.dev/devlog/moai-part-2/" />
         <meta property="og:title" content="Moai – Part 2" />
         <meta property="og:description" content="So, after my last post on Moai, I’ve continued to play with the framework (and with Lua). Its all leading me towards a second game." />
         <meta property="og:url" content="https://chriswaite.dev/devlog/moai-part-2/" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="article:published_time" content="2012-07-09" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Moai – Part 2" />
         <meta name="twitter:description" content="So, after my last post on Moai, I’ve continued to play with the framework (and with Lua). Its all leading me towards a second game." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
         <script type="application/ld+json">
         {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Moai – Part 2",
-  "description": "So, after my last post on Moai, I’ve continued to play with the framework (and with Lua). Its all leading me towards a second game.",
-  "url": "https://chriswaite.dev/devlog/moai-part-2/",
-  "datePublished": "2012-07-01",
-  "author": {
-    "@type": "Person",
-    "name": "Christopher Waite",
-    "url": "https://chriswaite.dev/about/"
-  }
-}
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Moai – Part 2",
+          "description": "So, after my last post on Moai, I’ve continued to play with the framework (and with Lua). Its all leading me towards a second game.",
+          "url": "https://chriswaite.dev/devlog/moai-part-2/",
+          "mainEntityOfPage": "https://chriswaite.dev/devlog/moai-part-2/",
+          "datePublished": "2012-07-09",
+          "author": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "isPartOf": {
+            "@type": "CreativeWorkSeries",
+            "name": "Moai",
+            "url": "https://chriswaite.dev/series/moai/"
+          }
+        }
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/" aria-current="true">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-
-            <div class="post-header">
-                <h1 class="title">Moai – Part 2</h1>
-                <div class="date">July 2012</div>
-            </div>
-
-            <main class="inner">
-                <article class="post">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="title">Moai – Part 2</h1>
+                    <p class="series-tag"><a href="/series/moai/">Moai</a> · Part 2 of 3</p>
+                    <time class="date" datetime="2012-07-09">9 July 2012</time>
+                </header>
+                <div class="post-body">
+<!-- post:content -->
 <p>So, after <a href="/devlog/getting-started-with-moai/">my last post on Moai</a>, I&#8217;ve continued to play with the framework (and with Lua). Its all leading me towards a second game.</p>
 <p>I&#8217;m still hard at work on PPRPG, its not vapourware, I promise. :) This Moai project won&#8217;t impact the development or timeline for PPRPG and It&#8217;s actually having a positive effect (acting as a creative diversion to prevent burnout).</p>
 <p>The two games are being developed in two very different ways. With PPRPG I have a clear vision of the final game and how it will feel. Development is pretty much planned out and, whilst I still have lots of game design problems to overcome, it&#8217;s pretty much a case of ploughing through the work.</p>
 <p>This second game is much more organic. Its doesn&#8217;t have an aim. In fact the mining mechanic is something I just started to program, I didn&#8217;t really choose it. I&#8217;m just kind of throwing ideas at it and seeing what sticks. I&#8217;m programming in a very immediate fashion and refactoring code (frequently) as needed.</p>
 <p>I won&#8217;t make you read all of the text below if you don&#8217;t want to. Here&#8217;s an updated video demoing my progress.<!--more--></p>
 <div class="embed-responsive embed-responsive-16by9">
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/nCOiDd4dmfM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe title="YouTube video" loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/nCOiDd4dmfM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p>Since my last prototype video I&#8217;ve introduced a few new concepts. The first was the concept of streaming chunks of dirt. The way I&#8217;m doing this is to generate 1/2 screen of dirt as the player reaches the previous chunks edge &#8211; this is generated on the fly and stored in a very simple data table. As the earth is mined and block added, the data table is updated. Moving out of a chunk into a new chunk removes the old props (Moai&#8217;s terminology for a placeable instance &#8211; a bit like a CCSprite in cocos I think) from the screen. When you move back into a chunk, the engine reads from the data table and regenerates the props.</p>
 <p>Obviously the final game will generate and stream content 3&#215;3 to ensure that you don&#8217;t see the objects streaming in. I just found it was helpful to limit it to 1&#215;1 whilst debugging.</p>
@@ -71,8 +87,22 @@
 <p>I still have a lot to learn about both Moai and Lua. I&#8217;m currently rocking a single Lua file which represents the whole game (not sure if this is correct). I still need to look into spritesheets and animation.</p>
 <p>I&#8217;m thinking about tweaking my chunk generation a bit more (utilising threading if I can). I&#8217;d generate chunks ahead of time and stream row-by-row rather than chunk by chunk.</p>
 <p>Anyway, this game is about fun development so next up its a single ore type and bombs! (Not for a few weeks though since I have a bit of an PPRPG Sprint to get into :).</p>
-                </article>
-            </main>
-        </div>
+<!-- /post:content -->
+                </div>
+            </article>
+            <aside class="series-box" aria-labelledby="series-heading">
+                <p class="kicker">Series</p>
+                <h2 id="series-heading"><a href="/series/moai/">Moai</a></h2>
+                <ol>
+                    <li><a href="/devlog/getting-started-with-moai/">Getting started with Moai</a></li>
+                    <li aria-current="page">Moai – Part 2</li>
+                    <li><a href="/devlog/book-review-developing-mobile-games-with-moai-sdk/">Book Review: Developing Mobile Games with Moai SDK</a></li>
+                </ol>
+            </aside>
+            <nav class="post-nav" aria-label="More posts">
+                <a class="older" href="/devlog/project-puzzle-rpg-big-ol-development-thread/" rel="prev"><span>Older</span>Project Puzzle RPG – Big Ol&#x27; Development Thread</a>
+                <a class="newer" href="/devlog/the-state-of-things/" rel="next"><span>Newer</span>The state of things</a>
+            </nav>
+        </main>
     </body>
 </html>

@@ -2,58 +2,74 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Structure – Mini Mob Development Diary #3</title>
+        <title>Structure – Mini Mob Development Diary #3 – chriswaite.dev</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
         <meta name="description" content="Just a quick update." />
+        <meta name="author" content="Christopher Waite" />
         <link rel="canonical" href="https://chriswaite.dev/devlog/structure-mini-mob-development-diary-3/" />
         <meta property="og:title" content="Structure – Mini Mob Development Diary #3" />
         <meta property="og:description" content="Just a quick update." />
         <meta property="og:url" content="https://chriswaite.dev/devlog/structure-mini-mob-development-diary-3/" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="chriswaite.dev" />
+        <meta property="article:published_time" content="2013-02-05" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Structure – Mini Mob Development Diary #3" />
         <meta name="twitter:description" content="Just a quick update." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
-        <link rel="stylesheet" href="../../styles/global.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
         <script type="application/ld+json">
         {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Structure – Mini Mob Development Diary #3",
-  "description": "Just a quick update.",
-  "url": "https://chriswaite.dev/devlog/structure-mini-mob-development-diary-3/",
-  "datePublished": "2013-02-01",
-  "author": {
-    "@type": "Person",
-    "name": "Christopher Waite",
-    "url": "https://chriswaite.dev/about/"
-  }
-}
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Structure – Mini Mob Development Diary #3",
+          "description": "Just a quick update.",
+          "url": "https://chriswaite.dev/devlog/structure-mini-mob-development-diary-3/",
+          "mainEntityOfPage": "https://chriswaite.dev/devlog/structure-mini-mob-development-diary-3/",
+          "datePublished": "2013-02-05",
+          "author": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Christopher Waite",
+            "url": "https://chriswaite.dev/about/"
+          },
+          "isPartOf": {
+            "@type": "CreativeWorkSeries",
+            "name": "Mini Mob",
+            "url": "https://chriswaite.dev/series/mini-mob/"
+          }
+        }
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <header>
-              <nav>
+        <a class="skip-link" href="#content">Skip to content</a>
+<!-- site:header -->
+        <header class="site-header">
+            <nav aria-label="Site">
                 <ul>
-                  <li><a href="/">blog</a></li>
-                  <li><a href="/experiments">experiments</a></li>
-                  <li><a href="/about">about</a></li>
+                    <li><a href="/" aria-current="true">devlog</a></li>
+                    <li><a href="/experiments/">experiments</a></li>
+                    <li><a href="/about/">about</a></li>
+                    <li><a class="feed-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="19" r="2.5" fill="currentColor" stroke="none" /><path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" /></svg></a></li>
                 </ul>
-              </nav>
-            </header>
-
-            <div class="post-header">
-                <h1 class="title">Structure – Mini Mob Development Diary #3</h1>
-                <div class="date">February 2013</div>
-            </div>
-
-            <main class="inner">
-                <article class="post">
+            </nav>
+        </header>
+<!-- /site:header -->
+        <main id="content" class="page page-narrow">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="title">Structure – Mini Mob Development Diary #3</h1>
+                    <p class="series-tag"><a href="/series/mini-mob/">Mini Mob</a> · Part 5 of 7</p>
+                    <time class="date" datetime="2013-02-05">5 February 2013</time>
+                </header>
+                <div class="post-body">
+<!-- post:content -->
 <p>Just a quick update.</p>
 <p>I&#8217;ve now implemented the core gameplay changes mentioned in <a href="/devlog/basic-gameplay-strategies-mini-mob-development-diary-2/">my previous development diary</a>. The gameplay feels much more robust, particularly with regards the additional layer of strategy derived from utilising adjacent zones. The AI is now also incredibly ruthless with its new found intelligence but I&#8217;ll be revisiting that once more components are in place.</p>
 <p>What is severely lacking is visual/statistical feedback to the player. Feedback on when new recruits will arrive, how the winner of a fight is calculated, etc. I really want to bake this information into the city itself where possible &#8211; that means relevant visual representations where possible. This needs some thought so I&#8217;m leaving it for now.</p>
@@ -63,8 +79,26 @@
 <p>Next up is a bit of an interface overhaul. I&#8217;ve pretty much decided on a landscape view. I&#8217;ll be removing the top row to allow for some permanent interface elements and therefore extending the number of columns. This will give me a 7&#215;4 grid rather than a 5&#215;5 grid. I&#8217;ll likely be relying heavily on context sensitive actions and layers of information accessed through double taps and the like.</p>
 <p>I&#8217;ll also be experimenting with the graphics very soon.</p>
 <p>That&#8217;s it for now. I&#8217;ll have some progress shots for you in the next update.</p>
-                </article>
-            </main>
-        </div>
+<!-- /post:content -->
+                </div>
+            </article>
+            <aside class="series-box" aria-labelledby="series-heading">
+                <p class="kicker">Series</p>
+                <h2 id="series-heading"><a href="/series/mini-mob/">Mini Mob</a></h2>
+                <ol>
+                    <li><a href="/devlog/ludum-dare-25-my-liveblog/">Ludum Dare 25 – My Liveblog</a></li>
+                    <li><a href="/devlog/micro-mob-time-lapse-ludum-dare-25/">Micro Mob Time-Lapse (Ludum Dare 25)</a></li>
+                    <li><a href="/devlog/getting-started-mini-mob-development-diary-1/">Getting Started – Mini Mob Development Diary #1</a></li>
+                    <li><a href="/devlog/basic-gameplay-strategies-mini-mob-development-diary-2/">Basic gameplay strategies – Mini Mob Development Diary #2</a></li>
+                    <li aria-current="page">Structure – Mini Mob Development Diary #3</li>
+                    <li><a href="/devlog/the-beginnings-of-an-art-style-mini-mob-development-diary-4/">The beginnings of an art style – Mini Mob Development Diary #4</a></li>
+                    <li><a href="/devlog/tactical-overlay-mini-mob-development-diary-5/">Tactical Overlay – Mini Mob Development Diary #5</a></li>
+                </ol>
+            </aside>
+            <nav class="post-nav" aria-label="More posts">
+                <a class="older" href="/devlog/roasting-coffee-at-home/" rel="prev"><span>Older</span>Roasting Coffee at Home</a>
+                <a class="newer" href="/devlog/coffee-cellar-achievement-unlocked/" rel="next"><span>Newer</span>Coffee Cellar Achievement Unlocked</a>
+            </nav>
+        </main>
     </body>
 </html>
