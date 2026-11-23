@@ -18,10 +18,21 @@ from pathlib import Path
 from urllib.parse import unquote
 from urllib.request import urlopen, Request
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from build_feed import build_feed  # noqa: E402
+
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8010
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent
 DOCS_DIR = PROJECT_ROOT / "docs"
+
+SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+ALLOWED_HOSTS = {f"localhost:{PORT}", f"127.0.0.1:{PORT}"}
+ALLOWED_ORIGINS = {f"http://{host}" for host in ALLOWED_HOSTS}
+MONTHS = [
+    "", "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+]
 
 # Load .env for Cloudinary credentials
 CLOUDINARY = {}
@@ -38,8 +49,44 @@ class EditorHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(PROJECT_ROOT), **kwargs)
 
+    def request_allowed(self):
+        """Only serve requests that genuinely come from this local editor.
+
+        Checking Host blocks DNS-rebinding; checking Origin stops other web
+        pages open in the browser from posting to the API.
+        """
+        if self.headers.get("Host") not in ALLOWED_HOSTS:
+            self.send_json({"error": "Forbidden host"}, 403)
+            return False
+        origin = self.headers.get("Origin")
+        if origin is not None and origin not in ALLOWED_ORIGINS:
+            self.send_json({"error": "Forbidden origin"}, 403)
+            return False
+        return True
+
+    def valid_slug(self, slug):
+        if SLUG_RE.match(slug):
+            return True
+        self.send_json({"error": f"Invalid slug: {slug}"}, 400)
+        return False
+
+    def read_body(self):
+        try:
+            length = int(self.headers.get("Content-Length", ""))
+        except ValueError:
+            self.send_json({"error": "Content-Length required"}, 411)
+            return None
+        return self.rfile.read(length)
+
     def do_GET(self):
-        path = unquote(self.path)
+        if not self.request_allowed():
+            return
+        path = unquote(self.path.split("?", 1)[0].split("#", 1)[0])
+
+        # Never serve dotfiles (.env, .git, ...)
+        if any(part.startswith(".") for part in path.split("/")):
+            self.send_error(404)
+            return
 
         if path == "/":
             self.send_response(302)
@@ -56,6 +103,8 @@ class EditorHandler(SimpleHTTPRequestHandler):
             super().do_GET()
 
     def do_POST(self):
+        if not self.request_allowed():
+            return
         path = unquote(self.path)
 
         if path == "/api/upload":
@@ -75,6 +124,8 @@ class EditorHandler(SimpleHTTPRequestHandler):
         self.send_json(slugs)
 
     def read_post(self, slug):
+        if not self.valid_slug(slug):
+            return
         filepath = DOCS_DIR / "devlog" / slug / "index.html"
         if not filepath.exists():
             self.send_error(404, f"Post not found: {slug}")
@@ -91,7 +142,7 @@ class EditorHandler(SimpleHTTPRequestHandler):
             return
 
         # Parse multipart form data
-        content_type = self.headers["Content-Type"]
+        content_type = self.headers.get("Content-Type", "")
         if "boundary=" not in content_type:
             self.send_json({"error": "Invalid content type"}, 400)
             return
@@ -100,7 +151,9 @@ class EditorHandler(SimpleHTTPRequestHandler):
         if boundary.startswith('"') and boundary.endswith('"'):
             boundary = boundary[1:-1]
 
-        body = self.rfile.read(int(self.headers["Content-Length"]))
+        body = self.read_body()
+        if body is None:
+            return
         boundary_bytes = boundary.encode()
 
         parts = body.split(b"--" + boundary_bytes)
@@ -170,27 +223,37 @@ class EditorHandler(SimpleHTTPRequestHandler):
             self.send_json({"error": f"Cloudinary upload failed: {error_msg}"}, 500)
 
     def save_post(self, slug):
-        body = self.rfile.read(int(self.headers["Content-Length"]))
-        data = json.loads(body)
-        html = data.get("html", "")
+        if not self.valid_slug(slug):
+            return
+        if "application/json" not in self.headers.get("Content-Type", ""):
+            self.send_json({"error": "Expected application/json"}, 415)
+            return
+        body = self.read_body()
+        if body is None:
+            return
+        try:
+            html = json.loads(body).get("html", "")
+        except (ValueError, AttributeError):
+            self.send_json({"error": "Invalid JSON"}, 400)
+            return
+        if not html.strip():
+            self.send_json({"error": "Empty post"}, 400)
+            return
 
         # Create directory and write file
         post_dir = DOCS_DIR / "devlog" / slug
         post_dir.mkdir(parents=True, exist_ok=True)
         (post_dir / "index.html").write_text(html, encoding="utf-8")
 
-        # Update sitemap and homepage
+        # Update sitemap, homepage and RSS feed
         self.update_sitemap(slug)
         self.update_homepage(slug, html)
+        build_feed(DOCS_DIR)
 
         self.send_json({"ok": True, "path": f"devlog/{slug}/index.html"})
 
     def update_homepage(self, slug, post_html):
-        """Add or update the post entry at the top of docs/index.html."""
-        MONTHS = [
-            "", "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ]
+        """Add or update the post entry in docs/index.html, keeping date order."""
 
         index_path = DOCS_DIR / "index.html"
         if not index_path.exists():
@@ -207,8 +270,10 @@ class EditorHandler(SimpleHTTPRequestHandler):
         if date_match:
             year, month = date_match.group(1), int(date_match.group(2))
             date_display = f"{MONTHS[month]} {year}"
+            date_key = (int(year), month)
         else:
             date_display = ""
+            date_key = None
 
         # Build the new article entry
         title_esc = html_module.escape(title)
@@ -237,19 +302,34 @@ class EditorHandler(SimpleHTTPRequestHandler):
             re.DOTALL
         )
         if existing.search(homepage):
-            homepage = existing.sub(new_article, homepage)
+            # A function avoids backslashes in the title being read as escapes
+            homepage = existing.sub(lambda m: new_article, homepage, count=1)
             index_path.write_text(homepage, encoding="utf-8")
             return
 
-        # Insert after the <h1> tag for new posts
-        marker = '<h1 class="sr-only">chriswaite.dev</h1>'
-        if marker not in homepage:
-            return
+        # New post: insert above the first entry that is the same month or
+        # older, so the list stays newest-first whatever date the post has.
+        insert_at = None
+        last_end = None
+        if date_key:
+            for m in re.finditer(r'[ \t]*<article>.*?</article>', homepage, re.DOTALL):
+                last_end = m.end()
+                d = re.search(r'<span class="date">\s*([A-Za-z]+) (\d{4})\s*</span>', m.group(0))
+                if d and d.group(1) in MONTHS:
+                    if (int(d.group(2)), MONTHS.index(d.group(1))) <= date_key:
+                        insert_at = m.start()
+                        break
 
-        homepage = homepage.replace(
-            marker,
-            marker + '\n' + new_article
-        )
+        if insert_at is not None:
+            homepage = homepage[:insert_at] + new_article + '\n' + homepage[insert_at:]
+        elif date_key and last_end is not None:
+            # Older than everything already listed
+            homepage = homepage[:last_end] + '\n' + new_article + homepage[last_end:]
+        else:
+            marker = '<h1 class="sr-only">chriswaite.dev</h1>'
+            if marker not in homepage:
+                return
+            homepage = homepage.replace(marker, marker + '\n' + new_article, 1)
 
         index_path.write_text(homepage, encoding="utf-8")
 

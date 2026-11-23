@@ -4,7 +4,8 @@
     "July", "August", "September", "October", "November", "December"
   ];
 
-  const BLOCK_TAGS = /^<(?:p|h[1-6]|ul|ol|li|blockquote|div|pre|table|figure|section|header|footer|nav|article|aside|form|fieldset|details|summary|hr|br)/i;
+  // Lines starting with one of these (opening or closing) are not wrapped in <p>
+  const BLOCK_TAGS = /^<(?:!--|\/?(?:p|h[1-6]|ul|ol|li|dl|dt|dd|blockquote|div|pre|table|thead|tbody|tr|td|th|figure|figcaption|section|header|footer|nav|article|aside|form|fieldset|details|summary|iframe|video|audio|script|style|hr|br)\b)/i;
 
   // DOM refs
   const titleEl = document.getElementById("post-title");
@@ -43,7 +44,7 @@
   function toSlug(text) {
     return text
       .toLowerCase()
-      .replace(/['']/g, "")
+      .replace(/['‘’]/g, "")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
   }
@@ -73,9 +74,7 @@
 
   // --- Description char count ---
   descEl.addEventListener("input", () => {
-    const len = descEl.value.length;
-    descCount.textContent = `${len}/155`;
-    descCount.style.color = len > 155 ? "#f44336" : "#aaa";
+    updateDescCount();
     schedulePreview();
   });
 
@@ -86,6 +85,10 @@
     const val = contentEl.value;
     const pos = contentEl.selectionStart;
 
+    // Leave code alone: no auto-wrapping inside an open <pre> block
+    const before = val.slice(0, pos).toLowerCase();
+    if (before.lastIndexOf("<pre") > before.lastIndexOf("</pre>")) return;
+
     const lineStart = val.lastIndexOf("\n", pos - 1) + 1;
     const lineText = val.slice(lineStart, pos);
 
@@ -94,12 +97,12 @@
     e.preventDefault();
 
     const wrapped = `<p>${lineText}</p>`;
-    const before = val.slice(0, lineStart);
+    const head = val.slice(0, lineStart);
     const after = val.slice(pos);
 
-    contentEl.value = before + wrapped + "\n" + after;
+    contentEl.value = head + wrapped + "\n" + after;
 
-    const newPos = before.length + wrapped.length + 1;
+    const newPos = head.length + wrapped.length + 1;
     contentEl.selectionStart = newPos;
     contentEl.selectionEnd = newPos;
 
@@ -132,47 +135,58 @@
   }
 
   function getFirstImage(html) {
-    const m = html.match(/<img[^>]+src="([^"]+)"/);
-    return m ? m[1] : null;
+    const img = new DOMParser().parseFromString(html, "text/html").querySelector("img[src]");
+    return img ? img.getAttribute("src") : null;
+  }
+
+  // JSON string literal that is also safe inside a <script> block
+  function jsonStr(str) {
+    return JSON.stringify(str).replace(/</g, "\\u003c");
   }
 
   function buildPostHtml(opts = {}) {
     if (!templateStr) return "<html><body><p>Template not loaded</p></body></html>";
 
     const title = titleEl.value || "Untitled";
-    const slug = slugEl.value || toSlug(title);
     const desc = descEl.value || "";
-    const dateIso = dateEl.value || new Date().toISOString().slice(0, 10);
-    const dateDisplay = getDateDisplay();
     const content = contentEl.value || "";
     const firstImage = getFirstImage(content);
+    const hasCode = /<pre[\s>]/i.test(content);
 
-    const titleEsc = escHtml(title);
-    const descEsc = escHtml(desc);
+    // Saved posts use relative paths; the preview is served from the project root
+    const stylesPath = opts.forSave ? "../../styles" : "/docs/styles";
+    const scriptsPath = opts.forSave ? "../../scripts" : "/docs/scripts";
 
-    const cssPath = opts.forSave ? "../../styles/global.css" : "/docs/styles/global.css";
+    const values = {
+      TITLE: escHtml(title),
+      TITLE_JSON: jsonStr(title),
+      SLUG: slugEl.value || toSlug(title),
+      DESCRIPTION: escHtml(desc),
+      DESCRIPTION_JSON: jsonStr(desc),
+      DATE_ISO: dateEl.value || new Date().toISOString().slice(0, 10),
+      DATE_DISPLAY: getDateDisplay(),
+      CONTENT: content,
+      OG_IMAGE_META: firstImage
+        ? `        <meta property="og:image" content="${escHtml(firstImage)}" />\n`
+        : "",
+      TW_IMAGE_META: firstImage
+        ? `        <meta name="twitter:image" content="${escHtml(firstImage)}" />\n`
+        : "",
+      JSON_IMAGE: firstImage ? `,\n  "image": ${jsonStr(firstImage)}` : "",
+      STYLES_PATH: stylesPath,
+      PRISM_CSS: hasCode
+        ? `        <link href="${stylesPath}/prism.css" rel="stylesheet" />\n`
+        : "",
+      PRISM_JS: hasCode
+        ? `        <script src="${scriptsPath}/prism.js"></script>\n`
+        : ""
+    };
 
-    const ogImageMeta = firstImage
-      ? `        <meta property="og:image" content="${firstImage}" />\n`
-      : "";
-    const twImageMeta = firstImage
-      ? `        <meta name="twitter:image" content="${firstImage}" />\n`
-      : "";
-    const jsonImage = firstImage
-      ? `,\n  "image": "${firstImage}"`
-      : "";
-
-    return templateStr
-      .replace(/\{\{TITLE\}\}/g, titleEsc)
-      .replace(/\{\{SLUG\}\}/g, slug)
-      .replace(/\{\{DESCRIPTION\}\}/g, descEsc)
-      .replace(/\{\{DATE_ISO\}\}/g, dateIso)
-      .replace(/\{\{DATE_DISPLAY\}\}/g, dateDisplay)
-      .replace(/\{\{CONTENT\}\}/g, content)
-      .replace(/\{\{OG_IMAGE_META\}\}/g, ogImageMeta)
-      .replace(/\{\{TW_IMAGE_META\}\}/g, twImageMeta)
-      .replace(/\{\{JSON_IMAGE\}\}/g, jsonImage)
-      .replace(/\{\{CSS_PATH\}\}/g, cssPath);
+    // Single pass with a function, so "$" sequences and "{{...}}" in the
+    // post content are inserted literally rather than being reinterpreted.
+    return templateStr.replace(/\{\{([A-Z_]+)\}\}/g, (match, key) =>
+      key in values ? values[key] : match
+    );
   }
 
   function updatePreview() {
@@ -181,14 +195,24 @@
   }
 
   // --- New post ---
-  newBtn.addEventListener("click", () => {
+  function updateDescCount() {
+    const len = descEl.value.length;
+    descCount.textContent = `${len}/155`;
+    descCount.style.color = len > 155 ? "#f44336" : "#aaa";
+  }
+
+  function resetForm() {
     titleEl.value = "";
     slugEl.value = "";
     descEl.value = "";
     contentEl.value = "";
     dateEl.value = new Date().toISOString().slice(0, 10);
-    descCount.textContent = "0/155";
-    descCount.style.color = "#aaa";
+    updateDescCount();
+    checkSlugExists();
+  }
+
+  newBtn.addEventListener("click", () => {
+    resetForm();
     loadSelect.value = "";
     updatePreview();
   });
@@ -232,6 +256,9 @@
   function parsePostIntoEditor(html, slug) {
     const doc = new DOMParser().parseFromString(html, "text/html");
 
+    // Start clean so nothing carries over from the previously open post
+    resetForm();
+
     const h1 = doc.querySelector(".post-header .title");
     if (h1) titleEl.value = h1.textContent.trim();
 
@@ -252,17 +279,15 @@
     if (ldScript) {
       try {
         const ld = JSON.parse(ldScript.textContent);
-        if (ld.datePublished) dateEl.value = ld.datePublished;
+        if (ld.datePublished) dateEl.value = String(ld.datePublished).slice(0, 10);
       } catch {}
     }
 
     const article = doc.querySelector("article.post");
     if (article) contentEl.value = article.innerHTML.trim();
 
-    const len = descEl.value.length;
-    descCount.textContent = `${len}/155`;
-    descCount.style.color = len > 155 ? "#f44336" : "#aaa";
-
+    updateDescCount();
+    checkSlugExists();
     updatePreview();
   }
 
@@ -272,7 +297,10 @@
     const slug = slugEl.value.trim() || toSlug(title);
 
     if (!title) { showSaveStatus("Title is required", true); return; }
-    if (!slug) { showSaveStatus("Could not generate slug", true); return; }
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      showSaveStatus("Slug must be lowercase letters, numbers and hyphens", true);
+      return;
+    }
     if (!dateEl.value) { showSaveStatus("Date is required", true); return; }
 
     saveBtn.disabled = true;
@@ -286,9 +314,14 @@
         body: JSON.stringify({ html })
       });
 
-      if (!resp.ok) throw new Error(`Server error: ${resp.status}`);
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.error || `Server error: ${resp.status}`);
+      }
 
       const data = await resp.json();
+      knownSlugs.add(slug);
+      checkSlugExists();
       showSaveStatus(`Saved to ${data.path}`);
     } catch (err) {
       showSaveStatus(`Error: ${err.message}`, true);
@@ -327,7 +360,7 @@
       }
 
       const data = await resp.json();
-      const imgTag = `<img decoding="async" loading="lazy" src="${data.url}" alt="" class="aligncenter" />`;
+      const imgTag = `<img decoding="async" loading="lazy" src="${escHtml(data.url)}" alt="" class="aligncenter" />`;
 
       const pos = contentEl.selectionStart;
       const val = contentEl.value;

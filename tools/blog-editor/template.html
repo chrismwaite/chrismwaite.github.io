@@ -17,13 +17,14 @@
         <meta name="twitter:title" content="{{TITLE}}" />
         <meta name="twitter:description" content="{{DESCRIPTION}}" />
 {{TW_IMAGE_META}}        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="stylesheet" href="{{CSS_PATH}}" />
-        <script type="application/ld+json">
+        <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
+        <link rel="stylesheet" href="{{STYLES_PATH}}/global.css" />
+{{PRISM_CSS}}        <script type="application/ld+json">
         {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "{{TITLE}}",
-  "description": "{{DESCRIPTION}}",
+  "headline": {{TITLE_JSON}},
+  "description": {{DESCRIPTION_JSON}},
   "url": "https://chriswaite.dev/devlog/{{SLUG}}/",
   "datePublished": "{{DATE_ISO}}",
   "author": {
@@ -57,5 +58,5 @@
                 </article>
             </main>
         </div>
-    </body>
+{{PRISM_JS}}    </body>
 </html>

@@ -19,6 +19,7 @@
         <meta name="twitter:description" content="The Sega Mega Drive is my all time favourite games console. I had one as a kid when they were first introduced. I remember fondly playing Sonic for hours,..." />
         <meta name="twitter:image" content="https://res.cloudinary.com/dmq7gxinn/image/upload/2583218-1035996905-SegaM.jpg" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
         <link rel="stylesheet" href="../../styles/global.css" />
         <link href="../../styles/prism.css" rel="stylesheet" />
         <script type="application/ld+json">
@@ -110,7 +111,7 @@ cp -R gendev-read-only/sgdk/skeleton megadrive-test</pre>
 <p><strong>Creating and compiling a simple program</strong></p>
 <p>You&#8217;re basically left to your own devices then. If you go to the <a href="https://code.google.com/p/sgdk/wiki/">SGDK Wiki</a> there is a <a href="https://code.google.com/p/sgdk/wiki/HelloWorld">hello world example</a>.</p>
 <p>Just open your favourite text editor (I used <a href="https://www.sublimetext.com/">Sublime Text</a>) and copy the hello world example into a new file:-</p>
-<pre><code class="language-c">#include <genesis.h>
+<pre><code class="language-c">#include &lt;genesis.h&gt;
 
 int main()
 {

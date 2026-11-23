@@ -17,6 +17,7 @@
         <meta name="twitter:title" content="Structure – Mini Mob Development Diary #3" />
         <meta name="twitter:description" content="Just a quick update." />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate" type="application/rss+xml" title="chriswaite.dev" href="/feed.xml" />
         <link rel="stylesheet" href="../../styles/global.css" />
         <script type="application/ld+json">
         {
@@ -54,7 +55,7 @@
             <main class="inner">
                 <article class="post">
 <p>Just a quick update.</p>
-<p>I&#8217;ve now implemented the core gameplay changes mentioned in <a href="https://www.chriswaite.dev/devlog/basic-gameplay-strategies-mini-mob-development-diary-2/">my previous development diary</a>. The gameplay feels much more robust, particularly with regards the additional layer of strategy derived from utilising adjacent zones. The AI is now also incredibly ruthless with its new found intelligence but I&#8217;ll be revisiting that once more components are in place.</p>
+<p>I&#8217;ve now implemented the core gameplay changes mentioned in <a href="/devlog/basic-gameplay-strategies-mini-mob-development-diary-2/">my previous development diary</a>. The gameplay feels much more robust, particularly with regards the additional layer of strategy derived from utilising adjacent zones. The AI is now also incredibly ruthless with its new found intelligence but I&#8217;ll be revisiting that once more components are in place.</p>
 <p>What is severely lacking is visual/statistical feedback to the player. Feedback on when new recruits will arrive, how the winner of a fight is calculated, etc. I really want to bake this information into the city itself where possible &#8211; that means relevant visual representations where possible. This needs some thought so I&#8217;m leaving it for now.</p>
 <p>In addition to the gameplay changes, I&#8217;ve also been reworking the structure of the code to support a more flexible visual style. In its first iteration, each zone type contained all of its visual elements pre-rendered and the textures were just switched in and out. For the new version I wanted something more flexible.</p>
 <p>What I&#8217;ve done is to separate the city zones from their occupier. This means that I can support a variety of zone appearances and the occupier (and fights) will take place on top of this. It means a more dynamic structure and is a tentative move towards a living city.</p>
