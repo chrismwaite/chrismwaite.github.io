@@ -185,6 +185,24 @@ iframe {
     color: var(--text);
 }
 
+/* on a phone the pills tighten up so the feed icon stays on their line */
+@media (max-width: 520px) {
+    .site-header nav ul {
+        flex-wrap: nowrap;
+        gap: 4px;
+    }
+
+    .site-header nav a {
+        padding: 3px 10px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .site-header nav a.feed-link {
+        padding: 4px;
+    }
+}
+
 .intro {
     text-align: center;
     color: var(--muted);
@@ -402,6 +420,85 @@ iframe {
 
 .series-row .card {
     scroll-snap-align: start;
+}
+
+/* on a phone a series breaks out of the column: it runs edge to edge under
+   a solid heading in its strong colour, so it can't be mistaken for a post */
+@media (max-width: 639px) {
+    .series-block {
+        /* cancels the page's side padding */
+        margin-inline: -16px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        timeline-scope: --series-row;
+    }
+
+    .series-block > header {
+        width: auto;
+        padding: 10px 16px 9px;
+        border-radius: 0;
+        background: var(--band-ink);
+        color: #fff;
+        --muted: #fff;
+    }
+
+    .series-block header h2 {
+        font-size: 1.3rem;
+    }
+
+    .series-block header h2 a {
+        color: inherit;
+    }
+
+    .series-row {
+        grid-area: 2 / 1;
+        padding: 16px;
+        border-radius: 0;
+        scroll-padding-inline: 16px;
+        scroll-timeline: --series-row inline;
+    }
+
+    /* a fade over the right edge of the row with a plain arrow on it, to show
+       it scrolls. A hint, not a control, so nothing about it looks pressable.
+       The grid puts both in the same cell as the row, so they match its height. */
+    .series-block::before,
+    .series-block::after {
+        content: "";
+        grid-area: 2 / 1;
+        justify-self: end;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .series-block::before {
+        width: 72px;
+        background: linear-gradient(to right, transparent, var(--band) 80%);
+    }
+
+    .series-block::after {
+        z-index: 2;
+        align-self: center;
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
+        background: var(--band-ink);
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 5l7 7-7 7'/%3E%3C/svg%3E")
+            center / contain no-repeat;
+    }
+
+    /* where the browser can follow the scroll, they go once you reach the end */
+    @supports (animation-timeline: scroll()) {
+        .series-block::before,
+        .series-block::after {
+            animation: series-hint linear both;
+            animation-timeline: --series-row;
+        }
+    }
+}
+
+@keyframes series-hint {
+    0%, 80% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 /* breathing room, so series that follow one another read as separate cards */
